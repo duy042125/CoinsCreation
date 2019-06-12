@@ -1,0 +1,39 @@
+﻿<Window x:Class="Interface.NewAccount"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Interface"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="New Account" Height="720" Width="1280">
+    <Grid Background="BlanchedAlmond">
+        <Label Content="New Account" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0"/>
+
+        <Label Content="Parent's Name：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,150,0,0" FontSize="18" Height="40" Width="170"/>
+        <TextBox x:Name="ParentName" TabIndex="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,150,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
+
+        <Label Content="User Name：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,200,0,0" FontSize="18" Height="40" Width="170"/>
+        <TextBox x:Name="Account" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,200,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
+        
+        <Label Content="Password : " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,250,0,0" FontSize="18" Height="40" Width="170"/>
+        <PasswordBox x:Name="NewPassword" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,250,0,0" PasswordChar="*" FontSize="18" Height="40" Width="350"/>
+
+        <Label Content="Confirm Password : " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,300,0,0" FontSize="18" Height="40" Width="170"/>
+        <PasswordBox x:Name="CconfirmPassword" TabIndex="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,300,0,0" PasswordChar="*" FontSize="18" Height="40" Width="350"/>
+        
+        <Label Content="Sercurity Question：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,350,0,0" FontSize="18" Height="40" Width="170"/>
+        <ComboBox x:Name="SecurityQ" TabIndex="5" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,350,0,0" Text="" FontSize="18" Height="40" Width="350">
+            <ComboBoxItem IsSelected="true" Content="What city were you born in ?"/>
+            <ComboBoxItem Content="What was the new of your first pet ?"/>
+            <ComboBoxItem Content="What is the name of your best friend ?"/>
+            <ComboBoxItem Content="What is the name of high school you went to ?"/>
+        </ComboBox>
+
+        <Label Content="Answer：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,400,0,0" FontSize="18" Height="40" Width="170"/>
+        <TextBox x:Name="Answer" TabIndex="6" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,400,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
+
+        <Button Content="Create Account" TabIndex="7" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-250,500,0,0" FontSize="15" Height="40" Width="150" Click="Create_Click" IsDefault="True"/>
+        <Button Content="Back" TabIndex="8" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="200,500,0,0" FontSize="15" Height="40" Width="150" Click="Back_Click"/>
+    </Grid>
+</Window>
