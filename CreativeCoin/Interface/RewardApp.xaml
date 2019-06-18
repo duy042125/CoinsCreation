@@ -13,25 +13,42 @@
         <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="-625,150,0,0" Height="500" Width="590" Background="RoyalBlue">
             <Label Content="Behavior Rating" FontSize="50" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
 
-            <Label x:Name="BehaviorName1" Content="Behavior 1" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-300,100,0,0"/>
+            <Label x:Name="BehaviorName1" Content="Behavior 1" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-280,100,0,0"/>
             <local:RatingStars x:Name="Behavior1" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="290,100,0,0"/>
 
-            <Label x:Name="BehaviorName2" Content="Behavior 2" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-300,170,0,0"/>
+            <Label x:Name="BehaviorName2" Content="Behavior 2" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-280,170,0,0"/>
             <local:RatingStars x:Name="Behavior2" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="290,170,0,0"/>
 
-            <Label x:Name="BehaviorName3" Content="Behavior 3" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-300,240,0,0"/>
+            <Label x:Name="BehaviorName3" Content="Behavior 3" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-280,240,0,0"/>
             <local:RatingStars x:Name="Behavior3" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="290,240,0,0"/>
 
-            <Label x:Name="BehaviorName4" Content="Behavior 4" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-300,310,0,0"/>
+            <Label x:Name="BehaviorName4" Content="Behavior 4" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-280,310,0,0"/>
             <local:RatingStars x:Name="Behavior4" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="290,310,0,0"/>
 
-            <Button Content="Progress" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Top" Margin="-300,380,0,0" Background="LightBlue" Click="Button_Click"/>
-            <TextBox x:Name="Progress" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Width="275" Height="55" VerticalAlignment="Top" Margin="290,380,0,0"/>
-
+            <Button Content="Progress" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Top" Margin="-300,390,0,0" Background="LightBlue" Click="Button_Click"/>
+            <TextBox x:Name="Progress" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Width="275" Height="55" VerticalAlignment="Top" Margin="290,390,0,0" Background="LightBlue"/>
         </Grid>
 
         <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="625,150,0,0" Height="500" Width="590" Background="RoyalBlue">
+            <Label Content="Child's Information" FontSize="50" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
 
+            <Label Content="Name:" FontSize="40" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-400,100,0,0"/>
+            <TextBox x:Name="Name" FontSize="40" Width="350" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,105,0,0" Background="LightBlue"/>
+
+            <Label Content="Age:" FontSize="40" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-400,170,0,0"/>
+            <TextBox x:Name="Age" FontSize="40" Width="350" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,175,0,0" Background="LightBlue"/>
+
+            <Label Content="Date:" FontSize="40" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-400,240,0,0"/>
+            <DatePicker x:Name="Date" FontSize="40" Width="350" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,245,0,0" Background="LightBlue"/>
+
+            <Label Content="You earned today:" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-220,350,0,0"/>
+            <Label x:Name="CoinEarned" Content="0" Width="30" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="180,350,0,0"/>
+            <Button HorizontalAlignment="Center" Height="150" Margin="420,320,0,0" VerticalAlignment="Top" Width="150" Background="LightBlue">
+                <StackPanel Orientation="Vertical">
+                    <Image Source="coins-icon.png" Height="100" Width="100" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Center" FontSize="25">Save to bank</TextBlock>
+                </StackPanel>
+            </Button>
 
         </Grid>
     </Grid>

@@ -139,5 +139,14 @@
   <ItemGroup>
     <Resource Include="CCGLogo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coins-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\piggy-bank-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="coins-icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
