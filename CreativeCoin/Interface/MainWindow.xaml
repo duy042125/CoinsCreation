@@ -9,7 +9,7 @@
         Title="Log In" Height="720" Width="1280">
     <Grid Background="BlanchedAlmond">
         <Label Content="Creative Coin Application" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0"/>
-        <Image Source="pack://siteoforigin:,,,/Resources/CCGLogo.png" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0" Stretch="Fill" Height="175" Width="400"/>
+        <Image Source="CCGLogo.png" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0" Stretch="Fill" Height="175" Width="400"/>
         
         <Label x:Name="lockedInfo" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,360,0,0" Content="Test Label" FontSize="15" Foreground="Red" FontWeight="Bold"/>
         

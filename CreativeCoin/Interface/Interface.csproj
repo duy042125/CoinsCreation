@@ -136,5 +136,8 @@
     <None Include="Resources\star.wav" />
     <None Include="Resources\cashregg.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CCGLogo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
