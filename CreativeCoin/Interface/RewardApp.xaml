@@ -6,19 +6,33 @@
         xmlns:local="clr-namespace:Interface"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="Log In" Height="720" Width="1280">
+        Title="Reward App" Height="720" Width="1280">
     <Grid Background="SlateBlue">
         <Label Content="Creative Coin Reward" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0"/>
-        
+
         <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="-625,150,0,0" Height="500" Width="590" Background="RoyalBlue">
             <Label Content="Behavior Rating" FontSize="50" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
-            
+
+            <Label x:Name="BehaviorName1" Content="Behavior 1" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-300,100,0,0"/>
+            <local:RatingStars x:Name="Behavior1" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="290,100,0,0"/>
+
+            <Label x:Name="BehaviorName2" Content="Behavior 2" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-300,170,0,0"/>
+            <local:RatingStars x:Name="Behavior2" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="290,170,0,0"/>
+
+            <Label x:Name="BehaviorName3" Content="Behavior 3" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-300,240,0,0"/>
+            <local:RatingStars x:Name="Behavior3" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="290,240,0,0"/>
+
+            <Label x:Name="BehaviorName4" Content="Behavior 4" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-300,310,0,0"/>
+            <local:RatingStars x:Name="Behavior4" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="290,310,0,0"/>
+
+            <Button Content="Progress" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Top" Margin="-300,380,0,0" Background="LightBlue" Click="Button_Click"/>
+            <TextBox x:Name="Progress" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Width="275" Height="55" VerticalAlignment="Top" Margin="290,380,0,0"/>
 
         </Grid>
-        
+
         <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="625,150,0,0" Height="500" Width="590" Background="RoyalBlue">
-            
-    
+
+
         </Grid>
     </Grid>
 </Window>

@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="Interface.RatingStars"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Interface" 
+             mc:Ignorable="d" Height="250" Width="1250" MouseLeave="UserControl_MouseLeave">
+    <Grid>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+            <Viewbox>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="Star1" Fill="Black" StrokeThickness="0.26026356" Stretch="Fill" Width="40" Height="40" MouseEnter="Star1_MouseEnter" MouseLeave="Star_MouseLeave" Cursor="Hand" MouseLeftButtonDown="Star1_MouseLeftButtonDown">
+                    <Path.Data>
+                        <PathGeometry Figures="M 32.543059 296.80822 20.123814 289.35424 7.8217001 296.99998 11.073092 282.88517 -1.0455949e-6 273.54783 14.428715 272.27837 l 5.458566 -13.41653 5.666045 13.33024 14.446672 1.04547 -10.926908 9.508 z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+            </Viewbox>
+
+            <Viewbox>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="Star2" Fill="#000000" StrokeThickness="0.26026356" Stretch="Fill" Width="40" Height="40" MouseEnter="Star2_MouseEnter" MouseLeave="Star_MouseLeave" Cursor="Hand" MouseLeftButtonDown="Star2_MouseLeftButtonDown">
+                    <Path.Data>
+                        <PathGeometry Figures="M 32.543059 296.80822 20.123814 289.35424 7.8217001 296.99998 11.073092 282.88517 -1.0455949e-6 273.54783 14.428715 272.27837 l 5.458566 -13.41653 5.666045 13.33024 14.446672 1.04547 -10.926908 9.508 z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+            </Viewbox>
+
+            <Viewbox>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="Star3" Fill="#000000" StrokeThickness="0.26026356" Stretch="Fill" Width="40" Height="40" MouseEnter="Star3_MouseEnter" MouseLeave="Star_MouseLeave" Cursor="Hand" MouseLeftButtonDown="Star3_MouseLeftButtonDown">
+                    <Path.Data>
+                        <PathGeometry Figures="M 32.543059 296.80822 20.123814 289.35424 7.8217001 296.99998 11.073092 282.88517 -1.0455949e-6 273.54783 14.428715 272.27837 l 5.458566 -13.41653 5.666045 13.33024 14.446672 1.04547 -10.926908 9.508 z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+            </Viewbox>
+
+            <Viewbox>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="Star4" Fill="#000000" StrokeThickness="0.26026356" Stretch="Fill" Width="40" Height="40" MouseEnter="Star4_MouseEnter" MouseLeave="Star_MouseLeave" Cursor="Hand" MouseLeftButtonDown="Star4_MouseLeftButtonDown">
+                    <Path.Data>
+                        <PathGeometry Figures="M 32.543059 296.80822 20.123814 289.35424 7.8217001 296.99998 11.073092 282.88517 -1.0455949e-6 273.54783 14.428715 272.27837 l 5.458566 -13.41653 5.666045 13.33024 14.446672 1.04547 -10.926908 9.508 z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+            </Viewbox>
+
+            <Viewbox>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="Star5" Fill="#000000" StrokeThickness="0.26026356" Stretch="Fill" Width="40" Height="40" MouseEnter="Star5_MouseEnter" MouseLeave="Star_MouseLeave" Cursor="Hand" MouseLeftButtonDown="Star5_MouseLeftButtonDown">
+                    <Path.Data>
+                        <PathGeometry Figures="M 32.543059 296.80822 20.123814 289.35424 7.8217001 296.99998 11.073092 282.88517 -1.0455949e-6 273.54783 14.428715 272.27837 l 5.458566 -13.41653 5.666045 13.33024 14.446672 1.04547 -10.926908 9.508 z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+            </Viewbox>
+        </StackPanel>
+
+    </Grid>
+</UserControl>
