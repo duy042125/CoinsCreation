@@ -47,19 +47,37 @@ namespace Middleware
 
         #region Account Connections
 
-        public static void createAccount(string username, string password, string name)
+        public static void createAccount(string theUsername, string thePassword, string theName)
         {
             try
             {
-                using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(getConnectionString("CreativeCoinConnection")))
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    Account newAccount = new Account(username, password, name);
+                    Account newAccount = new Account(theUsername, thePassword, theName);
                     connection.Execute("dbo.SP_Account_Insert @username, @password, @name", newAccount);
                 }
             }
-            catch (Exception e)
+            catch (Exception exc)
             {
-                throw e;
+                throw exc;
+            }
+        }
+
+        public static bool verifiedLogIn(string theUsername, string thePassword)      // it should be Account
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    var checkAccount = connection.QuerySingle("dbo.SP_Account_VerifiedLogIn @username", new { username = theUsername });
+                    if (thePassword != checkAccount.password) return false;
+                    else return true;
+                }
+            }
+            catch
+            {
+                //If the lists is blank => No match account
+                return false;
             }
         }
 

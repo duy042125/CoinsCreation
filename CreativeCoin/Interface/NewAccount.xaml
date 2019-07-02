@@ -20,7 +20,7 @@
         <PasswordBox x:Name="newPassword" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,250,0,0" PasswordChar="*" FontSize="18" Height="40" Width="350"/>
 
         <Label Content="Confirm Password : " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,300,0,0" FontSize="18" Height="40" Width="170"/>
-        <PasswordBox x:Name="CconfirmPassword" TabIndex="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,300,0,0" PasswordChar="*" FontSize="18" Height="40" Width="350" LostKeyboardFocus="Check_Confirm_Password"/>
+        <PasswordBox x:Name="ConfirmPassword" TabIndex="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,300,0,0" PasswordChar="*" FontSize="18" Height="40" Width="350" LostKeyboardFocus="Check_Confirm_Password"/>
         
         <Label Content="Sercurity Question：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,350,0,0" FontSize="18" Height="40" Width="170"/>
         <ComboBox x:Name="SecurityQ" TabIndex="5" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,350,0,0" Text="" FontSize="18" Height="40" Width="350">

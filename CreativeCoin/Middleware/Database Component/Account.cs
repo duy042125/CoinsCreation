@@ -9,11 +9,10 @@ namespace Middleware.Database_Component
     public class Account
     {
         #region Table rows
-        public Account(string theUsername, string thePassword, string theName)
+        public Account(string theUsername = null, string thePassword = null, string theName = null)
         {
             username = theUsername;
-            password = Hashing.HashPassword(thePassword);
-
+            password = thePassword;
         }
         public string username { get; set; }
         public string password { get; set; }

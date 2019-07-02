@@ -27,12 +27,18 @@ namespace Interface
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
+            if (ConfirmPassword.Password != newPassword.Password)
+            {
+                MessageBox.Show("The confirm password does not match your password", "Password Confirm", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             try
             {
                 DBConnection.openConnection();
-                DBConnection.createAccount(newUsername.Text, newPassword.Password, newParentName.Text);
+                DBConnection.createAccount(newUsername.Text, Hashing.HashPassword(newPassword.Password), newParentName.Text);
 
-                MessageBox.Show("You created a new account", "Creattion Confirm", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("You created a new account", "Creation Confirm", MessageBoxButton.OK, MessageBoxImage.Information);
                 MainWindow backToLogin = new MainWindow();
                 backToLogin.Show();
                 this.Close();
@@ -41,7 +47,6 @@ namespace Interface
             {
                 throw exc;
             }
-
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -54,7 +59,7 @@ namespace Interface
 
         private void Check_Confirm_Password(object sender, KeyboardFocusChangedEventArgs e)
         {
-            if 
+            
         }
     }
 }

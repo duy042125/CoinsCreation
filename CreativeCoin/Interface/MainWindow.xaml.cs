@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Middleware;
 
 namespace Interface
 {
@@ -27,9 +28,22 @@ namespace Interface
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
-            FillOut fillOut = new FillOut();
-            fillOut.Show();
-            this.Close();
+            string hashedPassword = Hashing.HashPassword(Password.Password);
+
+            if (DBConnection.verifiedLogIn(Username.Text, hashedPassword))
+            {
+                FillOut fillOut = new FillOut();
+                fillOut.Show();
+                this.Close();
+            }
+            else
+            {
+                VerifyInfo.Content = "Your username or password is incorrect";
+            }
+
+
+
+            
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
