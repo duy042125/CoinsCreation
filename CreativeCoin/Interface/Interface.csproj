@@ -155,5 +155,11 @@
   <ItemGroup>
     <Resource Include="coins-icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Middleware\Middleware.csproj">
+      <Project>{F005A934-3022-4FC0-A521-11DE483282EF}</Project>
+      <Name>Middleware</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

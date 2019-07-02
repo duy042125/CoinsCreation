@@ -11,16 +11,16 @@
         <Label Content="New Account" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0"/>
 
         <Label Content="Parent's Name：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,150,0,0" FontSize="18" Height="40" Width="170"/>
-        <TextBox x:Name="ParentName" TabIndex="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,150,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
+        <TextBox x:Name="newParentName" TabIndex="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,150,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
 
         <Label Content="User Name：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,200,0,0" FontSize="18" Height="40" Width="170"/>
-        <TextBox x:Name="Account" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,200,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
+        <TextBox x:Name="newUsername" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,200,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
         
         <Label Content="Password : " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,250,0,0" FontSize="18" Height="40" Width="170"/>
-        <PasswordBox x:Name="NewPassword" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,250,0,0" PasswordChar="*" FontSize="18" Height="40" Width="350"/>
+        <PasswordBox x:Name="newPassword" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,250,0,0" PasswordChar="*" FontSize="18" Height="40" Width="350"/>
 
         <Label Content="Confirm Password : " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,300,0,0" FontSize="18" Height="40" Width="170"/>
-        <PasswordBox x:Name="CconfirmPassword" TabIndex="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,300,0,0" PasswordChar="*" FontSize="18" Height="40" Width="350"/>
+        <PasswordBox x:Name="CconfirmPassword" TabIndex="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,300,0,0" PasswordChar="*" FontSize="18" Height="40" Width="350" LostKeyboardFocus="Check_Confirm_Password"/>
         
         <Label Content="Sercurity Question：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,350,0,0" FontSize="18" Height="40" Width="170"/>
         <ComboBox x:Name="SecurityQ" TabIndex="5" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,350,0,0" Text="" FontSize="18" Height="40" Width="350">

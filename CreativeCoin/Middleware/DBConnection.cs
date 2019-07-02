@@ -15,32 +15,20 @@ namespace Middleware
     {
         #region Private Components
 
-        private static SqlConnection connection;
         private static DBConnection currentConnection;
-        private DBConnection(string username, string password)
+
+        private DBConnection()
         {
-            try
-            {
-                string connectionString = getConnectionString("CreativeCoinConnection");
-                connection = new SqlConnection(connectionString);
-                connection.Open();
-                
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            
         }
 
-        #endregion
-
-        public static DBConnection openConnection(string username, string password)
+        public static DBConnection openConnection()
         {
             if (currentConnection == null)
             {
                 try
                 {
-                    currentConnection = new DBConnection(username, password);
+                    currentConnection = new DBConnection();
                 }
                 catch (Exception e)
                 {
@@ -50,26 +38,29 @@ namespace Middleware
             return currentConnection;
         }
 
-        #region Methods
-
-        public static string getConnectionString(string name)               //change into private if needed
+        private static string getConnectionString(string name)               
         {
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
 
-        public static void closeConnection()
-        {
-            connection.Close();
-            currentConnection = null;
-        }
-
         #endregion
 
-        #region Account
+        #region Account Connections
 
-        public Account createAccount(string a)
+        public static void createAccount(string username, string password, string name)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    Account newAccount = new Account(username, password, name);
+                    connection.Execute("dbo.SP_Account_Insert @username, @password, @name", newAccount);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         #endregion

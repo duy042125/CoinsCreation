@@ -61,12 +61,15 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\View" />
     <Folder Include="Publish Location" />
+    <Folder Include="dbo\Store Procedure" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Account.sql" />
     <Build Include="dbo\Tables\Behavior.sql" />
     <Build Include="dbo\Tables\Child.sql" />
     <Build Include="dbo\Tables\Report.sql" />
+    <Build Include="dbo\Store Procedure\Account_Insert.sql" />
+    <Build Include="dbo\Store Procedure\SP_Account_Insert.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Location\CreativeCoinDatabase.publish.xml" />

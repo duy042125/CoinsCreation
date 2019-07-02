@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Middleware;
 
 namespace Interface
 {
@@ -26,7 +27,21 @@ namespace Interface
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            //put the data in the data base here
+            try
+            {
+                DBConnection.openConnection();
+                DBConnection.createAccount(newUsername.Text, newPassword.Password, newParentName.Text);
+
+                MessageBox.Show("You created a new account", "Creattion Confirm", MessageBoxButton.OK, MessageBoxImage.Information);
+                MainWindow backToLogin = new MainWindow();
+                backToLogin.Show();
+                this.Close();
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -35,6 +50,11 @@ namespace Interface
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
+        }
+
+        private void Check_Confirm_Password(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            if 
         }
     }
 }
