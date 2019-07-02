@@ -63,7 +63,7 @@ namespace Middleware
             }
         }
 
-        public static bool verifiedLogIn(string theUsername, string thePassword)      // it should be Account
+        public static bool verifiedUsername(string theUsername, string thePassword)      // it should be Account
         {
             try
             {

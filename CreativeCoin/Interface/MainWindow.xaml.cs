@@ -30,7 +30,7 @@ namespace Interface
         {
             string hashedPassword = Hashing.HashPassword(Password.Password);
 
-            if (DBConnection.verifiedLogIn(Username.Text, hashedPassword))
+            if (DBConnection.verifiedUsername(Username.Text, hashedPassword))
             {
                 FillOut fillOut = new FillOut();
                 fillOut.Show();
@@ -40,10 +40,6 @@ namespace Interface
             {
                 VerifyInfo.Content = "Your username or password is incorrect";
             }
-
-
-
-            
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
