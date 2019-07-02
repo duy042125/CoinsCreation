@@ -62,5 +62,28 @@ namespace Interface
                 CoinEarned.Content = "5";
             }
         }
+
+        private void Edit_Info_Click(object sender, RoutedEventArgs e)
+        {
+            FillOut fill = new FillOut();
+            fill.Show();
+            this.Close();
+        }
+
+        private void Report_Progress_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Behavior3_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Bank_Click(object sender, RoutedEventArgs e)
+        {
+            System.Media.SoundPlayer starSound = new System.Media.SoundPlayer(Interface.Properties.Resources.cashregg);
+            starSound.Play();
+        }
     }
 }

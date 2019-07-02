@@ -185,6 +185,6 @@ namespace Interface
 
         #endregion
         
-        public int Value { get { return starNum; } }
+        public int Value { get { return starNum; } } //get the star value
     }
 }

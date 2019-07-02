@@ -60,6 +60,9 @@
     <Compile Include="RatingStars.xaml.cs">
       <DependentUpon>RatingStars.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ReportShop.xaml.cs">
+      <DependentUpon>ReportShop.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RewardApp.xaml.cs">
       <DependentUpon>RewardApp.xaml</DependentUpon>
     </Compile>
@@ -94,6 +97,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RatingStars.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReportShop.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

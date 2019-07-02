@@ -25,7 +25,7 @@ namespace Interface
         }
 
 
-        private void Tip_Click(object sender, RoutedEventArgs e)
+        private void Tip_Click(object sender, RoutedEventArgs e) // this might need a custom window for it.
         {
             string message = "5 coins (1 week of perfect behavior) = favorite meal, ice cream, a dollar store item, craft/bake together \n" +
                 "10 coins (2 weeks of perfect behavior) = extra video game hour, extra TV hour, one chore-free night \n" +
