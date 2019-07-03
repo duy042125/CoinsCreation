@@ -14,10 +14,10 @@
         <Label x:Name="VerifyInfo" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,360,0,0" Content="" FontSize="15" Foreground="Red" FontWeight="Bold"/>
         
         <Label Content="Username：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-170,410,0,0" FontSize="18" Height="40" Width="120"/>
-        <TextBox x:Name="Username" TabIndex="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,410,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="200"/>
+        <TextBox x:Name="Username" TabIndex="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,410,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="200" TextChanged="Username_TextChanged"/>
         
         <Label Content="Password : " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-170,460,0,0" FontSize="18" Height="40" Width="120"/>
-        <PasswordBox x:Name="Password" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,460,0,0" PasswordChar="*" FontSize="18" Height="40" Width="200"/>
+        <PasswordBox x:Name="Password" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,460,0,0" PasswordChar="*" FontSize="18" Height="40" Width="200" DataContextChanged="Password_DataContextChanged"/>
         
         <Button Content="Log in" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-130,520,0,0" FontSize="15" Height="40" Width="150" Click="LogIn_Click" IsDefault="True"/>
         <Button Content="Forget Password" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="190,520,0,0" FontSize="15" Height="40" Width="150" Click="Forget_Click"/>

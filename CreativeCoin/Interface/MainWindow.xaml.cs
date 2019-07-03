@@ -42,6 +42,11 @@ namespace Interface
             }
         }
 
+        private void Mouse_Move(object sender, MouseEventArgs e)
+        {
+            
+        }
+
         private void Register_Click(object sender, RoutedEventArgs e)
         {
             NewAccount newAccount = new NewAccount();
@@ -55,5 +60,19 @@ namespace Interface
             forgetAccount.Show();
             this.Close();
         }
+
+        #region Disappear Label
+
+        private void Username_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            VerifyInfo.Content = "";
+        }
+
+        private void Password_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            VerifyInfo.Content = "";
+        }
+
+        #endregion
     }
 }
