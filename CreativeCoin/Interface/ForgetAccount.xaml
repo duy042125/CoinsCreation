@@ -11,26 +11,30 @@
         <Label Content="Forget Password" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0"/>
 
         <Label Content="Username：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,150,0,0" FontSize="18" Height="40" Width="170"/>
-        <TextBox x:Name="Account" TabIndex="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,150,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
-        <Button Content="Search" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="600,150,0,0" FontSize="15" Height="40" Width="150" Click="Search_Click"/>
+        <TextBox x:Name="Username" TabIndex="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,150,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
 
-        <Label Content="Your Name：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,200,0,0" FontSize="18" Height="40" Width="170"/>
-        <TextBox x:Name="ParentName" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,200,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
+        <Label Content="SSN ：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,200,0,0" FontSize="18" Height="40" Width="170"/>
+        <TextBox x:Name="SSN" TabIndex="7" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,200,0,0" FontSize="18" Height="40" Width="350"/>
+        
+        <Label Content="Your Name：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,250,0,0" FontSize="18" Height="40" Width="170"/>
+        <TextBox x:Name="ParentName" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,250,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350" IsEnabled="False"/>
 
-        <Label Content="Sercurity Question : " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,250,0,0" FontSize="18" Height="40" Width="170"/>
-        <TextBox x:Name="SQuestion" TabIndex="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,250,0,0" FontSize="18" Height="40" Width="350"/>
+        <Label Content="Birthdate : " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,300,0,0" FontSize="18" Height="40" Width="170"/>
+        <TextBox x:Name="Birthdate" TabIndex="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,300,0,0" FontSize="18" Height="40" Width="350" IsEnabled="False"/>
 
-        <Label Content="Answer：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,300,0,0" FontSize="18" Height="40" Width="170"/>
-        <TextBox x:Name="Answer" TabIndex="5" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,300,0,0" FontSize="18" Height="40" Width="350"/>
+        <Label Content="Phone Number：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,350,0,0" FontSize="18" Height="40" Width="170"/>
+        <TextBox x:Name="PhoneNumber" TabIndex="5" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,350,0,0" FontSize="18" Height="40" Width="350" IsEnabled="False"/>
 
-        <Label Content="New Password：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,350,0,0" FontSize="18" Height="40" Width="170"/>
-        <PasswordBox x:Name="NPassword" TabIndex="6" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,350,0,0" PasswordChar="*" FontSize="18" Height="40" Width="350"/>
+        <Label Content="New Password：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,400,0,0" FontSize="18" Height="40" Width="170"/>
+        <PasswordBox x:Name="newPassword" TabIndex="6" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,400,0,0" PasswordChar="*" FontSize="18" Height="40" Width="350" IsEnabled="False"/>
 
-        <Label Content="Confirm Password：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,400,0,0" FontSize="18" Height="40" Width="170"/>
-        <PasswordBox x:Name="CPassword" TabIndex="7" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,400,0,0" PasswordChar="*" FontSize="18" Height="40" Width="350"/>
+        <Label Content="Confirm Password：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,450,0,0" FontSize="18" Height="40" Width="170"/>
+        <PasswordBox x:Name="confirmPassword" TabIndex="7" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,450,0,0" PasswordChar="*" FontSize="18" Height="40" Width="350" IsEnabled="False"/>
 
-
-        <Button Content="Change Password" TabIndex="8" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-250,500,0,0" FontSize="15" Height="40" Width="150" Click="ChangePassword_Click" IsDefault="True"/>
-        <Button Content="Back" TabIndex="9" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="200,500,0,0" FontSize="15" Height="40" Width="150" Click="Back_Click"/>
+        <Button Content="Search" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="800,200,0,0" FontSize="15" Height="40" Width="150" Click="Search_Click"/>
+        <Label x:Name="Warning" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="800,250,0,0" FontSize="18" Height="40" Width="180" FontWeight="Bold" Foreground="Red"/>
+        
+        <Button Content="Change Password" TabIndex="8" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-250,550,0,0" FontSize="15" Height="40" Width="150" Click="ChangePassword_Click" IsDefault="True"/>
+        <Button Content="Back" TabIndex="9" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="200,550,0,0" FontSize="15" Height="40" Width="150" Click="Back_Click"/>
     </Grid>
 </Window>

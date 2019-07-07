@@ -30,7 +30,7 @@ namespace Interface
         {
             string hashedPassword = Hashing.HashPassword(Password.Password);
 
-            if (DBConnection.verifiedUsername(Username.Text, hashedPassword))
+            if (DBConnection.verifiedLogIn(Username.Text, hashedPassword))
             {
                 FillOut fillOut = new FillOut();
                 fillOut.Show();

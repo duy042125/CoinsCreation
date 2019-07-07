@@ -1,9 +1,9 @@
 ﻿CREATE PROCEDURE [dbo].[SP_Account_VerifiedUsername]
-	@theUsername VARCHAR(100)
-
+	@username VARCHAR(100),
+	@SSN CHAR(10)
 AS
 BEGIN
 	SELECT *
 	FROM dbo.Account
-	WHERE username = @theUsername
+	WHERE username = @username OR SSN = @SSN
 END

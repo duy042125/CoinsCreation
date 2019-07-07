@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Middleware;
+using Middleware.Database_Component;
 
 namespace Interface
 {
@@ -26,7 +28,20 @@ namespace Interface
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
+            Account temp = new Account();
 
+            if (DBConnection.verifiedUsername(Username.Text, SSN.Text, ref temp))
+            {
+                ParentName.Text = temp.full_name;
+                Birthdate.Text = temp.birthdate.ToString();
+                PhoneNumber.Text = temp.phone_number;
+                newPassword.IsEnabled = true;
+                confirmPassword.IsEnabled = true;
+            }
+            else
+            {
+                Warning.Content = "No account found !";
+            }
         }
 
         private void ChangePassword_Click(object sender, RoutedEventArgs e)

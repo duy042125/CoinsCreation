@@ -2,6 +2,10 @@
 (
 	username VARCHAR(100),
 	[password] VARCHAR(100) NOT NULL,
-	[name] VARCHAR(100),
-	CONSTRAINT PK_Account PRIMARY KEY (username)
+	full_name VARCHAR(100),
+	birthdate DATE,
+	phone_number CHAR(10),
+	SSN CHAR(10) NOT NULL,
+	CONSTRAINT PK_Account PRIMARY KEY (username),
+	CONSTRAINT U_Account_SSN UNIQUE (SSN)
 )

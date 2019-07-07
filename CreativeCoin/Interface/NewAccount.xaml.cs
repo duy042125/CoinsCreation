@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Middleware;
+using Middleware.Database_Component;
 
 namespace Interface
 {
@@ -25,23 +26,88 @@ namespace Interface
             InitializeComponent();
         }
 
+        #region Check
+
+        private bool checkUsername()
+        {
+            if (DBConnection.verifiedUsedUsername(Username.Text))
+            {
+                Warning.Content = "This username is taken.";
+                return false;
+            }
+            else
+            {
+                if (Username.Text.Length <= 3)
+                {
+                    Warning.Content = "This username is too short.";
+                    return false;
+                }
+                Warning.Content = "This username is usable.";
+                return true;
+            }
+        }
+
+        private bool checkSSN()
+        {
+            string ssn = SSN.Text;
+            if (ssn.Length == 10)
+            {
+                for (int i = 0; i < ssn.Length; i++)
+                {
+                    if (ssn[i] > 57 || ssn[i] < 48) return false;
+                }
+                return true;
+            }
+            return false;
+        }
+
+        private bool checkPassword()
+        {
+            if (ConfirmPassword.Password.Equals(NewPassword.Password))
+            {
+                Match.Content = "Passwords match.";
+                return true;
+            }
+                Match.Content = "Passwords don't match.";
+                return false;
+        }
+
+        private bool checkRequiredFields()
+        {
+            if (Username.Text.Equals("") || NewPassword.Password.Equals("") || ConfirmPassword.Password.Equals("") || SSN.Text.Equals("")) return false;
+            return true;
+        }
+
+        #endregion
+
+        #region Click
+
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            if (ConfirmPassword.Password != newPassword.Password)
+            if (!checkRequiredFields())
             {
-                MessageBox.Show("The confirm password does not match your password", "Password Confirm", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Fill up the required fields", "Required fields", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
+            if(!checkSSN())
+            {
+                MessageBox.Show("Your SSN format is not right", "SSN field", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             try
             {
-                DBConnection.openConnection();
-                DBConnection.createAccount(newUsername.Text, Hashing.HashPassword(newPassword.Password), newParentName.Text);
+                if (checkUsername() && checkPassword())
+                {
+                    DBConnection.openConnection();
+                    DBConnection.createAccount(Username.Text, Hashing.HashPassword(NewPassword.Password), newParentName.Text, DateTimeConverter.toDateTime(Birthdate.Text), PhoneNumber.Text, SSN.Text);
 
-                MessageBox.Show("You created a new account", "Creation Confirm", MessageBoxButton.OK, MessageBoxImage.Information);
-                MainWindow backToLogin = new MainWindow();
-                backToLogin.Show();
-                this.Close();
+                    MessageBox.Show("You created a new account.", "Creation Confirm", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MainWindow backToLogin = new MainWindow();
+                    backToLogin.Show();
+                    this.Close();
+                    return;
+                }
+                MessageBox.Show("Check the required fields", "Required fields", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             catch (Exception exc)
             {
@@ -51,15 +117,21 @@ namespace Interface
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            //Need to check if save here
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
         }
 
-        private void Check_Confirm_Password(object sender, KeyboardFocusChangedEventArgs e)
+        private void Check_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (checkUsername()) return;
         }
+
+        private void ConfirmPassword_Check(object sender, RoutedEventArgs e)
+        {
+            if (checkPassword()) return;
+        }
+
+        #endregion
     }
 }
