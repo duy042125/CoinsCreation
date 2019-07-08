@@ -11,7 +11,7 @@ namespace Middleware.Database_Component
     {
         #region Table rows
 
-        public Account(string theUsername, string thePassword, string theName, DateTime theBirthdate, string thePhoneNumber, string theSSN)
+        public Account(string theUsername, string thePassword, string theName, DateTime? theBirthdate, string thePhoneNumber, string theSSN)
         {
             username = theUsername;
             password = thePassword;
@@ -26,7 +26,6 @@ namespace Middleware.Database_Component
             username = null;
             password = null;
             full_name = null;
-            birthdate = null;
             phone_number = null;
             SSN = null;
         }

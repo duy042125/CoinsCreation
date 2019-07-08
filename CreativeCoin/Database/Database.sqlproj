@@ -70,6 +70,7 @@
     <Build Include="dbo\Store Procedure\SP_Account_Insert.sql" />
     <Build Include="dbo\Store Procedure\SP_Account_VerifiedUsername.sql" />
     <Build Include="dbo\Store Procedure\SP_Account_VerifiedLogIn.sql" />
+    <Build Include="dbo\Store Procedure\SP_Account_ChangePassword.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Location\CreativeCoinDatabase.publish.xml" />

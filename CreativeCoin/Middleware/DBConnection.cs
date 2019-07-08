@@ -47,7 +47,7 @@ namespace Middleware
 
         #region Account Connections
 
-        public static void createAccount(string theUsername, string thePassword, string theName, DateTime theBirthdate, string thePhoneNumber, string theSSN)
+        public static void createAccount(string theUsername, string thePassword, string theName, DateTime? theBirthdate, string thePhoneNumber, string theSSN)
         {
             try
             {
@@ -69,15 +69,18 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.QuerySingle("dbo.SP_Account_VerifiedLogIn @username", new { username = theUsername });
-                    if (thePassword != checkAccount.password) return false;
-                    else return true;
+                    var checkAccount = connection.Query<Account>("dbo.SP_Account_VerifiedLogIn @username", new { username = theUsername }).ToList();
+                    if (checkAccount.Count != 0)
+                    {
+                        if (thePassword != checkAccount[0].password) return false;
+                        return true;
+                    }
+                    return false;
                 }
             }
-            catch
+            catch (Exception exc)
             {
-                //If the lists is blank => No match account
-                return false;
+                throw exc;
             }
         }
 
@@ -87,14 +90,18 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.QuerySingle("dbo.SP_Account_VerifiedUsername @username @SSN", new { username = theUsername });
-                    return true;
+                    var checkAccount = connection.Query<Account>("dbo.SP_Account_VerifiedUsername @username, @SSN", new { username = theUsername, SSN = theSSN }).ToList();
+                    if(checkAccount.Count != 0)
+                    {
+                        save = checkAccount[0];
+                        return true;
+                    }
+                    return false;
                 }
             }
-            catch
+            catch (Exception exc)
             {
-                //If the lists is blank => No match account
-                return false;
+                throw exc;
             }
         }
 
@@ -104,14 +111,29 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.QuerySingle("dbo.SP_Account_VerifiedLogIn @username", new { username = theUsername });
-                    return true;
+                    var checkAccount = connection.Query<Account>("dbo.SP_Account_VerifiedLogIn @username", new { username = theUsername }).ToList();
+                    if (checkAccount.Count != 0) return true;
+                    return false;
                 }
             }
-            catch
+            catch (Exception exc)
             {
-                //If the lists is blank => No match account
-                return false;
+                throw exc;
+            }
+        }
+
+        public static void changePassword(string theUsername, string thePassword)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    var checkAccount = connection.Execute("dbo.SP_Account_ChangePassword @username, @password", new { username = theUsername, password = thePassword });
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
             }
         }
 

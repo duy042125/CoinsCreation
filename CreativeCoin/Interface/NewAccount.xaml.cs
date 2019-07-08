@@ -117,9 +117,13 @@ namespace Interface
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-            main.Show();
-            this.Close();
+            MessageBoxResult result = MessageBox.Show("Do you want to go back ?", "Go Back", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                MainWindow main = new MainWindow();
+                main.Show();
+                this.Close();
+            }
         }
 
         private void Check_Click(object sender, RoutedEventArgs e)
