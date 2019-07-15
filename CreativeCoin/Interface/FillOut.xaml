@@ -16,9 +16,11 @@
         <TextBox x:Name="ChildName" TabIndex="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,170,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
 
         <Label Content="Birthdate：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-1000,220,0,0" FontSize="18" Height="40" Width="170"/>
-        <DatePicker x:Name="Bỉthdate" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,220,0,0" Text="" FontSize="18" Height="40" Width="350"/>
+        <DatePicker x:Name="Birthdate" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,220,0,0" Text="" FontSize="18" Height="40" Width="350"/>
 
         <Label Content="Choose 4 behaviar to work on :" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-890,270,0,0" FontSize="20" FontWeight="Bold" Height="40" Width="300"/>
+        <TextBox x:Name="BehaviorName" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-310,270,0,0" FontSize="18" Height="40" Width="250" Text="Behavior Goup Name" MouseDoubleClick="Behavior_Text_FillOut"/>
+
 
         <TextBox x:Name="Behavior1" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-810,320,0,0" FontSize="18" Height="40" Width="350"/>
         <TextBox x:Name="Behavior2" TabIndex="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-810,370,0,0" FontSize="18" Height="40" Width="350"/>
@@ -47,6 +49,7 @@
         <TextBox x:Name="Coin20" TabIndex="16" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,570,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
 
         <Button Content="Next" TabIndex="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,570,0,0" FontSize="15" Height="40" Width="150" Click="Next_Click" IsDefault="True"/>
-        <Button Content="Clear" TabIndex="17" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-900,570,0,0" FontSize="15" Height="40" Width="150" Click="Back_Click"/>
+        <Button Content="Clear" TabIndex="17" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-900,570,0,0" FontSize="15" Height="40" Width="150" Click="Clear_Click"/>
+        <Button Content="Log Out" TabIndex="19" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0" FontSize="15" Height="40" Width="150" Background="White" Click="LogOut_Click"/>
     </Grid>
 </Window>

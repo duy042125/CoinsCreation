@@ -71,6 +71,10 @@
     <Build Include="dbo\Store Procedure\SP_Account_VerifiedUsername.sql" />
     <Build Include="dbo\Store Procedure\SP_Account_VerifiedLogIn.sql" />
     <Build Include="dbo\Store Procedure\SP_Account_ChangePassword.sql" />
+    <Build Include="dbo\Store Procedure\SP_Child_Insert.sql" />
+    <Build Include="dbo\Store Procedure\SP_Child_AddCoin.sql" />
+    <Build Include="dbo\Store Procedure\SP_Child_UseCoin.sql" />
+    <Build Include="dbo\Store Procedure\SP_Behavior_Insert.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Location\CreativeCoinDatabase.publish.xml" />

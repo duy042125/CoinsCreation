@@ -29,9 +29,9 @@ namespace Interface
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
             string hashedPassword = Hashing.HashPassword(Password.Password);
-
             if (DBConnection.verifiedLogIn(Username.Text, hashedPassword))
             {
+                LogInInformation.Username = Username.Text;
                 FillOut fillOut = new FillOut();
                 fillOut.Show();
                 this.Close();
@@ -40,11 +40,6 @@ namespace Interface
             {
                 VerifyInfo.Content = "Your username or password is incorrect";
             }
-        }
-
-        private void Mouse_Move(object sender, MouseEventArgs e)
-        {
-            
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)

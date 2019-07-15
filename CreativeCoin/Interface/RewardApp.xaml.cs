@@ -20,7 +20,7 @@ namespace Interface
     public partial class RewardApp : Window
     {
 
-        public RewardApp(Window fillOut)
+        public RewardApp()
         {
             InitializeComponent();
             Date.Text = DateTime.Now.ToString("MM/dd/yyyy");

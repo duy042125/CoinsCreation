@@ -9,8 +9,6 @@ namespace Middleware.Database_Component
 {
     public class Account
     {
-        #region Table rows
-
         public Account(string theUsername, string thePassword, string theName, DateTime? theBirthdate, string thePhoneNumber, string theSSN)
         {
             username = theUsername;
@@ -26,6 +24,7 @@ namespace Middleware.Database_Component
             username = null;
             password = null;
             full_name = null;
+            birthdate = null;
             phone_number = null;
             SSN = null;
         }
@@ -36,7 +35,5 @@ namespace Middleware.Database_Component
         public DateTime? birthdate { get; set; }
         public string phone_number { get; set; }
         public string SSN { get; set; }
-
-        #endregion
     }
 }
