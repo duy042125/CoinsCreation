@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database Component\Account.cs" />
+    <Compile Include="Database Component\Assign.cs" />
     <Compile Include="Database Component\Behavior.cs" />
     <Compile Include="Database Component\Child.cs" />
     <Compile Include="DBConnection.cs" />

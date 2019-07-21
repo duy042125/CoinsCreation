@@ -74,7 +74,13 @@
     <Build Include="dbo\Store Procedure\SP_Child_Insert.sql" />
     <Build Include="dbo\Store Procedure\SP_Child_AddCoin.sql" />
     <Build Include="dbo\Store Procedure\SP_Child_UseCoin.sql" />
-    <Build Include="dbo\Store Procedure\SP_Behavior_Insert.sql" />
+    <Build Include="dbo\Store Procedure\SP_Behavior_Assign_InsertBehavior.sql" />
+    <Build Include="dbo\Store Procedure\SP_Child_VerifiedChildName.sql" />
+    <Build Include="dbo\Store Procedure\SP_Behavior_VerifiedBehaviorName.sql" />
+    <Build Include="dbo\Tables\Assign.sql" />
+    <Build Include="dbo\Store Procedure\SP_Behavior_Assign_RetrieveBehaviorByUsername.sql" />
+    <Build Include="dbo\Store Procedure\SP_Child_RetrieveChildByUsername.sql" />
+    <Build Include="dbo\Store Procedure\SP_Behavior_UpdateBehavior.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Location\CreativeCoinDatabase.publish.xml" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Middleware.Database_Component
 {
-    class Child
+    public class Child
     {
         public Child(string theParent_username, string theChild_name, DateTime? theBirthdate, int theTotal_coin = 0)
         {

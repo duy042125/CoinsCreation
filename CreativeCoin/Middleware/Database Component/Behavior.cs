@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Middleware.Database_Component
 {
-    class Behavior
+    public class Behavior
     {
         public Behavior(string theName, string theBehavior1, string theBehavior2, string theBehavior3, string theBehavior4, 
             string theStar5_reward1, string theStar5_reward2, string theStar5_reward3, string theStar10_reward1, string theStar10_reward2, string theStar10_reward3, string theStar15_reward1, string theStar15_reward2, string theStar20_reward)

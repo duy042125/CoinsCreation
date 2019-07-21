@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Middleware.Database_Component;
 using Middleware;
 
+
 namespace Interface
 {
     /// <summary>
@@ -21,12 +22,10 @@ namespace Interface
     /// </summary>
     public partial class FillOut : Window
     {
-
         public FillOut()
         {
             InitializeComponent();
         }
-
 
         private void Tip_Click(object sender, RoutedEventArgs e) // this might need a custom window for it.
         {
@@ -36,8 +35,7 @@ namespace Interface
                 "20 coins (4 weeks of perfect hehavior) = trip to FunZone, trip to Edge Waterpark, new console game";
             MessageBox.Show(message, "Tip", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-
-
+        
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult warning = MessageBox.Show("Are you sure to clear everything ?", "Clear", MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -52,6 +50,7 @@ namespace Interface
 
                 #region Clear Behaviors
 
+                BehaviorName.Text = "";
                 Behavior1.Text = "";
                 Behavior2.Text = "";
                 Behavior3.Text = "";
@@ -75,9 +74,11 @@ namespace Interface
             }
         }
 
+        #region Check Method
+
         private bool isFillOut()
         {
-            if (ChildName.Text.Equals("") || Birthdate.Text.Equals("") || BehaviorName.Text.Equals("") || Behavior1.Text.Equals("") || Behavior2.Text.Equals("") || Behavior3.Text.Equals("") || Behavior4.Text.Equals("") || 
+            if (ChildName.Text.Equals("") || Birthdate.Text.Equals("") || BehaviorName.Text.Equals("") || Behavior1.Text.Equals("") || Behavior2.Text.Equals("") || Behavior3.Text.Equals("") || Behavior4.Text.Equals("") ||
                 Coin51.Text.Equals("") || Coin52.Text.Equals("") || Coin53.Text.Equals("") || Coin101.Text.Equals("") || Coin102.Text.Equals("") || Coin103.Text.Equals("") || Coin151.Text.Equals("") || Coin152.Text.Equals("") || Coin20.Text.Equals(""))
             {
                 MessageBox.Show("Please fill up all required fields !", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -88,44 +89,85 @@ namespace Interface
 
         private bool isChildExist()
         {
-            return true; // unfinish 
+            return DBConnection.verifiedChildName(LogInInformation.Username, ChildName.Text);
         }
 
         private bool isBehaviorExist()
         {
-            return true; //unfinish
+            return DBConnection.verifiedBehaviorName(BehaviorName.Text);
+        }
+
+        private void autoFill()
+        {
+            List<Behavior> behaviorList = DBConnection.retrieveBehaviorListByUsername(LogInInformation.Username);
+            for (int i = 0; i < behaviorList.Count; i++)
+            {
+                if (behaviorList[i].name.Equals(BehaviorName.Text))
+                {
+                    Behavior1.Text = behaviorList[i].behavior1;
+                    Behavior2.Text = behaviorList[i].behavior2;
+                    Behavior3.Text = behaviorList[i].behavior3;
+                    Behavior4.Text = behaviorList[i].behavior4;
+                    Coin51.Text = behaviorList[i].star5_reward1;
+                    Coin52.Text = behaviorList[i].star5_reward2;
+                    Coin53.Text = behaviorList[i].star5_reward3;
+                    Coin101.Text = behaviorList[i].star10_reward1;
+                    Coin102.Text = behaviorList[i].star10_reward2;
+                    Coin103.Text = behaviorList[i].star10_reward3;
+                    Coin151.Text = behaviorList[i].star15_reward1;
+                    Coin152.Text = behaviorList[i].star15_reward2;
+                    Coin20.Text = behaviorList[i].star20_reward;
+                    return;
+                }
+            }
+            MessageBox.Show("There is no Behavior Group that name like this.", "No Behavior Group", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+
+        private static bool isCheck = false;
+
+        #endregion
+
+        private void AutoFill_Click(object sender, RoutedEventArgs e)
+        {
+            autoFill();
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
         {
             if (isFillOut())
             {
-                if (!isChildExist())
+                if (!isChildExist()) DBConnection.insertChild(LogInInformation.Username, ChildName.Text, Birthdate.Text);
+                if (!isBehaviorExist()) DBConnection.insertBehavior(LogInInformation.Username, BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
+                else if (isBehaviorExist() && !isCheck)
                 {
-                    if (!isBehaviorExist())
-                    {
-                        DBConnection.insertChild(LogInInformation.Username, ChildName.Text, Birthdate.Text);
-                        DBConnection.insertBehavior(BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
-                    }
-                    else DBConnection.insertBehavior(BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
-                    
-                    LogInInformation.Child_name = ChildName.Text;
-                    LogInInformation.Behavior_name = BehaviorName.Text;
-                    RewardApp reward = new RewardApp();
-                    reward.Show();
-                    this.Close();
+                    MessageBoxResult result = MessageBox.Show("This Behavior Group is already existed, Do you want to fill you with the old information ?", "Existed Behavior Group", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                    if (result == MessageBoxResult.Yes) autoFill();
+                    else if (result == MessageBoxResult.No) DBConnection.updateBehavior(BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
+                    isCheck = true;
+                    return;
                 }
+            }
+
+            if (isCheck)
+            {
+                LogInInformation.Child_name = ChildName.Text;
+                LogInInformation.Behavior_name = BehaviorName.Text;
+                isCheck = false;
+                RewardApp reward = new RewardApp();
+                reward.Show();
+                this.Close();
             }
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult warning = MessageBox.Show("Are you sure to log out ?", "Log Out", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if(warning == MessageBoxResult.Yes)
+            if (warning == MessageBoxResult.Yes)
             {
                 MainWindow backToLogIn = new MainWindow();
                 backToLogIn.Show();
                 this.Close();
+                LogInInformation.Clear();
             }
         }
 
