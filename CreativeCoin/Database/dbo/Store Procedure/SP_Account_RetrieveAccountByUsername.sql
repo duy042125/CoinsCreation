@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SP_Account_VerifiedLogIn]
+﻿CREATE PROCEDURE [dbo].[SP_Account_RetrieveAccountByUsername]
 	@username VARCHAR(100)
 AS
 BEGIN

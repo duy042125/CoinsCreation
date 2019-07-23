@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SP_Behavior_Assign_RetrieveBehaviorByUsername]
+﻿CREATE PROCEDURE [dbo].[SP_Behavior_Assign_RetrieveBehaviorListByUsername]
 	@Parent_usernname VARCHAR(100)
 AS
 BEGIN

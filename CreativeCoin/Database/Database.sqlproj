@@ -68,19 +68,20 @@
     <Build Include="dbo\Tables\Child.sql" />
     <Build Include="dbo\Tables\Report.sql" />
     <Build Include="dbo\Store Procedure\SP_Account_Insert.sql" />
-    <Build Include="dbo\Store Procedure\SP_Account_VerifiedUsername.sql" />
-    <Build Include="dbo\Store Procedure\SP_Account_VerifiedLogIn.sql" />
+    <Build Include="dbo\Store Procedure\SP_Account_RetrieveAccountByUsernameOrSSN.sql" />
+    <Build Include="dbo\Store Procedure\SP_Account_RetrieveAccountByUsername.sql" />
     <Build Include="dbo\Store Procedure\SP_Account_ChangePassword.sql" />
     <Build Include="dbo\Store Procedure\SP_Child_Insert.sql" />
     <Build Include="dbo\Store Procedure\SP_Child_AddCoin.sql" />
     <Build Include="dbo\Store Procedure\SP_Child_UseCoin.sql" />
     <Build Include="dbo\Store Procedure\SP_Behavior_Assign_InsertBehavior.sql" />
-    <Build Include="dbo\Store Procedure\SP_Child_VerifiedChildName.sql" />
-    <Build Include="dbo\Store Procedure\SP_Behavior_VerifiedBehaviorName.sql" />
     <Build Include="dbo\Tables\Assign.sql" />
-    <Build Include="dbo\Store Procedure\SP_Behavior_Assign_RetrieveBehaviorByUsername.sql" />
-    <Build Include="dbo\Store Procedure\SP_Child_RetrieveChildByUsername.sql" />
+    <Build Include="dbo\Store Procedure\SP_Behavior_Assign_RetrieveBehaviorListByUsername.sql" />
+    <Build Include="dbo\Store Procedure\SP_Child_RetrieveChildListByUsername.sql" />
     <Build Include="dbo\Store Procedure\SP_Behavior_UpdateBehavior.sql" />
+    <Build Include="dbo\Store Procedure\SP_Behavior_RetrieveBehaviorByName.sql" />
+    <Build Include="dbo\Store Procedure\SP_Child_RetrieveChildByName.sql" />
+    <Build Include="dbo\Store Procedure\SP_Account_RetrieveAccountBySSN.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Location\CreativeCoinDatabase.publish.xml" />

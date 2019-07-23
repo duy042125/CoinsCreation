@@ -28,9 +28,7 @@ namespace Interface
         }
 
         #region Check
-
-        private Account temp = new Account();
-
+        
         private bool checkPassword()
         {
             if (ConfirmPassword.Password.Equals(NewPassword.Password))
@@ -44,17 +42,17 @@ namespace Interface
 
         private bool checkUsername()
         {
-
-            if (DBConnection.verifiedUsername(Username.Text, SSN.Text, ref temp))
+            if (DBConnection.verifiedAccount(Username.Text, SSN.Text))
             {
-                Username.Text = temp.username;
-                SSN.Text = temp.SSN;
-                ParentName.Text = temp.full_name;
+                Account foundAccount = DBConnection.retrieveAccount(Username.Text);
+                Username.Text = foundAccount.username;
+                SSN.Text = foundAccount.SSN;
+                ParentName.Text = foundAccount.full_name;
 
-                if (temp.birthdate == null) Birthdate.Text = "";
-                else Birthdate.Text = DateTimeConverter.toString(temp.birthdate);
+                if (foundAccount.birthdate == null) Birthdate.Text = "";
+                else Birthdate.Text = DateTimeConverter.toString(foundAccount.birthdate);
 
-                PhoneNumber.Text = temp.phone_number;
+                PhoneNumber.Text = foundAccount.phone_number;
                 NewPassword.IsEnabled = true;
                 ConfirmPassword.IsEnabled = true;
                 return true;
@@ -87,7 +85,8 @@ namespace Interface
             string hashedPassword = Hashing.HashPassword(NewPassword.Password);
             if (checkUsername())
             {
-                if(NewPassword.Password.Length != 0 && temp.password != hashedPassword)
+                Account foundAccount = DBConnection.retrieveAccount(Username.Text);
+                if (NewPassword.Password.Length != 0 && foundAccount.password != hashedPassword)
                 {
                     DBConnection.changePassword(Username.Text, hashedPassword);
                     MessageBox.Show("You changed your password.", "Change Password", MessageBoxButton.OK, MessageBoxImage.Information);

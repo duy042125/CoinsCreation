@@ -97,7 +97,7 @@ namespace Interface
             return DBConnection.verifiedBehaviorName(BehaviorName.Text);
         }
 
-        private void autoFill()
+        private void autoFillBehavior()
         {
             List<Behavior> behaviorList = DBConnection.retrieveBehaviorListByUsername(LogInInformation.Username);
             for (int i = 0; i < behaviorList.Count; i++)
@@ -129,7 +129,7 @@ namespace Interface
 
         private void AutoFill_Click(object sender, RoutedEventArgs e)
         {
-            autoFill();
+            autoFillBehavior();
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
@@ -138,10 +138,11 @@ namespace Interface
             {
                 if (!isChildExist()) DBConnection.insertChild(LogInInformation.Username, ChildName.Text, Birthdate.Text);
                 if (!isBehaviorExist()) DBConnection.insertBehavior(LogInInformation.Username, BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
+                // might ask to check exist child name here
                 else if (isBehaviorExist() && !isCheck)
                 {
                     MessageBoxResult result = MessageBox.Show("This Behavior Group is already existed, Do you want to fill you with the old information ?", "Existed Behavior Group", MessageBoxButton.YesNo, MessageBoxImage.Information);
-                    if (result == MessageBoxResult.Yes) autoFill();
+                    if (result == MessageBoxResult.Yes) autoFillBehavior();
                     else if (result == MessageBoxResult.No) DBConnection.updateBehavior(BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
                     isCheck = true;
                     return;
@@ -171,7 +172,7 @@ namespace Interface
             }
         }
 
-        private void Behavior_Text_FillOut(object sender, MouseButtonEventArgs e)
+        private void Behavior_Text_FillOutClear(object sender, MouseButtonEventArgs e)
         {
             BehaviorName.Text = "";
         }

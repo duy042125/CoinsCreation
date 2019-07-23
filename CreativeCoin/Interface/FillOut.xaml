@@ -19,7 +19,7 @@
         <DatePicker x:Name="Birthdate" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,220,0,0" Text="" FontSize="18" Height="40" Width="350"/>
 
         <Label Content="Choose 4 behaviar to work on :" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-890,270,0,0" FontSize="20" FontWeight="Bold" Height="40" Width="300"/>
-        <TextBox x:Name="BehaviorName" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-310,270,0,0" FontSize="18" Height="40" Width="250" Text="Behavior Goup Name" MouseDoubleClick="Behavior_Text_FillOut"/>
+        <TextBox x:Name="BehaviorName" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-310,270,0,0" FontSize="18" Height="40" Width="250" Text="Behavior Goup Name" MouseDoubleClick="Behavior_Text_FillOutClear"/>
 
 
         <TextBox x:Name="Behavior1" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-810,320,0,0" FontSize="18" Height="40" Width="350"/>

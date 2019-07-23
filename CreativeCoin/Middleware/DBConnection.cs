@@ -53,8 +53,7 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    Account newAccount = new Account(theUsername, thePassword, theName, theBirthdate, thePhoneNumber, theSSN);
-                    connection.Execute("dbo.SP_Account_Insert", newAccount, null, null, CommandType.StoredProcedure);
+                    connection.Execute("dbo.SP_Account_Insert @username, @password, @full_name, @birthdate, @phone_number, @SSN", new { username = theUsername, password = thePassword, full_name = theName, birthdate = theBirthdate, phone_number = thePhoneNumber, SSN = theSSN });
                 }
             }
             catch (Exception exc)
@@ -69,7 +68,7 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.Query<Account>("dbo.SP_Account_VerifiedLogIn @username", new { username = theUsername }).ToList();
+                    var checkAccount = connection.Query<Account>("dbo.SP_Account_RetrieveAccountByUsername @username", new { username = theUsername }).ToList();
                     if (checkAccount.Count != 0)
                     {
                         if (thePassword != checkAccount[0].password) return false;
@@ -84,18 +83,14 @@ namespace Middleware
             }
         }
 
-        public static bool verifiedUsername(string theUsername, string theSSN, ref Account save)
+        public static bool verifiedAccount(string theUsername, string theSSN)
         {
             try
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.Query<Account>("dbo.SP_Account_VerifiedUsername @username, @SSN", new { username = theUsername, SSN = theSSN }).ToList();
-                    if (checkAccount.Count != 0)
-                    {
-                        save = checkAccount[0];
-                        return true;
-                    }
+                    var checkAccount = connection.Query<Account>("dbo.SP_Account_RetrieveAccountByUsernameOrSSN @username, @SSN", new { username = theUsername, SSN = theSSN }).ToList();
+                    if (checkAccount.Count != 0) return true;
                     return false;
                 }
             }
@@ -111,9 +106,42 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.Query<Account>("dbo.SP_Account_VerifiedLogIn @username", new { username = theUsername }).ToList();
+                    var checkAccount = connection.Query<Account>("dbo.SP_Account_RetrieveAccountByUsername @username", new { username = theUsername }).ToList();
                     if (checkAccount.Count != 0) return true;
                     return false;
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public static bool verifiedUsedSSN(string theSSN)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    var checkAccount = connection.Query<Account>("dbo.SP_Account_RetrieveAccountBySSN @SSN", new { SSN = theSSN }).ToList();
+                    if (checkAccount.Count != 0) return true;
+                    return false;
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public static Account retrieveAccount(string theUsername)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    var accountList = connection.Query<Account>("dbo.SP_Account_RetrieveAccountByUsername @username", new { username = theUsername }).ToList();
+                    return accountList[0];
                 }
             }
             catch (Exception exc)
@@ -179,7 +207,23 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    return connection.Query<Child>("dbo.SP_Child_RetrieveChildByUsername @Parent_username", new { Parent_username = theChildName }).ToList();
+                    return connection.Query<Child>("dbo.SP_Child_RetrieveChildListByUsername @Parent_username", new { Parent_username = theChildName }).ToList();
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public static Child retrieveChildByName(string theParentUsername, string theChildName)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    var childList = connection.Query<Child>("dbo.SP_Child_RetrieveChildByName @Parent_username, @Child_name", new { Parent_username = theParentUsername, Child_name = theChildName }).ToList();
+                    return childList[0];
                 }
             }
             catch (Exception exc)
@@ -241,6 +285,22 @@ namespace Middleware
             }
         }
 
+        public static Behavior retrieveBehaviorByName(string theBehaviorName)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    var behaviorList = connection.Query<Behavior>("dbo.SP_Behavior_RetrieveBehaviorByName @Behavior_name", new { Behavior_name = theBehaviorName }).ToList();
+                    return behaviorList[0];
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
         #endregion
 
         #region Behavior Assign Connections
@@ -281,7 +341,7 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    return connection.Query<Behavior>("dbo.SP_Behavior_Assign_RetrieveBehaviorByUsername @Parent_username", new { Parent_username = theParentUsername }).ToList();
+                    return connection.Query<Behavior>("dbo.SP_Behavior_Assign_RetrieveBehaviorListByUsername @Parent_username", new { Parent_username = theParentUsername }).ToList();
                 }
             }
             catch (Exception exc)

@@ -28,36 +28,41 @@ namespace Interface
 
         #region Check
 
-        private bool checkUsername()
+        private bool checkUsedUsername()
         {
             if (DBConnection.verifiedUsedUsername(Username.Text))
             {
-                Warning.Content = "This username is taken.";
+                WarningUsername.Content = "This username is taken.";
                 return false;
             }
             else
             {
                 if (Username.Text.Length <= 3)
                 {
-                    Warning.Content = "This username is too short.";
+                    WarningUsername.Content = "This username is too short.";
                     return false;
                 }
-                Warning.Content = "This username is usable.";
+                WarningUsername.Content = "This username is usable.";
                 return true;
             }
         }
 
-        private bool checkSSN()
+        private bool checkSSNFormat()
         {
             string ssn = SSN.Text;
             if (ssn.Length == 10)
             {
                 for (int i = 0; i < ssn.Length; i++)
                 {
-                    if (ssn[i] > 57 || ssn[i] < 48) return false;
+                    if (ssn[i] > 57 || ssn[i] < 48)
+                    {
+                        WarningSSN.Content = "SSN format is wrong.";
+                        return false;
+                    }
                 }
                 return true;
             }
+            WarningSSN.Content = "SSN format is wrong.";
             return false;
         }
 
@@ -70,6 +75,17 @@ namespace Interface
             }
                 Match.Content = "Passwords don't match.";
                 return false;
+        }
+
+        private bool checkUsedSSN()
+        {
+            if (DBConnection.verifiedUsedSSN(SSN.Text))
+            {
+                WarningSSN.Content = "This SSN is taken.";
+                return false;
+            }
+            WarningSSN.Content = "This SSN is untaken.";
+            return true;
         }
 
         private bool checkRequiredFields()
@@ -89,18 +105,16 @@ namespace Interface
                 MessageBox.Show("Fill up the required fields", "Required fields", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            if(!checkSSN())
+            if(!checkSSNFormat())
             {
-                MessageBox.Show("Your SSN format is not right", "SSN field", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             try
             {
-                if (checkUsername() && checkPassword())
-                {
-                    DBConnection.openConnection();
-                    DBConnection.createAccount(Username.Text, Hashing.HashPassword(NewPassword.Password), newParentName.Text, DateTimeConverter.toDateTime(Birthdate.Text), PhoneNumber.Text, SSN.Text);
 
+                if (checkUsedUsername() && checkPassword() && checkUsedSSN())
+                {
+                    DBConnection.createAccount(Username.Text, Hashing.HashPassword(NewPassword.Password), newParentName.Text, Birthdate.SelectedDate, PhoneNumber.Text, SSN.Text);
                     MessageBox.Show("You created a new account.", "Creation Confirm", MessageBoxButton.OK, MessageBoxImage.Information);
                     MainWindow backToLogin = new MainWindow();
                     backToLogin.Show();
@@ -128,12 +142,14 @@ namespace Interface
 
         private void Check_Click(object sender, RoutedEventArgs e)
         {
-            if (checkUsername()) return;
+            checkUsedUsername();
+            if (!checkSSNFormat()) return;
+            checkUsedSSN();
         }
 
         private void ConfirmPassword_Check(object sender, RoutedEventArgs e)
         {
-            if (checkPassword()) return;
+            checkPassword();
         }
 
         #endregion

@@ -38,8 +38,10 @@
         <Label Content="Phone Number :" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,450,0,0" FontSize="18" Height="40" Width="170"/>
         <TextBox x:Name="PhoneNumber" TabIndex="7" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,450,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
 
-        <Button Content="Check" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="800,250,0,0" FontSize="15" Height="40" Width="150" Click="Check_Click"/>
-        <Label x:Name="Warning" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="800,300,0,0" FontSize="18" Height="40" Width="250" FontWeight="Bold" Foreground="Red"/>
+        <Button Content="Check" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="800,150,0,0" FontSize="15" Height="40" Width="150" Click="Check_Click"/>
+        <Label x:Name="WarningSSN" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="800,200,0,0" FontSize="18" Height="40" Width="250" FontWeight="Bold" Foreground="Red"/>
+        <Label x:Name="WarningUsername" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="800,250,0,0" FontSize="18" Height="40" Width="250" FontWeight="Bold" Foreground="Red"/>
+
         <Label x:Name="Match" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="800,350,0,0" FontSize="18" Height="40" Width="250" FontWeight="Bold" Foreground="Red"/>
         
         <Button Content="Create Account" TabIndex="8" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-250,550,0,0" FontSize="15" Height="40" Width="150" Click="Create_Click" IsDefault="True"/>

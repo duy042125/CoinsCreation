@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Middleware;
+using Middleware.Database_Component;
 
 namespace Interface
 {
@@ -75,9 +77,22 @@ namespace Interface
 
         }
 
-        private void Behavior3_Loaded(object sender, RoutedEventArgs e)
+        private void Information_Loaded(object sender, RoutedEventArgs e)
         {
+            #region Behavior Loader
+            Behavior behaviorLoader = DBConnection.retrieveBehaviorByName(LogInInformation.Behavior_name);
+            Behavior1.Content = behaviorLoader.behavior1;
+            Behavior2.Content = behaviorLoader.behavior2;
+            Behavior3.Content = behaviorLoader.behavior3;
+            Behavior4.Content = behaviorLoader.behavior4;
+            #endregion
 
+            #region Child Loader
+            Child childLoader = DBConnection.retrieveChildByName(LogInInformation.Username, LogInInformation.Child_name);
+            ChildName.Text = childLoader.Child_name;
+            //Age.Text = System.DateTime.Now - childLoader.birthdate;
+
+            #endregion
         }
 
         private void Bank_Click(object sender, RoutedEventArgs e)

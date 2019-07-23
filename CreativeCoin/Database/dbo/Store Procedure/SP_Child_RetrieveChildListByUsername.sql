@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SP_Child_RetrieveChildByUsername]
+﻿CREATE PROCEDURE [dbo].[SP_Child_RetrieveChildListByUsername]
 	@Parent_usernname VARCHAR(100)
 AS
 BEGIN
