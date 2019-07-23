@@ -25,6 +25,12 @@ namespace Interface
         public FillOut()
         {
             InitializeComponent();
+
+            if(LogInInformation.Child_name != null && LogInInformation.Behavior_name != null)
+            {
+                autoFillBehavior(LogInInformation.Behavior_name);
+                autoFillChild(LogInInformation.Child_name);
+            }
         }
 
         private void Tip_Click(object sender, RoutedEventArgs e) // this might need a custom window for it.
@@ -115,11 +121,11 @@ namespace Interface
             return false;
         }
 
-        private void autoFillBehavior()
+        private void autoFillBehavior(string theBehaviorName)
         {
-            if (DBConnection.verifiedBehaviorName(BehaviorName.Text))
+            if (DBConnection.verifiedBehaviorName(theBehaviorName))
             {
-                Behavior currentBehavior = DBConnection.retrieveBehaviorByName(BehaviorName.Text);
+                Behavior currentBehavior = DBConnection.retrieveBehaviorByName(theBehaviorName);
                 BehaviorName.Text = currentBehavior.name;
                 Behavior1.Text = currentBehavior.behavior1;
                 Behavior2.Text = currentBehavior.behavior2;
@@ -141,11 +147,11 @@ namespace Interface
             isCheck = false;
         }
 
-        private void autoFillChild()
+        private void autoFillChild(string theChildName)
         {
-            if(DBConnection.verifiedChildName(LogInInformation.Username, ChildName.Text))
+            if(DBConnection.verifiedChildName(LogInInformation.Username, theChildName))
             {
-                Child currentChild = DBConnection.retrieveChildByName(LogInInformation.Username, ChildName.Text);
+                Child currentChild = DBConnection.retrieveChildByName(LogInInformation.Username, theChildName);
                 ChildName.Text = currentChild.Child_name;
                 Birthdate.Text = DateTimeConverter.dateTimeToString(currentChild.birthdate);
                 isCheck = true;
@@ -161,8 +167,8 @@ namespace Interface
 
         private void AutoFill_Click(object sender, RoutedEventArgs e)
         {
-            autoFillBehavior();
-            autoFillChild();
+            autoFillBehavior(BehaviorName.Text);
+            autoFillChild(ChildName.Text);
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
@@ -178,7 +184,7 @@ namespace Interface
                 {
                     DBConnection.insertChild(LogInInformation.Username, ChildName.Text, Birthdate.SelectedDate);
                     MessageBoxResult result = MessageBox.Show("This Behavior Group already existed, Do you want to fill you with the old information? (Click NO to update them)", "Existed Child and Behavior Group", MessageBoxButton.YesNo, MessageBoxImage.Information);
-                    if (result == MessageBoxResult.Yes) autoFillBehavior();
+                    if (result == MessageBoxResult.Yes) autoFillBehavior(BehaviorName.Text);
                     else if (result == MessageBoxResult.No) DBConnection.updateBehavior(BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
                     isCheck = true;
                 }
@@ -186,8 +192,8 @@ namespace Interface
                 {
                     DBConnection.insertBehavior(LogInInformation.Username, BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
                     MessageBoxResult result = MessageBox.Show("This Child's Name already existed, Do you want to fill you with the old information? (Click NO to update them)", "Existed Child's Name", MessageBoxButton.YesNo, MessageBoxImage.Information);
-                    if (result == MessageBoxResult.Yes) autoFillBehavior();
-                    else if (result == MessageBoxResult.No) DBConnection.updateBehavior(BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
+                    if (result == MessageBoxResult.Yes) autoFillChild(ChildName.Text);
+                    else if (result == MessageBoxResult.No) DBConnection.updateChild(LogInInformation.Username, ChildName.Text, Birthdate.SelectedDate);
                     isCheck = true;
                 }
                 else if (isBehaviorExist() && isBehaviorExist() && !isCheck)
@@ -195,8 +201,8 @@ namespace Interface
                     MessageBoxResult result = MessageBox.Show("These Child's Name and Behavior Group already existed, Do you want to fill you with the old information? (Click NO to update them)", "Existed Child and Behavior Group", MessageBoxButton.YesNo, MessageBoxImage.Information);
                     if (result == MessageBoxResult.Yes)
                     {
-                        autoFillBehavior();
-                        autoFillChild();
+                        autoFillBehavior(BehaviorName.Text);
+                        autoFillChild(ChildName.Text);
                     }
                     else if (result == MessageBoxResult.No)
                     {
