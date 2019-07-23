@@ -81,17 +81,16 @@ namespace Interface
         {
             #region Behavior Loader
             Behavior behaviorLoader = DBConnection.retrieveBehaviorByName(LogInInformation.Behavior_name);
-            Behavior1.Content = behaviorLoader.behavior1;
-            Behavior2.Content = behaviorLoader.behavior2;
-            Behavior3.Content = behaviorLoader.behavior3;
-            Behavior4.Content = behaviorLoader.behavior4;
+            BehaviorName1.Content = behaviorLoader.behavior1;
+            BehaviorName2.Content = behaviorLoader.behavior2;
+            BehaviorName3.Content = behaviorLoader.behavior3;
+            BehaviorName4.Content = behaviorLoader.behavior4;
             #endregion
 
             #region Child Loader
             Child childLoader = DBConnection.retrieveChildByName(LogInInformation.Username, LogInInformation.Child_name);
             ChildName.Text = childLoader.Child_name;
-            //Age.Text = System.DateTime.Now - childLoader.birthdate;
-
+            Age.Text = DateTimeConverter.timeSpanToString(DateTime.Now - childLoader.birthdate);
             #endregion
         }
 

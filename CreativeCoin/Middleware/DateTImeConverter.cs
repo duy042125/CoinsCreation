@@ -23,11 +23,23 @@ namespace Middleware
             }
         }
 
-        public static string toString(DateTime? date)
+        public static string dateTimeToString(DateTime? date)
         {
             string dateString = date.ToString();
             string[] dateArr = dateString.Split(' ');
             return dateArr[0];
+        }
+
+        public static string timeSpanToString(TimeSpan? theAge)
+        {
+            if(theAge.HasValue)
+            {
+                TimeSpan childAge = theAge.Value;
+                double dateInYear = 365.25;
+                int age = (int)(childAge.Days / dateInYear);
+                return age.ToString();
+            }
+            return "Null";
         }
     }
 }

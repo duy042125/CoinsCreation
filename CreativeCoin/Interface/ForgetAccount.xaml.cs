@@ -50,7 +50,7 @@ namespace Interface
                 ParentName.Text = foundAccount.full_name;
 
                 if (foundAccount.birthdate == null) Birthdate.Text = "";
-                else Birthdate.Text = DateTimeConverter.toString(foundAccount.birthdate);
+                else Birthdate.Text = DateTimeConverter.dateTimeToString(foundAccount.birthdate);
 
                 PhoneNumber.Text = foundAccount.phone_number;
                 NewPassword.IsEnabled = true;

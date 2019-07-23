@@ -169,7 +169,7 @@ namespace Middleware
 
         #region Child Connections
 
-        public static void insertChild(string theParentUsername, string theChildName, string theBirthdate)
+        public static void insertChild(string theParentUsername, string theChildName, DateTime? theBirthdate)
         {
             try
             {
@@ -224,6 +224,51 @@ namespace Middleware
                 {
                     var childList = connection.Query<Child>("dbo.SP_Child_RetrieveChildByName @Parent_username, @Child_name", new { Parent_username = theParentUsername, Child_name = theChildName }).ToList();
                     return childList[0];
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public static void updateChild(string theUsername, string theChildName, DateTime? theBirthdate)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    var checkAccount = connection.Execute("dbo.SP_Child_UpdateChild @Parent_username, @Child_name, @birthdate", new { Parent_username = theUsername, Child_name = theChildName, birthdate = theBirthdate });
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public static void addCoin(string theUsername, string theChildName, int theNewCoin)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    var checkAccount = connection.Execute("dbo.SP_Child_AddCoin @Parent_username, @Child_name, @newCoin", new { Parent_username = theUsername, Child_name = theChildName, newCoin = theNewCoin });
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public static void useCoin(string theUsername, string theChildName, int theUseCoin)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    var checkAccount = connection.Execute("dbo.SP_Child_UseCoin @Parent_username, @Child_name, @useCoin", new { Parent_username = theUsername, Child_name = theChildName, newCoin = theUseCoin });
                 }
             }
             catch (Exception exc)

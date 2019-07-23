@@ -10,7 +10,7 @@ namespace Middleware.Database_Component
     {
         public string Parent_username;
         public string Child_name;
-        public DateTime birthdate;
+        public DateTime? birthdate;
         public int total_coin;
     }
 }

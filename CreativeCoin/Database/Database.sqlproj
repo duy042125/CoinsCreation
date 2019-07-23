@@ -82,6 +82,7 @@
     <Build Include="dbo\Store Procedure\SP_Behavior_RetrieveBehaviorByName.sql" />
     <Build Include="dbo\Store Procedure\SP_Child_RetrieveChildByName.sql" />
     <Build Include="dbo\Store Procedure\SP_Account_RetrieveAccountBySSN.sql" />
+    <Build Include="dbo\Store Procedure\SP_Child_UpdateChild.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Location\CreativeCoinDatabase.publish.xml" />
