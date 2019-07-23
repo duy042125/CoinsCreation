@@ -85,7 +85,7 @@ namespace Interface
                 MessageBox.Show("Please fill up all required fields !", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            if(checkBirthdate())
+            if(!checkBirthdate())
             {
                 MessageBox.Show("The Birthdate format is wrong", "Wrong Birthdate format.", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
@@ -117,28 +117,28 @@ namespace Interface
 
         private void autoFillBehavior()
         {
-            List<Behavior> behaviorList = DBConnection.retrieveBehaviorListByUsername(LogInInformation.Username);
-            for (int i = 0; i < behaviorList.Count; i++)
+            if (DBConnection.verifiedBehaviorName(BehaviorName.Text))
             {
-                if (behaviorList[i].name.Equals(BehaviorName.Text))
-                {
-                    Behavior1.Text = behaviorList[i].behavior1;
-                    Behavior2.Text = behaviorList[i].behavior2;
-                    Behavior3.Text = behaviorList[i].behavior3;
-                    Behavior4.Text = behaviorList[i].behavior4;
-                    Coin51.Text = behaviorList[i].star5_reward1;
-                    Coin52.Text = behaviorList[i].star5_reward2;
-                    Coin53.Text = behaviorList[i].star5_reward3;
-                    Coin101.Text = behaviorList[i].star10_reward1;
-                    Coin102.Text = behaviorList[i].star10_reward2;
-                    Coin103.Text = behaviorList[i].star10_reward3;
-                    Coin151.Text = behaviorList[i].star15_reward1;
-                    Coin152.Text = behaviorList[i].star15_reward2;
-                    Coin20.Text = behaviorList[i].star20_reward;
-                    return;
-                }
+                Behavior currentBehavior = DBConnection.retrieveBehaviorByName(BehaviorName.Text);
+                BehaviorName.Text = currentBehavior.name;
+                Behavior1.Text = currentBehavior.behavior1;
+                Behavior2.Text = currentBehavior.behavior2;
+                Behavior3.Text = currentBehavior.behavior3;
+                Behavior4.Text = currentBehavior.behavior4;
+                Coin51.Text = currentBehavior.star5_reward1;
+                Coin52.Text = currentBehavior.star5_reward2;
+                Coin53.Text = currentBehavior.star5_reward3;
+                Coin101.Text = currentBehavior.star10_reward1;
+                Coin102.Text = currentBehavior.star10_reward2;
+                Coin103.Text = currentBehavior.star10_reward3;
+                Coin151.Text = currentBehavior.star15_reward1;
+                Coin152.Text = currentBehavior.star15_reward2;
+                Coin20.Text = currentBehavior.star20_reward;
+                isCheck = true;
+                return;
             }
             MessageBox.Show("There is no Behavior Group that has name like this.", "No Behavior Group", MessageBoxButton.OK, MessageBoxImage.Warning);
+            isCheck = false;
         }
 
         private void autoFillChild()
@@ -146,22 +146,23 @@ namespace Interface
             if(DBConnection.verifiedChildName(LogInInformation.Username, ChildName.Text))
             {
                 Child currentChild = DBConnection.retrieveChildByName(LogInInformation.Username, ChildName.Text);
+                ChildName.Text = currentChild.Child_name;
                 Birthdate.Text = DateTimeConverter.dateTimeToString(currentChild.birthdate);
+                isCheck = true;
                 return;
             }
             MessageBox.Show("There is no Child that has name like this.", "No Child", MessageBoxButton.OK, MessageBoxImage.Warning);
+            isCheck = false;
         }
 
         private static bool isCheck = false;
-
-
+        
         #endregion
 
         private void AutoFill_Click(object sender, RoutedEventArgs e)
         {
             autoFillBehavior();
             autoFillChild();
-            isCheck = true;
         }
 
         private void Next_Click(object sender, RoutedEventArgs e)
