@@ -29,7 +29,41 @@
         </Grid>
         
         <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="625,25,0,0" Height="650" Width="600" Background="RoyalBlue">
-            <Label Content="Shop" FontSize="50" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
+            <Label Content="Shop" FontSize="50" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-400,0,0,0"/>
+
+            <Label Content="Total Coin:" FontWeight="Bold" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="100,10,0,0"/>
+            <Label x:Name="TotalCoin" Content="0" FontWeight="Bold" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="400,10,0,0" Loaded="Information_Loaded"/>
+
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,100,0,0" Height="50">
+                <CheckBox Name="Reward51" FontSize="12" Loaded="Information_Loaded"/>
+            </Viewbox>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,150,0,0" Height="50">
+                <CheckBox Name="Reward52" FontSize="12" Loaded="Information_Loaded"/>
+            </Viewbox>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,200,0,0" Height="50">
+                <CheckBox Name="Reward53" FontSize="12"/>
+            </Viewbox>
+
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,250,0,0" Height="50">
+                <CheckBox Name="Reward101" FontSize="12" Loaded="Information_Loaded"/>
+            </Viewbox>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,300,0,0" Height="50">
+                <CheckBox Name="Reward102" FontSize="12" Loaded="Information_Loaded"/>
+            </Viewbox>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,350,0,0" Height="50">
+                <CheckBox Name="Reward103" FontSize="12" Loaded="Information_Loaded"/>
+            </Viewbox>
+
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,400,0,0" Height="50">
+                <CheckBox Name="Reward151" FontSize="12" Loaded="Information_Loaded"/>
+            </Viewbox>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,450,0,0" Height="50">
+                <CheckBox Name="Reward152" FontSize="12" Loaded="Information_Loaded"/>
+            </Viewbox>
+
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,500,0,0" Height="50">
+                <CheckBox Name="Reward20" FontSize="12" Loaded="Information_Loaded"/>
+            </Viewbox>
 
             <Button Content="Buy" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Bottom" Margin="250,0,0,25" Background="LightBlue" Click="Buy_Click"/>
             <Button Content="Undo" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Bottom" Margin="-250,0,0,25" Background="LightBlue" Click="Undo_Click"/>
