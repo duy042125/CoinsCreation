@@ -65,17 +65,84 @@ namespace Interface
 
         private void Chart_Click(object sender, RoutedEventArgs e)
         {
+            // import a chart report with saparate window
+        }
 
+        private static int coinInCart = 0;
+        
+
+        private void Buy_Click(object sender, RoutedEventArgs e)
+        {
+            DBConnection.useCoin(LogInInformation.Username, LogInInformation.Child_name, coinInCart);
+            LogInInformation.previousCart = coinInCart;
+            coinInCart = 0;
+            uncheckAll();
         }
 
         private void Undo_Click(object sender, RoutedEventArgs e)
         {
-
+            DBConnection.addCoin(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.previousCart);
+            LogInInformation.previousCart = 0;
         }
 
-        private void Buy_Click(object sender, RoutedEventArgs e)
+        #region Checkbox Coin Count
+
+        private void Reward5_Checked(object sender, RoutedEventArgs e)
         {
-
+            coinInCart += 5;
         }
+
+        private void Reward10_Checked(object sender, RoutedEventArgs e)
+        {
+            coinInCart += 10;
+        }
+
+        private void Reward15_Checked(object sender, RoutedEventArgs e)
+        {
+            coinInCart += 15;
+        }
+
+        private void Reward20_Checked(object sender, RoutedEventArgs e)
+        {
+            coinInCart += 20;
+        }
+
+        private void Reward5_Unchecked(object sender, RoutedEventArgs e)
+        {
+            coinInCart -= 5;
+        }
+
+        private void Reward10_Unchecked(object sender, RoutedEventArgs e)
+        {
+            coinInCart -= 10;
+        }
+
+        private void Reward15_Unchecked(object sender, RoutedEventArgs e)
+        {
+            coinInCart -= 15;
+        }
+
+        private void Reward20_Unchecked(object sender, RoutedEventArgs e)
+        {
+            coinInCart -= 20;
+        }
+
+        private void uncheckAll()
+        {
+            Reward51.IsChecked = false;
+            Reward52.IsChecked = false;
+            Reward53.IsChecked = false;
+
+            Reward101.IsChecked = false;
+            Reward102.IsChecked = false;
+            Reward103.IsChecked = false;
+
+            Reward151.IsChecked = false;
+            Reward152.IsChecked = false;
+
+            Reward20.IsChecked = false;
+        }
+
+        #endregion
     }
 }
