@@ -23,5 +23,35 @@ namespace Interface
         {
             InitializeComponent();
         }
+
+        private void Information_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Chart_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Undo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Buy_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

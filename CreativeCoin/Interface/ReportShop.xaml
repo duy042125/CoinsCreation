@@ -8,7 +8,32 @@
         WindowState="Maximized"
         Title="Reward App" Height="720" Width="1280">
     <Grid Background="SlateBlue">
-        <Label Content="Report and Shop" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
+        <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="-625,25,0,0" Height="650" Width="600" Background="RoyalBlue">
+            <Label Content="Report and Chart" FontSize="50" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
+            
+            <Label Content="Name:" FontSize="40" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-400,100,0,0"/>
+            <TextBox x:Name="ChildName" FontSize="40" Width="350" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,105,0,0" Background="LightBlue" Loaded="Information_Loaded"/>
+
+            <Label Content="Age:" FontSize="40" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-400,170,0,0"/>
+            <TextBox x:Name="Age" FontSize="40" Width="350" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,175,0,0" Background="LightBlue" Loaded="Information_Loaded"/>
+
+            <Label Content="Date:" FontSize="40" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-400,240,0,0"/>
+            <DatePicker x:Name="Date" FontSize="40" Width="350" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,245,0,0" Background="LightBlue" Loaded="Information_Loaded"/>
+
+            <Label Content="Note:" FontSize="40" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-400,310,0,0"/>
+            <TextBox x:Name="Note" FontSize="25" Width="425" Height="200" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,320,0,0" Background="LightBlue" Loaded="Information_Loaded" AcceptsReturn="True" TextWrapping="Wrap"/>
+
+            <Button Content="Clear" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Bottom" Margin="-385,0,0,25" Background="LightBlue" Click="Clear_Click"/>
+            <Button Content="Save Report" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Bottom" Margin="0,0,0,25" Background="LightBlue" Click="Save_Click"/>
+            <Button Content="Print Chart" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Bottom" Margin="385,0,0,25" Background="LightBlue" Click="Chart_Click"/>
+        </Grid>
+        
+        <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="625,25,0,0" Height="650" Width="600" Background="RoyalBlue">
+            <Label Content="Shop" FontSize="50" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
+
+            <Button Content="Buy" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Bottom" Margin="250,0,0,25" Background="LightBlue" Click="Buy_Click"/>
+            <Button Content="Undo" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Bottom" Margin="-250,0,0,25" Background="LightBlue" Click="Undo_Click"/>
+        </Grid>
         
     </Grid>
 </Window>

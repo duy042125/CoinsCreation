@@ -26,7 +26,7 @@
             <local:RatingStars x:Name="Behavior4" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="290,310,0,0"/>
 
             <Button Content="Progress" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Top" Margin="-300,390,0,0" Background="LightBlue" Click="Progress_Click"/>
-            <TextBox x:Name="Progress" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Width="275" Height="55" VerticalAlignment="Top" Margin="290,390,0,0" Background="LightBlue"/>
+            <TextBox x:Name="Progress" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Width="275" Height="55" VerticalAlignment="Top" Margin="290,390,0,0" Background="LightBlue" IsEnabled="False"/>
         </Grid>
 
         <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="625,100,0,0" Height="500" Width="590" Background="RoyalBlue">
