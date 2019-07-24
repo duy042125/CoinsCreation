@@ -83,6 +83,7 @@
     <Build Include="dbo\Store Procedure\SP_Child_RetrieveChildByName.sql" />
     <Build Include="dbo\Store Procedure\SP_Account_RetrieveAccountBySSN.sql" />
     <Build Include="dbo\Store Procedure\SP_Child_UpdateChild.sql" />
+    <Build Include="dbo\Store Procedure\SP_Report_Insert.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Location\CreativeCoinDatabase.publish.xml" />

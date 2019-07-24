@@ -397,5 +397,24 @@ namespace Middleware
         }
 
         #endregion
+
+        #region Report Connections
+
+        public static void insertReport(string theParentUsername, string theChildName, string theBehaviorName, DateTime? theDate, int theCoinEarned, string theNote)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    connection.Execute("dbo.SP_Report_Insert @Parent_username, @Child_name, @Behavior_name, @date, @coin_earned, @note", new { Parent_username = theParentUsername, Child_name = theChildName, Behavior_name = theBehaviorName, date = theDate, coin_earned = theCoinEarned, note = theNote });
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        #endregion
     }
 }

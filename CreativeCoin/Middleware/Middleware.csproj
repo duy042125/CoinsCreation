@@ -49,6 +49,7 @@
     <Compile Include="Database Component\Assign.cs" />
     <Compile Include="Database Component\Behavior.cs" />
     <Compile Include="Database Component\Child.cs" />
+    <Compile Include="Database Component\Report.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="HashingPassword.cs" />
     <Compile Include="LogInInformation.cs" />

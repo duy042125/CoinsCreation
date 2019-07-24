@@ -60,7 +60,7 @@ namespace Interface
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-
+            DBConnection.insertReport(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.Behavior_name, Date.SelectedDate, LogInInformation.coin_earned, Note.Text);
         }
 
         private void Chart_Click(object sender, RoutedEventArgs e)

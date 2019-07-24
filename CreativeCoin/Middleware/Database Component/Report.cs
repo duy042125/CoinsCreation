@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace Middleware.Database_Component
 {
-    public class Assign
+    class Report
     {
-        public static string Parent_username;
-        public static string Behavior_username;
+        string Parent_username;
+        string Child_name;
+        string Behavior_name;
+        DateTime? date;
+        int coin_earned;
+        string note;
     }
 }

@@ -98,6 +98,7 @@ namespace Interface
             if(coinEarn != 0)
             {
                 DBConnection.addCoin(LogInInformation.Username, LogInInformation.Child_name, coinEarn);
+                LogInInformation.coin_earned = coinEarn;
                 coinEarn = 0;
                 CoinEarned.Content = coinEarn;
                 MessageBox.Show("Congratulation! You just put 5 coins in your bank.","Banked Coin",MessageBoxButton.OK, MessageBoxImage.Information);
