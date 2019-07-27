@@ -78,10 +78,32 @@ namespace Interface
         {
             #region Behavior Loader
             Behavior behaviorLoader = DBConnection.retrieveBehaviorByName(LogInInformation.Behavior_name);
-            BehaviorName1.Content = behaviorLoader.behavior1;
-            BehaviorName2.Content = behaviorLoader.behavior2;
-            BehaviorName3.Content = behaviorLoader.behavior3;
-            BehaviorName4.Content = behaviorLoader.behavior4;
+
+            // this could be fix 4 behaviors
+            if (behaviorLoader.behavior1.Equals(""))
+            {
+                BehaviorName1.Content = "None";
+                Behavior1.IsEnabled = false;
+            }
+            else BehaviorName1.Content = behaviorLoader.behavior1;
+            if (behaviorLoader.behavior2.Equals(""))
+            {
+                BehaviorName2.Content = "None";
+                Behavior2.IsEnabled = false;
+            }
+            else BehaviorName2.Content = behaviorLoader.behavior1;
+            if (behaviorLoader.behavior3.Equals(""))
+            {
+                BehaviorName3.Content = "None";
+                Behavior3.IsEnabled = false;
+            }
+            else BehaviorName3.Content = behaviorLoader.behavior1;
+            if (behaviorLoader.behavior4.Equals(""))
+            {
+                BehaviorName4.Content = "None";
+                Behavior4.IsEnabled = false;
+            }
+            else BehaviorName4.Content = behaviorLoader.behavior1;
             #endregion
 
             #region Child Loader

@@ -266,6 +266,7 @@ namespace Interface
                 RewardApp reward = new RewardApp();
                 reward.Show();
                 this.Close();
+                return;
             }
 
             if (isFillOut())

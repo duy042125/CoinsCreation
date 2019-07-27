@@ -173,6 +173,7 @@ namespace Middleware
         {
             try
             {
+
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
                     var checkAccount = connection.Execute("dbo.SP_Child_Insert @Parent_username, @Child_name, @birthdate", new { Parent_username = theParentUsername, Child_name = theChildName, birthdate = theBirthdate });
@@ -268,7 +269,7 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.Execute("dbo.SP_Child_UseCoin @Parent_username, @Child_name, @useCoin", new { Parent_username = theUsername, Child_name = theChildName, newCoin = theUseCoin });
+                    var checkAccount = connection.Execute("dbo.SP_Child_UseCoin @Parent_username, @Child_name, @useCoin", new { Parent_username = theUsername, Child_name = theChildName, useCoin = theUseCoin });
                 }
             }
             catch (Exception exc)

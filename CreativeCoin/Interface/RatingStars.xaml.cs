@@ -26,6 +26,7 @@ namespace Interface
 
         System.Media.SoundPlayer starSound;
         
+        
         public RatingStars()
         {
             InitializeComponent();

@@ -25,6 +25,13 @@ namespace Interface
         {
             InitializeComponent();
         }
+        
+        private static int totalCoin, previousCoinInCart;
+
+        private void updateTotalCoin()
+        {
+            TotalCoin.Content = totalCoin;
+        }
 
         private void Information_Loaded(object sender, RoutedEventArgs e)
         {
@@ -34,28 +41,72 @@ namespace Interface
             Age.Text = DateTimeConverter.timeSpanToString(DateTime.Now - childLoader.birthdate);
             Date.Text = DateTime.Now.ToString("MM/dd/yyyy");
             TotalCoin.Content = childLoader.total_coin;
+            totalCoin = childLoader.total_coin;
             #endregion
 
             #region Reward Load
             Behavior behaviorLoader = DBConnection.retrieveBehaviorByName(LogInInformation.Behavior_name);
-            Reward51.Content = behaviorLoader.star5_reward1;
-            Reward52.Content = behaviorLoader.star5_reward2;
-            Reward53.Content = behaviorLoader.star5_reward3;
-
-            Reward101.Content = behaviorLoader.star5_reward1;
-            Reward102.Content = behaviorLoader.star5_reward2;
-            Reward103.Content = behaviorLoader.star5_reward3;
-
-            Reward151.Content = behaviorLoader.star5_reward1;
-            Reward152.Content = behaviorLoader.star5_reward2;
-
-            Reward20.Content = behaviorLoader.star20_reward;
+            if (behaviorLoader.star5_reward1.Equals(""))
+            {
+                Reward51.Content = "(5 Coins) " + "None";
+                Reward51.IsEnabled = false;
+            }
+            else Reward51.Content = "(5 Coins) " + behaviorLoader.star5_reward1;
+            if (behaviorLoader.star5_reward2.Equals(""))
+            {
+                Reward52.Content = "(5 Coins) " + "None";
+                Reward52.IsEnabled = false;
+            }
+            else Reward52.Content = "(5 Coins) " + behaviorLoader.star5_reward2;
+            if (behaviorLoader.star5_reward3.Equals(""))
+            {
+                Reward53.Content = "(5 Coins) " + "None";
+                Reward53.IsEnabled = false;
+            }
+            else Reward53.Content = "(5 Coins) " + behaviorLoader.star5_reward3;
+            if (behaviorLoader.star10_reward1.Equals(""))
+            {
+                Reward101.Content = "(10 Coins) " + "None";
+                Reward101.IsEnabled = false;
+            }
+            else Reward101.Content = "(10 Coins) " + behaviorLoader.star10_reward1;
+            if (behaviorLoader.star10_reward2.Equals(""))
+            {
+                Reward102.Content = "(10 Coins) " + "None";
+                Reward102.IsEnabled = false;
+            }
+            else Reward102.Content = "(10 Coins) " + behaviorLoader.star10_reward2;
+            if (behaviorLoader.star10_reward3.Equals(""))
+            {
+                Reward103.Content = "(10 Coins) " + "None";
+                Reward103.IsEnabled = false;
+            }
+            else Reward103.Content = "(10 Coins) " + behaviorLoader.star10_reward3;
+            if (behaviorLoader.star15_reward1.Equals(""))
+            {
+                Reward151.Content = "(15 Coins) " + "None";
+                Reward151.IsEnabled = false;
+            }
+            else Reward151.Content = "(15 Coins) " + behaviorLoader.star15_reward1;
+            if (behaviorLoader.star15_reward2.Equals(""))
+            {
+                Reward152.Content = "(15 Coins) " + "None";
+                Reward152.IsEnabled = false;
+            }
+            else Reward152.Content = "(15 Coins) " + behaviorLoader.star15_reward2;
+            if (behaviorLoader.star20_reward.Equals(""))
+            {
+                Reward20.Content = "(20 Coins) " + "None";
+                Reward20.IsEnabled = false;
+            }
+            else Reward20.Content = "(20 Coins) " + behaviorLoader.star20_reward;
             #endregion
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             Note.Text = "";
+            uncheckAll();
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -68,65 +119,36 @@ namespace Interface
             // import a chart report with saparate window
         }
 
-        private static int coinInCart = 0;
-        
-
         private void Buy_Click(object sender, RoutedEventArgs e)
         {
-            DBConnection.useCoin(LogInInformation.Username, LogInInformation.Child_name, coinInCart);
-            LogInInformation.previousCart = coinInCart;
-            coinInCart = 0;
+            DBConnection.useCoin(LogInInformation.Username, LogInInformation.Child_name, coinInCart());
+            totalCoin -= coinInCart();
+            previousCoinInCart = coinInCart();
             uncheckAll();
+            updateTotalCoin();
         }
 
         private void Undo_Click(object sender, RoutedEventArgs e)
         {
-            DBConnection.addCoin(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.previousCart);
-            LogInInformation.previousCart = 0;
+            DBConnection.addCoin(LogInInformation.Username, LogInInformation.Child_name, previousCoinInCart);
+            totalCoin += previousCoinInCart;
+            previousCoinInCart = 0;
+            updateTotalCoin();
         }
-
-        #region Checkbox Coin Count
-
-        private void Reward5_Checked(object sender, RoutedEventArgs e)
+        private int coinInCart()
         {
-            coinInCart += 5;
+            int totalCoin = 0;
+            totalCoin += (bool)Reward51.IsChecked ? 5 : 0;
+            totalCoin += (bool)Reward52.IsChecked ? 5 : 0;
+            totalCoin += (bool)Reward53.IsChecked ? 5 : 0;
+            totalCoin += (bool)Reward101.IsChecked ? 10 : 0;
+            totalCoin += (bool)Reward102.IsChecked ? 10 : 0;
+            totalCoin += (bool)Reward103.IsChecked ? 10 : 0;
+            totalCoin += (bool)Reward151.IsChecked ? 15 : 0;
+            totalCoin += (bool)Reward152.IsChecked ? 15 : 0;
+            totalCoin += (bool)Reward20.IsChecked ? 20 : 0;
+            return totalCoin;
         }
-
-        private void Reward10_Checked(object sender, RoutedEventArgs e)
-        {
-            coinInCart += 10;
-        }
-
-        private void Reward15_Checked(object sender, RoutedEventArgs e)
-        {
-            coinInCart += 15;
-        }
-
-        private void Reward20_Checked(object sender, RoutedEventArgs e)
-        {
-            coinInCart += 20;
-        }
-
-        private void Reward5_Unchecked(object sender, RoutedEventArgs e)
-        {
-            coinInCart -= 5;
-        }
-
-        private void Reward10_Unchecked(object sender, RoutedEventArgs e)
-        {
-            coinInCart -= 10;
-        }
-
-        private void Reward15_Unchecked(object sender, RoutedEventArgs e)
-        {
-            coinInCart -= 15;
-        }
-
-        private void Reward20_Unchecked(object sender, RoutedEventArgs e)
-        {
-            coinInCart -= 20;
-        }
-
         private void uncheckAll()
         {
             Reward51.IsChecked = false;
@@ -142,7 +164,5 @@ namespace Interface
 
             Reward20.IsChecked = false;
         }
-
-        #endregion
     }
 }

@@ -8,7 +8,7 @@
         WindowState="Maximized"
         Title="Reward App" Height="900" Width="1600">
     <Grid Background="SlateBlue">
-        <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="-625,25,0,0" Height="650" Width="600" Background="RoyalBlue">
+        <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="-800,25,0,0" Height="650" Width="750" Background="RoyalBlue">
             <Label Content="Report and Chart" FontSize="50" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
             
             <Label Content="Name:" FontSize="40" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-400,100,0,0"/>
@@ -21,48 +21,48 @@
             <DatePicker x:Name="Date" FontSize="40" Width="350" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,245,0,0" Background="LightBlue" Loaded="Information_Loaded"/>
 
             <Label Content="Note:" FontSize="40" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-400,310,0,0"/>
-            <TextBox x:Name="Note" FontSize="25" Width="425" Height="200" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="150,320,0,0" Background="LightBlue" Loaded="Information_Loaded" AcceptsReturn="True" TextWrapping="Wrap"/>
+            <TextBox x:Name="Note" FontSize="25" Width="500" Height="200" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="200,320,0,0" Loaded="Information_Loaded" AcceptsReturn="True" TextWrapping="Wrap"/>
 
             <Button Content="Clear" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Bottom" Margin="-385,0,0,25" Background="LightBlue" Click="Clear_Click"/>
             <Button Content="Save Report" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Bottom" Margin="0,0,0,25" Background="LightBlue" Click="Save_Click"/>
             <Button Content="Print Chart" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Bottom" Margin="385,0,0,25" Background="LightBlue" Click="Chart_Click"/>
         </Grid>
         
-        <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="625,25,0,0" Height="650" Width="600" Background="RoyalBlue">
+        <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="800,25,0,0" Height="650" Width="750" Background="RoyalBlue">
             <Label Content="Shop" FontSize="50" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-400,0,0,0"/>
 
-            <Label Content="Current Coin:" FontWeight="Bold" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="100,10,0,0"/>
-            <Label x:Name="TotalCoin" Content="0" FontWeight="Bold" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="430,10,0,0" Loaded="Information_Loaded"/>
+            <Label Content="Current Coin:" FontWeight="Bold" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="290,10,0,0"/>
+            <Label x:Name="TotalCoin" Content="0" FontWeight="Bold" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="640,10,0,0" Loaded="Information_Loaded"/>
 
-            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,100,0,0" Height="50">
-                <CheckBox Name="Reward51" FontSize="12" Loaded="Information_Loaded" Checked="Reward5_Checked" Unchecked="Reward5_Unchecked"/>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,100,0,0" Height="50">
+                <CheckBox Name="Reward51" FontSize="10" Loaded="Information_Loaded"/>
             </Viewbox>
-            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,150,0,0" Height="50">
-                <CheckBox Name="Reward52" FontSize="12" Loaded="Information_Loaded" Checked="Reward5_Checked" Unchecked="Reward5_Unchecked"/>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,150,0,0" Height="50">
+                <CheckBox Name="Reward52" FontSize="10" Loaded="Information_Loaded"/>
             </Viewbox>
-            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,200,0,0" Height="50">
-                <CheckBox Name="Reward53" FontSize="12" Loaded="Information_Loaded" Checked="Reward5_Checked" Unchecked="Reward5_Unchecked"/>
-            </Viewbox>
-
-            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,250,0,0" Height="50">
-                <CheckBox Name="Reward101" FontSize="12" Loaded="Information_Loaded" Checked="Reward10_Checked" Unchecked="Reward10_Unchecked"/>
-            </Viewbox>
-            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,300,0,0" Height="50">
-                <CheckBox Name="Reward102" FontSize="12" Loaded="Information_Loaded" Checked="Reward10_Checked" Unchecked="Reward10_Unchecked"/>
-            </Viewbox>
-            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,350,0,0" Height="50">
-                <CheckBox Name="Reward103" FontSize="12" Loaded="Information_Loaded" Checked="Reward10_Checked" Unchecked="Reward10_Unchecked"/>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,200,0,0" Height="50">
+                <CheckBox Name="Reward53" FontSize="10" Loaded="Information_Loaded"/>
             </Viewbox>
 
-            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,400,0,0" Height="50">
-                <CheckBox Name="Reward151" FontSize="12" Loaded="Information_Loaded" Checked="Reward15_Checked" Unchecked="Reward15_Unchecked"/>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,250,0,0" Height="50">
+                <CheckBox Name="Reward101" FontSize="10" Loaded="Information_Loaded"/>
             </Viewbox>
-            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,450,0,0" Height="50">
-                <CheckBox Name="Reward152" FontSize="12" Loaded="Information_Loaded" Checked="Reward15_Checked" Unchecked="Reward15_Unchecked"/>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,300,0,0" Height="50">
+                <CheckBox Name="Reward102" FontSize="10" Loaded="Information_Loaded"/>
+            </Viewbox>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,350,0,0" Height="50">
+                <CheckBox Name="Reward103" FontSize="10" Loaded="Information_Loaded"/>
             </Viewbox>
 
-            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,500,0,0" Height="50">
-                <CheckBox Name="Reward20" FontSize="12" Loaded="Information_Loaded" Checked="Reward20_Checked" Unchecked="Reward20_Unchecked"/>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,400,0,0" Height="50">
+                <CheckBox Name="Reward151" FontSize="10" Loaded="Information_Loaded"/>
+            </Viewbox>
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,450,0,0" Height="50">
+                <CheckBox Name="Reward152" FontSize="10" Loaded="Information_Loaded"/>
+            </Viewbox>
+
+            <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,500,0,0" Height="50">
+                <CheckBox Name="Reward20" Content="" FontSize="10" Loaded="Information_Loaded"/>
             </Viewbox>
 
             <Button Content="Buy" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Bottom" Margin="250,0,0,25" Background="LightBlue" Click="Buy_Click"/>

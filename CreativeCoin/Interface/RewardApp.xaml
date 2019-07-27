@@ -13,16 +13,16 @@
         <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="-625,100,0,0" Height="500" Width="590" Background="RoyalBlue">
             <Label Content="Behavior Rating" FontSize="50" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
 
-            <Label x:Name="BehaviorName1" Content="" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-280,100,0,0" Loaded="Information_Loaded"/>
+            <Label x:Name="BehaviorName1" FontSize="40" HorizontalAlignment="Center" Width="280" Height="65" VerticalAlignment="Top" Margin="-280,90,0,0" Loaded="Information_Loaded"/>
             <local:RatingStars x:Name="Behavior1" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="290,100,0,0"/>
 
-            <Label x:Name="BehaviorName2" Content="" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-280,170,0,0" Loaded="Information_Loaded"/>
+            <Label x:Name="BehaviorName2" FontSize="40" HorizontalAlignment="Center" Width="280" Height="65" VerticalAlignment="Top" Margin="-280,160,0,0" Loaded="Information_Loaded"/>
             <local:RatingStars x:Name="Behavior2" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="290,170,0,0"/>
 
-            <Label x:Name="BehaviorName3" Content="" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-280,240,0,0" Loaded="Information_Loaded"/>
+            <Label x:Name="BehaviorName3" FontSize="40" HorizontalAlignment="Center" Width="280" Height="65" VerticalAlignment="Top" Margin="-280,230,0,0" Loaded="Information_Loaded"/>
             <local:RatingStars x:Name="Behavior3" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="290,240,0,0" />
 
-            <Label x:Name="BehaviorName4" Content="" FontSize="40" HorizontalAlignment="Center" Width="280" Height="55" VerticalAlignment="Top" Margin="-280,310,0,0" Loaded="Information_Loaded"/>
+            <Label x:Name="BehaviorName4" FontSize="40" HorizontalAlignment="Center" Width="280" Height="65" VerticalAlignment="Top" Margin="-280,300,0,0" Loaded="Information_Loaded"/>
             <local:RatingStars x:Name="Behavior4" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="290,310,0,0"/>
 
             <Button Content="Progress" FontSize="30" HorizontalAlignment="Center" Width="170" Height="55" VerticalAlignment="Top" Margin="-300,390,0,0" Background="LightBlue" Click="Progress_Click"/>

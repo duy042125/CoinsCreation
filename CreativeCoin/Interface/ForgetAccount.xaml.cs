@@ -48,11 +48,8 @@ namespace Interface
                 Username.Text = foundAccount.username;
                 SSN.Text = foundAccount.SSN;
                 ParentName.Text = foundAccount.full_name;
-
-                if (foundAccount.birthdate == null) Birthdate.Text = "";
-                else Birthdate.Text = DateTimeConverter.dateTimeToString(foundAccount.birthdate);
-
-                PhoneNumber.Text = foundAccount.phone_number;
+                Birthdate.Text = foundAccount.birthdate == null ? "None" : DateTimeConverter.dateTimeToString(foundAccount.birthdate);
+                PhoneNumber.Text = foundAccount.phone_number == "" ? "None" : foundAccount.phone_number;
                 NewPassword.IsEnabled = true;
                 ConfirmPassword.IsEnabled = true;
                 return true;
