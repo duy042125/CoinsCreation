@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Interface"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="New Account" Height="720" Width="1280">
+        Title="New Account" Height="900" Width="1600">
     <Grid Background="BlanchedAlmond">
         <Label Content="New Account" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0"/>
 

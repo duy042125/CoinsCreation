@@ -6,20 +6,23 @@
         xmlns:local="clr-namespace:Interface"
         mc:Ignorable="d"
          WindowState="Maximized"
-        Title="Fill Out" Height="720" Width="1280">
+        Title="Fill Out" Height="900" Width="1600">
     <Grid Background="LightCyan">
         <Label Content="Fill-Out Form" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0"/>
 
         <Label Content="Child's Information :" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-890,120,0,0" FontSize="20" FontWeight="Bold" Height="40" Width="300"/>
         
         <Label Content="Child's Name：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-1000,170,0,0" FontSize="18" Height="40" Width="170"/>
-        <TextBox x:Name="ChildName" TabIndex="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,170,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
+        <ComboBox x:Name="ChildName" TabIndex="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,170,0,0" Text="" FontSize="18" Height="40" Width="350" IsEditable="True" SelectionChanged="ChildName_SelectionChanged"/>
+        <Label Content="(*)" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-100,170,0,0" FontSize="18" Height="40" FontWeight="Bold" Foreground="Red"/>
 
         <Label Content="Birthdate：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-1000,220,0,0" FontSize="18" Height="40" Width="170"/>
         <DatePicker x:Name="Birthdate" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,220,0,0" Text="" FontSize="18" Height="40" Width="350"/>
+        <Label Content="(*)" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-100,220,0,0" FontSize="18" Height="40" FontWeight="Bold" Foreground="Red"/>
 
         <Label Content="Choose 4 behaviar to work on :" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-890,270,0,0" FontSize="20" FontWeight="Bold" Height="40" Width="300"/>
-        <TextBox x:Name="BehaviorName" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-310,270,0,0" FontSize="18" Height="40" Width="250" Text="Behavior Goup Name" MouseDoubleClick="Behavior_Text_FillOutClear"/>
+        <ComboBox x:Name="BehaviorName" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-310,270,0,0" FontSize="18" Height="40" Width="250" Text="Behavior Goup Name" MouseDoubleClick="Behavior_Text_FillOutClear" IsEditable="true" SelectionChanged="BehaviorName_SelectionChanged"/>
+        <Label Content="(*)" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-10,270,0,0" FontSize="18" Height="40" FontWeight="Bold" Foreground="Red"/>
 
 
         <TextBox x:Name="Behavior1" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-810,320,0,0" FontSize="18" Height="40" Width="350"/>
@@ -48,12 +51,11 @@
         <Label Content="20 Coins：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="200,570,0,0" FontSize="18" Height="40" Width="100"/>
         <TextBox x:Name="Coin20" TabIndex="16" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,570,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
 
+        <Label Content="(*) Required fields" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-1000,535,0,0" FontSize="18" Height="40" FontWeight="Bold" Foreground="Red"/>
+
+        <Button Content="Clear" TabIndex="17" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-900,600,0,0" FontSize="15" Height="40" Width="150" Click="Clear_Click"/>
+        <Button Content="Submit" TabIndex="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-450,600,0,0" FontSize="15" Height="40" Width="150" Click="Submit_Click" IsDefault="True"/>
         
-        <Button Content="Clear" TabIndex="17" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-900,550,0,0" FontSize="15" Height="40" Width="150" Click="Clear_Click"/>
-        <Button Content="Auto-Fill" TabIndex="17" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-450,550,0,0" FontSize="15" Height="40" Width="150" Click="AutoFill_Click"/>
-
-
-        <Button Content="Continue" TabIndex="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,640,0,0" FontSize="15" Height="40" Width="150" Click="Next_Click" IsDefault="True"/>
         <Button Content="Log Out" TabIndex="19" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0" FontSize="15" Height="40" Width="150" Background="White" Click="LogOut_Click"/>
     </Grid>
 </Window>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Interface"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="Reward App" Height="720" Width="1280">
+        Title="Reward App" Height="900" Width="1600">
     <Grid Background="SlateBlue">
         <Label Content="Creative Coin Reward" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
 

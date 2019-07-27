@@ -25,12 +25,12 @@ namespace Interface
         public FillOut()
         {
             InitializeComponent();
-
             if(LogInInformation.Child_name != null && LogInInformation.Behavior_name != null)
             {
                 autoFillBehavior(LogInInformation.Behavior_name);
                 autoFillChild(LogInInformation.Child_name);
             }
+            updateComboBox();
         }
 
         private void Tip_Click(object sender, RoutedEventArgs e) // this might need a custom window for it.
@@ -80,18 +80,37 @@ namespace Interface
             }
         }
 
+        private void updateComboBox()
+        {
+            #region Child Name ComboBox
+            List<Child> childList = DBConnection.retrieveChildListByUsername(LogInInformation.Username);
+            foreach (Child child in childList)
+            {
+                if(!ChildName.Items.Contains(child.Child_name)) ChildName.Items.Add(child.Child_name);
+            }
+            #endregion
+
+            #region Behavior Name ComboBox
+            List<Behavior> behaviorList = DBConnection.retrieveBehaviorListByUsername(LogInInformation.Username);
+            foreach (Behavior behavior in behaviorList)
+            {
+                if (!BehaviorName.Items.Contains(behavior.name)) BehaviorName.Items.Add(behavior.name);
+            }
+            #endregion
+        }
+
         #region Check Method
 
         private bool isFillOut()
         {
 
-            if (ChildName.Text.Equals("") || Birthdate.Text.Equals("") || BehaviorName.Text.Equals("") || Behavior1.Text.Equals("") || Behavior2.Text.Equals("") || Behavior3.Text.Equals("") || Behavior4.Text.Equals("") ||
-                Coin51.Text.Equals("") || Coin52.Text.Equals("") || Coin53.Text.Equals("") || Coin101.Text.Equals("") || Coin102.Text.Equals("") || Coin103.Text.Equals("") || Coin151.Text.Equals("") || Coin152.Text.Equals("") || Coin20.Text.Equals(""))
+            if (ChildName.Text.Equals("") || Birthdate.Text.Equals("") || BehaviorName.Text.Equals(""))
             {
                 MessageBox.Show("Please fill up all required fields !", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            if(!checkBirthdate())
+
+            if (!checkBirthdate())
             {
                 MessageBox.Show("The Birthdate format is wrong", "Wrong Birthdate format.", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
@@ -99,15 +118,86 @@ namespace Interface
             return true;
         }
 
+            #region Verified Child
+
         private bool isChildExist()
         {
             return DBConnection.verifiedChildName(LogInInformation.Username, ChildName.Text);
         }
 
+        private bool isChildTheSame()
+        {
+            if(isChildExist())
+            {
+                Child currentChild = DBConnection.retrieveChildByName(LogInInformation.Username, ChildName.Text);
+                if (currentChild.Child_name == ChildName.Text && currentChild.birthdate == Birthdate.SelectedDate) return true;
+                return false;
+            }
+            return false;
+        }
+
+        private void updateExistChild()
+        {
+            if(!isChildTheSame())
+            {
+                MessageBoxResult result = MessageBox.Show("Do you want to update your information?", "Update Information", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                if (result == MessageBoxResult.Yes)
+                {
+                    DBConnection.updateChild(LogInInformation.Username, ChildName.Text, Birthdate.SelectedDate);
+                }
+                else if (result == MessageBoxResult.No) autoFillChild(ChildName.Text);
+                updateComboBox();
+            }
+        }
+
+            #endregion
+
+            #region Verified Behavior
+
         private bool isBehaviorExist()
         {
             return DBConnection.verifiedBehaviorName(BehaviorName.Text);
         }
+
+        private bool isBehaviorTheSame()
+        {
+            if (isChildExist())
+            {
+                Behavior currentBehavior = DBConnection.retrieveBehaviorByName(BehaviorName.Text);
+                if (currentBehavior.name == BehaviorName.Text &&
+                    currentBehavior.behavior1 == Behavior1.Text &&
+                    currentBehavior.behavior2 == Behavior2.Text &&
+                    currentBehavior.behavior3 == Behavior3.Text &&
+                    currentBehavior.behavior4 == Behavior4.Text &&
+                    currentBehavior.star5_reward1 == Coin51.Text &&
+                    currentBehavior.star5_reward2 == Coin52.Text &&
+                    currentBehavior.star5_reward3 == Coin53.Text &&
+                    currentBehavior.star10_reward1 == Coin101.Text &&
+                    currentBehavior.star10_reward2 == Coin102.Text &&
+                    currentBehavior.star10_reward3 == Coin103.Text &&
+                    currentBehavior.star15_reward1 == Coin151.Text &&
+                    currentBehavior.star15_reward2 == Coin152.Text &&
+                    currentBehavior.star20_reward == Coin20.Text) return true;
+                return false;
+            }
+            return false;
+        }
+
+        private void updateExistBehavior()
+        {
+            if(!isBehaviorTheSame())
+            {
+                MessageBoxResult result = MessageBox.Show("Do you want to update your information?", "Update Information", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                if (result == MessageBoxResult.Yes)
+                {
+                    DBConnection.updateBehavior(BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
+                }
+                else if (result == MessageBoxResult.No) autoFillBehavior(BehaviorName.Text);
+                updateComboBox();
+            }
+        }
+            #endregion
+
 
         private bool checkBirthdate()
         {
@@ -140,10 +230,8 @@ namespace Interface
                 Coin151.Text = currentBehavior.star15_reward1;
                 Coin152.Text = currentBehavior.star15_reward2;
                 Coin20.Text = currentBehavior.star20_reward;
-                isCheck = true;
                 return;
             }
-            MessageBox.Show("There is no Behavior Group that has name like this.", "No Behavior Group", MessageBoxButton.OK, MessageBoxImage.Warning);
             isCheck = false;
         }
 
@@ -154,10 +242,8 @@ namespace Interface
                 Child currentChild = DBConnection.retrieveChildByName(LogInInformation.Username, theChildName);
                 ChildName.Text = currentChild.Child_name;
                 Birthdate.Text = DateTimeConverter.dateTimeToString(currentChild.birthdate);
-                isCheck = true;
                 return;
             }
-            MessageBox.Show("There is no Child that has name like this.", "No Child", MessageBoxButton.OK, MessageBoxImage.Warning);
             isCheck = false;
         }
 
@@ -165,64 +251,62 @@ namespace Interface
         
         #endregion
 
-        private void AutoFill_Click(object sender, RoutedEventArgs e)
+        private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            autoFillBehavior(BehaviorName.Text);
-            autoFillChild(ChildName.Text);
-        }
+            if (isCheck)
+            {
+                isCheck = false;
+                if (Coin51.Text.Equals("") || Coin52.Text.Equals("") || Coin53.Text.Equals("") || Coin101.Text.Equals("") || Coin102.Text.Equals("") || Coin103.Text.Equals("") || Coin151.Text.Equals("") || Coin152.Text.Equals("") || Coin20.Text.Equals("") || Behavior1.Text.Equals("") || Behavior2.Text.Equals("") || Behavior3.Text.Equals("") || Behavior4.Text.Equals(""))
+                {
+                    MessageBoxResult result = MessageBox.Show("There are empty fields, Do you wish to continue with out them ?", "Warning!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (result == MessageBoxResult.No) return;
+                }
+                LogInInformation.Child_name = ChildName.Text;
+                LogInInformation.Behavior_name = BehaviorName.Text;
+                RewardApp reward = new RewardApp();
+                reward.Show();
+                this.Close();
+            }
 
-        private void Next_Click(object sender, RoutedEventArgs e)
-        {
             if (isFillOut())
             {
                 if (!isChildExist() && !isBehaviorExist())
                 {
                     DBConnection.insertChild(LogInInformation.Username, ChildName.Text, Birthdate.SelectedDate);
                     DBConnection.insertBehavior(LogInInformation.Username, BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
+                    MessageBox.Show("You just create new information for your Child and new Behavior Group.", "New Child and Behavior Group.", MessageBoxButton.OK, MessageBoxImage.Information);
+                    isCheck = true;
+                    updateComboBox();
+                    return;
                 }
                 else if (!isChildExist() && isBehaviorExist())
                 {
                     DBConnection.insertChild(LogInInformation.Username, ChildName.Text, Birthdate.SelectedDate);
-                    MessageBoxResult result = MessageBox.Show("This Behavior Group already existed, Do you want to fill you with the old information? (Click NO to update them)", "Existed Child and Behavior Group", MessageBoxButton.YesNo, MessageBoxImage.Information);
-                    if (result == MessageBoxResult.Yes) autoFillBehavior(BehaviorName.Text);
-                    else if (result == MessageBoxResult.No) DBConnection.updateBehavior(BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
+                    updateExistBehavior();
                     isCheck = true;
+                    return;
                 }
                 else if (isChildExist() && !isBehaviorExist())
                 {
                     DBConnection.insertBehavior(LogInInformation.Username, BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
-                    MessageBoxResult result = MessageBox.Show("This Child's Name already existed, Do you want to fill you with the old information? (Click NO to update them)", "Existed Child's Name", MessageBoxButton.YesNo, MessageBoxImage.Information);
-                    if (result == MessageBoxResult.Yes) autoFillChild(ChildName.Text);
-                    else if (result == MessageBoxResult.No) DBConnection.updateChild(LogInInformation.Username, ChildName.Text, Birthdate.SelectedDate);
-                    isCheck = true;
-                }
-                else if (isBehaviorExist() && isBehaviorExist() && !isCheck)
-                {
-                    MessageBoxResult result = MessageBox.Show("These Child's Name and Behavior Group already existed, Do you want to fill you with the old information? (Click NO to update them)", "Existed Child and Behavior Group", MessageBoxButton.YesNo, MessageBoxImage.Information);
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        autoFillBehavior(BehaviorName.Text);
-                        autoFillChild(ChildName.Text);
-                    }
-                    else if (result == MessageBoxResult.No)
-                    {
-                        DBConnection.updateBehavior(BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
-                        DBConnection.updateChild(LogInInformation.Username, ChildName.Text, Birthdate.SelectedDate);
-                    }
+                    updateExistChild();
                     isCheck = true;
                     return;
                 }
+                else if (isChildExist() && isBehaviorExist())
+                {
+                    isCheck = true;
+                    if (isChildTheSame() && isBehaviorTheSame())
+                    {
+                        Submit_Click(sender, e);
+                    }
+                    updateExistChild();
+                    updateExistBehavior();
+                    updateComboBox();
+                    return;
+                }
             }
-            if (isCheck)
-            {
-                LogInInformation.Child_name = ChildName.Text;
-                LogInInformation.Behavior_name = BehaviorName.Text;
-                isCheck = false;
-                RewardApp reward = new RewardApp();
-                reward.Show();
-                this.Close();
-            }
-        }
+        }   
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
@@ -239,6 +323,18 @@ namespace Interface
         private void Behavior_Text_FillOutClear(object sender, MouseButtonEventArgs e)
         {
             BehaviorName.Text = "";
+        }
+
+        private void ChildName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ChildName.Text = (string)ChildName.SelectedItem;
+            autoFillChild(ChildName.Text);
+        }
+
+        private void BehaviorName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BehaviorName.Text = (string)BehaviorName.SelectedItem;
+            autoFillBehavior(BehaviorName.Text);
         }
     }
 }

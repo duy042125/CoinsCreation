@@ -190,7 +190,7 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.Query<Child>("dbo.SP_Child_VerifiedChildName @Parent_username, @Child_name", new { Parent_username = theParentUsername, Child_name = theChildName }).ToList();
+                    var checkAccount = connection.Query<Child>("dbo.SP_Child_RetrieveChildByName @Parent_username, @Child_name", new { Parent_username = theParentUsername, Child_name = theChildName }).ToList();
                     if (checkAccount.Count != 0) return true;
                     return false;
                 }
@@ -201,7 +201,7 @@ namespace Middleware
             }
         }
 
-        public static List<Child> retrieveChildListByUserName(string theChildName)
+        public static List<Child> retrieveChildListByUsername(string theChildName)
         {
             try
             {
@@ -287,7 +287,7 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.Query<Behavior>("dbo.SP_Behavior_VerifiedBehaviorName @name", new { name = theBehaviorName }).ToList();
+                    var checkAccount = connection.Query<Behavior>("dbo.SP_Behavior_RetrieveBehaviorByName @name", new { name = theBehaviorName }).ToList();
                     if (checkAccount.Count != 0) return true;
                     return false;
                 }
