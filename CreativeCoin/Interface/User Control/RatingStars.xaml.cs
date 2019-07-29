@@ -36,29 +36,9 @@ namespace Interface
 
         #region Mouse Enter Stars
 
-        private void Star1_MouseEnter(object sender, MouseEventArgs e)
+        private void Star_MouseEnter(object sender, MouseEventArgs e)
         {
             fillOneStar();
-        }
-
-        private void Star2_MouseEnter(object sender, MouseEventArgs e)
-        {
-            fillTwoStar();
-        }
-
-        private void Star3_MouseEnter(object sender, MouseEventArgs e)
-        {
-            fillThreeStar();
-        }
-
-        private void Star4_MouseEnter(object sender, MouseEventArgs e)
-        {
-            fillFourStar();
-        }
-
-        private void Star5_MouseEnter(object sender, MouseEventArgs e)
-        {
-            fillFiveStar();
         }
 
         #endregion

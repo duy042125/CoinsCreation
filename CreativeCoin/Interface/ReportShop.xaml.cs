@@ -109,14 +109,37 @@ namespace Interface
             uncheckAll();
         }
 
+        private bool isExistedReport()
+        {
+            if (DBConnection.verirfiedReportByKeys(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.Behavior_name, Date.SelectedDate)) return true;
+            return false; ;
+        }
+
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            DBConnection.insertReport(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.Behavior_name, Date.SelectedDate, LogInInformation.coin_earned, Note.Text);
+            if (!isExistedReport())
+            {
+                DBConnection.insertReport(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.Behavior_name, Date.SelectedDate, LogInInformation.coin_earned, Note.Text);
+                MessageBox.Show("The report is saved for this week.", "Saved Report", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("There is a report on this date. Do you want to update your information?", "Update Information", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                if (result == MessageBoxResult.Yes)
+                {
+                    DBConnection.updateReport(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.Behavior_name, Date.SelectedDate, LogInInformation.coin_earned, Note.Text);
+                }
+                else if (result == MessageBoxResult.No)
+                {
+                    Report existedReport = DBConnection.retrieveReportByKeys(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.Behavior_name, Date.SelectedDate);
+                    Note.Text = existedReport.note;
+                }
+            }
         }
 
         private void Chart_Click(object sender, RoutedEventArgs e)
         {
-            // import a chart report with saparate window
+
         }
 
         private void Buy_Click(object sender, RoutedEventArgs e)
@@ -126,7 +149,7 @@ namespace Interface
             previousCoinInCart = coinInCart();
             uncheckAll();
             updateTotalCoin();
-        }
+        } 
 
         private void Undo_Click(object sender, RoutedEventArgs e)
         {
@@ -135,6 +158,7 @@ namespace Interface
             previousCoinInCart = 0;
             updateTotalCoin();
         }
+
         private int coinInCart()
         {
             int totalCoin = 0;
@@ -149,6 +173,19 @@ namespace Interface
             totalCoin += (bool)Reward20.IsChecked ? 20 : 0;
             return totalCoin;
         }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult warning = MessageBox.Show("Are you sure to log out ?", "Log Out", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (warning == MessageBoxResult.Yes)
+            {
+                MainWindow backToLogIn = new MainWindow();
+                backToLogIn.Show();
+                this.Close();
+                LogInInformation.Clear();
+            }
+        }
+
         private void uncheckAll()
         {
             Reward51.IsChecked = false;

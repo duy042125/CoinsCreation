@@ -7,7 +7,7 @@
         mc:Ignorable="d"
          WindowState="Maximized"
         Title="Fill Out" Height="900" Width="1600">
-    <Grid Background="LightCyan">
+    <Grid Background="LightBlue">
         <Label Content="Fill-Out Form" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0"/>
 
         <Label Content="Child's Information :" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-890,120,0,0" FontSize="20" FontWeight="Bold" Height="40" Width="300"/>

@@ -156,7 +156,7 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.Execute("dbo.SP_Account_ChangePassword @username, @password", new { username = theUsername, password = thePassword });
+                    connection.Execute("dbo.SP_Account_ChangePassword @username, @password", new { username = theUsername, password = thePassword });
                 }
             }
             catch (Exception exc)
@@ -173,10 +173,9 @@ namespace Middleware
         {
             try
             {
-
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.Execute("dbo.SP_Child_Insert @Parent_username, @Child_name, @birthdate", new { Parent_username = theParentUsername, Child_name = theChildName, birthdate = theBirthdate });
+                    var checkChild = connection.Execute("dbo.SP_Child_Insert @Parent_username, @Child_name, @birthdate", new { Parent_username = theParentUsername, Child_name = theChildName, birthdate = theBirthdate, start_date = DateTime.Now});
                 }
             }
             catch (Exception exc)
@@ -191,8 +190,8 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.Query<Child>("dbo.SP_Child_RetrieveChildByName @Parent_username, @Child_name", new { Parent_username = theParentUsername, Child_name = theChildName }).ToList();
-                    if (checkAccount.Count != 0) return true;
+                    var checkChild = connection.Query<Child>("dbo.SP_Child_RetrieveChildByName @Parent_username, @Child_name", new { Parent_username = theParentUsername, Child_name = theChildName }).ToList();
+                    if (checkChild.Count != 0) return true;
                     return false;
                 }
             }
@@ -239,7 +238,7 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.Execute("dbo.SP_Child_UpdateChild @Parent_username, @Child_name, @birthdate", new { Parent_username = theUsername, Child_name = theChildName, birthdate = theBirthdate });
+                    connection.Execute("dbo.SP_Child_UpdateChild @Parent_username, @Child_name, @birthdate", new { Parent_username = theUsername, Child_name = theChildName, birthdate = theBirthdate });
                 }
             }
             catch (Exception exc)
@@ -254,7 +253,7 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.Execute("dbo.SP_Child_AddCoin @Parent_username, @Child_name, @newCoin", new { Parent_username = theUsername, Child_name = theChildName, newCoin = theNewCoin });
+                    connection.Execute("dbo.SP_Child_AddCoin @Parent_username, @Child_name, @newCoin", new { Parent_username = theUsername, Child_name = theChildName, newCoin = theNewCoin });
                 }
             }
             catch (Exception exc)
@@ -269,7 +268,7 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.Execute("dbo.SP_Child_UseCoin @Parent_username, @Child_name, @useCoin", new { Parent_username = theUsername, Child_name = theChildName, useCoin = theUseCoin });
+                    connection.Execute("dbo.SP_Child_UseCoin @Parent_username, @Child_name, @useCoin", new { Parent_username = theUsername, Child_name = theChildName, useCoin = theUseCoin });
                 }
             }
             catch (Exception exc)
@@ -306,7 +305,7 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.Execute("dbo.SP_Behavior_UpdateBehavior  @Behavior_name, @behavior1, @behavior2, @behavior3, @behavior4, @star5_reward1, @star5_reward2, @star5_reward3, @star10_reward1, @star10_reward2, @star10_reward3, @star15_reward1, @star15_reward2, @star20_reward", new
+                    connection.Execute("dbo.SP_Behavior_UpdateBehavior  @Behavior_name, @behavior1, @behavior2, @behavior3, @behavior4, @star5_reward1, @star5_reward2, @star5_reward3, @star10_reward1, @star10_reward2, @star10_reward3, @star15_reward1, @star15_reward2, @star20_reward", new
                     {
                         Behavior_name = theBehaviorName,
                         behavior1 = theBehavior1,
@@ -415,6 +414,71 @@ namespace Middleware
                 throw exc;
             }
         }
+
+        public static List<Report> retrieveReportListByUsernameAndChildName(string theParentUsername, string theChildName)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    return connection.Query<Report>("dbo.SP_Report_RetrieveReportListByUsernameAndChildName @Parent_username, @Child_name", new { Parent_username = theParentUsername, Child_name = theChildName }).ToList();
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public static Report retrieveReportByKeys(string theParentUsername, string theChildName, string theBehaviorName, DateTime? theDate)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    var checkReport = connection.Query<Report>("dbo.SP_Report_RetrieveReportListByUsernameAndChildName @Parent_username, @Child_name, @Behavior_name, @date", new { Parent_username = theParentUsername, Child_name = theChildName, Behavior_name = theBehaviorName, date = theDate }).ToList();
+                    return checkReport[0];
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public static bool verirfiedReportByKeys(string theParentUsername, string theChildName, string theBehaviorName, DateTime? theDate)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    var checkReport = connection.Query<Report>("dbo.SP_Report_RetrieveReportListByUsernameAndChildName @Parent_username, @Child_name, @Behavior_name, @date", new { Parent_username = theParentUsername, Child_name = theChildName, Behavior_name = theBehaviorName, date = theDate }).ToList();
+                    if (checkReport.Count != 0) return true;
+                    return false;
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public static void updateReport(string theParentUsername, string theChildName, string theBehaviorName, DateTime? theDate, int theCoinEarned, string theNote)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    connection.Execute("dbo.SP_Report_UpdateReport @Parent_username, @Child_name, @Behavior_name, @date, @coin_earned, @note", new { Parent_username = theParentUsername, Child_name = theChildName, Behavior_name = theBehaviorName, date = theDate, coin_earned = theCoinEarned, note = theNote });
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+        
+        
 
         #endregion
     }

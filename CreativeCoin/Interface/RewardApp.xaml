@@ -53,5 +53,6 @@
 
         <Button Content="Edit Child's Info" FontSize="30" HorizontalAlignment="Center" Width="250" Height="55" VerticalAlignment="Top" Margin="-400,620,0,0" Background="LightBlue" Click="Edit_Info_Click"/>
         <Button Content="Report and Shop" FontSize="30" HorizontalAlignment="Center" Width="250" Height="55" VerticalAlignment="Top" Margin="400,620,0,0" Background="LightBlue" Click="Report_Shop_Click"/>
+        <Button Content="Log Out" TabIndex="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,50,100" FontSize="15" Height="40" Width="150" Background="White" Click="LogOut_Click"/>
     </Grid>
 </Window>

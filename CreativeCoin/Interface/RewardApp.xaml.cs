@@ -128,6 +128,18 @@ namespace Interface
             System.Media.SoundPlayer starSound = new System.Media.SoundPlayer(Interface.Properties.Resources.cashregg);
             starSound.Play();
         }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult warning = MessageBox.Show("Are you sure to log out ?", "Log Out", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (warning == MessageBoxResult.Yes)
+            {
+                MainWindow backToLogIn = new MainWindow();
+                backToLogIn.Show();
+                this.Close();
+                LogInInformation.Clear();
+            }
+        }
     }
 }
 
