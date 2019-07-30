@@ -62,8 +62,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User Control\Chart.xaml.cs">
+      <DependentUpon>Chart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FillOut_Tip.xaml.cs">
       <DependentUpon>FillOut_Tip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\Column.xaml.cs">
+      <DependentUpon>Column.xaml</DependentUpon>
     </Compile>
     <Compile Include="User Control\RatingStars.xaml.cs">
       <DependentUpon>RatingStars.xaml</DependentUpon>
@@ -78,6 +84,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="User Control\Chart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FillOut.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -105,6 +115,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NewAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Control\Column.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
