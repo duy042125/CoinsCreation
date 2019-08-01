@@ -158,6 +158,13 @@ namespace Interface
         private void Buy_Click(object sender, RoutedEventArgs e)
         {
             DBConnection.useCoin(LogInInformation.Username, LogInInformation.Child_name, coinInCart());
+            List<string> boughtItems = new List<string>();
+            foreach(CheckBox checkBox in RewardStackPannel.Children)
+            {
+                if ((bool)checkBox.IsChecked) boughtItems.Add((string)checkBox.Content);
+            }
+            RewardCongrat congrat = new RewardCongrat(boughtItems, coinInCart());
+            congrat.Show();
             totalCoin -= coinInCart();
             previousCoinInCart = coinInCart();
             uncheckAll();

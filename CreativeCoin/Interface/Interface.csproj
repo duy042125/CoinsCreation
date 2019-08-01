@@ -65,14 +65,14 @@
     <Compile Include="ChartReport.xaml.cs">
       <DependentUpon>ChartReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RewardCongrat.xaml.cs">
+      <DependentUpon>RewardCongrat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User Control\Bar.xaml.cs">
       <DependentUpon>Bar.xaml</DependentUpon>
     </Compile>
     <Compile Include="User Control\BarChart.xaml.cs">
       <DependentUpon>BarChart.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FillOut_Tip.xaml.cs">
-      <DependentUpon>FillOut_Tip.xaml</DependentUpon>
     </Compile>
     <Compile Include="User Control\RatingStars.xaml.cs">
       <DependentUpon>RatingStars.xaml</DependentUpon>
@@ -91,6 +91,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="RewardCongrat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="User Control\Bar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,10 +104,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FillOut.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="FillOut_Tip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -193,6 +193,15 @@
       <Project>{F005A934-3022-4FC0-A521-11DE483282EF}</Project>
       <Name>Middleware</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LOgo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BuyCoinLogo.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BuyCoinLogo.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

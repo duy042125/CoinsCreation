@@ -1,0 +1,26 @@
+﻿<Window x:Class="Interface.RewardCongrat"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Interface"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        WindowStyle="None"
+        Title="Congratulation" Height="900" Width="1600">
+    <Grid>
+        <StackPanel Orientation="Vertical" PreviewMouseLeftButtonDown="StackPanel_PreviewMouseLeftButtonDown">
+            <Label Content="Congratulations!" FontSize="100" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Image Source="BuyCoinLogo.png" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,25,0,0" Stretch="Fill" Height="350" Width="350"/>
+            <StackPanel Margin="0,25,0,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Label Content="Congrats," HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Label x:Name="ChildName" Content= "" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="Red"/>
+                <Label Content= ", your" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"/>
+                <Label x:Name="CoinSpent" Content= "" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="Red"/>
+                <Label Content= "coins earned your:" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"/>
+            </StackPanel>
+            <StackPanel x:Name="BoughtItemStackPanel"/>
+            <Label Content= "*Click Anywhere to close*" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="Coral"/>
+        </StackPanel>
+    </Grid>
+</Window>
