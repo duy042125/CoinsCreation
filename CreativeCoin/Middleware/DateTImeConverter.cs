@@ -30,14 +30,26 @@ namespace Middleware
             return dateArr[0];
         }
 
-        public static string timeSpanToString(TimeSpan? theAge)
+        public static string timeSpanToAge(TimeSpan? theAge)
         {
             if(theAge.HasValue)
             {
                 TimeSpan childAge = theAge.Value;
-                double dateInYear = 365.25;
-                int age = (int)(childAge.Days / dateInYear);
+                double daysInYear = 365.25;
+                int age = (int)(childAge.TotalDays / daysInYear);
                 return age.ToString();
+            }
+            return "Null";
+        }
+
+        public static string timeSpanToWeek(TimeSpan? theWeek)
+        {
+            if (theWeek.HasValue)
+            {
+                TimeSpan progressWeek = theWeek.Value;
+                double daysInWeek = 7;
+                int week = (int)(progressWeek.TotalDays / daysInWeek) + 1;
+                return week.ToString();
             }
             return "Null";
         }

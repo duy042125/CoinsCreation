@@ -109,7 +109,7 @@ namespace Interface
             #region Child Loader
             Child childLoader = DBConnection.retrieveChildByName(LogInInformation.Username, LogInInformation.Child_name);
             ChildName.Text = childLoader.Child_name;
-            Age.Text = DateTimeConverter.timeSpanToString(DateTime.Now - childLoader.birthdate);
+            Age.Text = DateTimeConverter.timeSpanToAge(DateTime.Now - childLoader.birthdate);
             Date.Text = DateTime.Now.ToString("MM/dd/yyyy");
             CoinEarned.Content = coinEarn;
             #endregion
@@ -140,6 +140,7 @@ namespace Interface
                 LogInInformation.Clear();
             }
         }
+       
     }
 }
 

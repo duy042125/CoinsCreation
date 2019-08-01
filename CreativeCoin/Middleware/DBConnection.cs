@@ -19,7 +19,7 @@ namespace Middleware
 
         private DBConnection()
         {
-
+            
         }
 
         public static DBConnection openConnection()
@@ -436,7 +436,7 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkReport = connection.Query<Report>("dbo.SP_Report_RetrieveReportListByUsernameAndChildName @Parent_username, @Child_name, @Behavior_name, @date", new { Parent_username = theParentUsername, Child_name = theChildName, Behavior_name = theBehaviorName, date = theDate }).ToList();
+                    var checkReport = connection.Query<Report>("dbo.SP_Report_RetrieveReportListByKeys @Parent_username, @Child_name, @Behavior_name, @date", new { Parent_username = theParentUsername, Child_name = theChildName, Behavior_name = theBehaviorName, date = theDate }).ToList();
                     return checkReport[0];
                 }
             }
@@ -452,7 +452,7 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkReport = connection.Query<Report>("dbo.SP_Report_RetrieveReportListByUsernameAndChildName @Parent_username, @Child_name, @Behavior_name, @date", new { Parent_username = theParentUsername, Child_name = theChildName, Behavior_name = theBehaviorName, date = theDate }).ToList();
+                    var checkReport = connection.Query<Report>("dbo.SP_Report_RetrieveReportByKeys @Parent_username, @Child_name, @Behavior_name, @date", new { Parent_username = theParentUsername, Child_name = theChildName, Behavior_name = theBehaviorName, date = theDate }).ToList();
                     if (checkReport.Count != 0) return true;
                     return false;
                 }
@@ -478,7 +478,21 @@ namespace Middleware
             }
         }
         
-        
+        public static TimeSpan? retrieveProgressWeek(string theParentUsername, string theChildName, DateTime? currentReportDate)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    var startDate = connection.Query<DateTime>("dbo.SP_Child_RetrieveChildStartDateByUsernameAndChildName @Parent_username, @Child_name", new { Parent_username = theParentUsername, Child_name = theChildName }).ToList();
+                    return currentReportDate - startDate[0];
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
 
         #endregion
     }

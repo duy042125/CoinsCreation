@@ -62,14 +62,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User Control\Chart.xaml.cs">
-      <DependentUpon>Chart.xaml</DependentUpon>
+    <Compile Include="ChartReport.xaml.cs">
+      <DependentUpon>ChartReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\Bar.xaml.cs">
+      <DependentUpon>Bar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\BarChart.xaml.cs">
+      <DependentUpon>BarChart.xaml</DependentUpon>
     </Compile>
     <Compile Include="FillOut_Tip.xaml.cs">
       <DependentUpon>FillOut_Tip.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="User Control\Column.xaml.cs">
-      <DependentUpon>Column.xaml</DependentUpon>
     </Compile>
     <Compile Include="User Control\RatingStars.xaml.cs">
       <DependentUpon>RatingStars.xaml</DependentUpon>
@@ -84,7 +87,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="User Control\Chart.xaml">
+    <Page Include="ChartReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Control\Bar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Control\BarChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,10 +126,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NewAccount.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="User Control\Column.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

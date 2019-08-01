@@ -10,56 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Middleware;
+using Middleware.Database_Component;
 
 namespace Interface
 {
     /// <summary>
-    /// Interaction logic for Chart.xaml
+    /// Interaction logic for ChartReport.xaml
     /// </summary>
-    public partial class Chart : UserControl
+    public partial class ChartReport : Window
     {
-        public Chart()
+        public ChartReport(List<int> valueList, List<string> labelList)
         {
             InitializeComponent();
-
+            BarGraph.BarValueList = valueList;
+            BarGraph.BarLabelList = labelList;
         }
-
-        #region Properties
-
-        public Label XLabel
-        {
-            get;
-            set;
-        }
-
-
-        public Label YLabel
-        {
-            get;
-            set;
-        }
-
-        
-
-
-
-        #endregion
-
-        #region Dependency Properties
-
-
-
-        #endregion
-
-        #region Events
-
-
-
-        #endregion
-
-
-
     }
 }

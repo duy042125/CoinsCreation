@@ -38,7 +38,7 @@ namespace Interface
             #region Report Load
             Child childLoader = DBConnection.retrieveChildByName(LogInInformation.Username, LogInInformation.Child_name);
             ChildName.Text = childLoader.Child_name;
-            Age.Text = DateTimeConverter.timeSpanToString(DateTime.Now - childLoader.birthdate);
+            Age.Text = DateTimeConverter.timeSpanToAge(DateTime.Now - childLoader.birthdate);
             Date.Text = DateTime.Now.ToString("MM/dd/yyyy");
             TotalCoin.Content = childLoader.total_coin;
             totalCoin = childLoader.total_coin;
@@ -139,7 +139,18 @@ namespace Interface
 
         private void Chart_Click(object sender, RoutedEventArgs e)
         {
-
+            List<Report> accountReport = DBConnection.retrieveReportListByUsernameAndChildName(LogInInformation.Username, LogInInformation.Child_name);
+            List<int> valueList = new List<int>();
+            List<string> labelList = new List<string>();
+            for (int i = 0; i < accountReport.Count; i++)
+            {
+                valueList.Add(accountReport[i].coin_earned);
+                string week = DateTimeConverter.timeSpanToWeek(DBConnection.retrieveProgressWeek(LogInInformation.Username, LogInInformation.Child_name, accountReport[i].date));
+                labelList.Add("Week " + week);
+            }
+            ChartReport chartReport = new ChartReport(valueList, labelList);
+            chartReport.Show();
+            this.Close();
         }
 
         private void Buy_Click(object sender, RoutedEventArgs e)
