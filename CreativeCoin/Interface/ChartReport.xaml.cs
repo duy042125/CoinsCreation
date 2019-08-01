@@ -34,7 +34,7 @@ namespace Interface
         {
             if(BarChart.barClicked != null)
             {
-                Report fullReport = DBConnection.retrieveFullReportByKeys(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.Behavior_name, BarChart.barClicked.date);
+                Report fullReport = DBConnection.retrieveFullReportByKeys(LogInInformation.Username, LogInInformation.Child_name, BarChart.barClicked.date);
                 ChildName.Content = fullReport.Child_name;
                 Age.Content = DateTimeConverter.timeSpanToAge(DateTime.Now - fullReport.birthdate);
                 Date.Content = DateTimeConverter.dateTimeToString(BarChart.barClicked.date);

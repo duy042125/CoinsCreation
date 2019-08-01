@@ -49,7 +49,7 @@
         <Label x:Name="Behavior4" Content="None" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="1150,650,0,0" FontSize="18" Height="40" Width="350"/>
 
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Width="500" Height="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="1030,700,0,0">
-            <TextBox x:Name="Note" FontSize="25" Width="500" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Top" Loaded="Information_Loaded" AcceptsReturn="True" TextWrapping="Wrap"/>
+            <TextBox x:Name="Note" FontSize="25" Width="500" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap"/>
         </ScrollViewer>
     </Grid>
 </Window>

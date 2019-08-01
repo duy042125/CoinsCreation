@@ -131,7 +131,7 @@ namespace Interface
                 }
                 else if (result == MessageBoxResult.No)
                 {
-                    Report existedReport = DBConnection.retrieveReportByKeys(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.Behavior_name, Date.SelectedDate);
+                    Report existedReport = DBConnection.retrieveReportByKeys(LogInInformation.Username, LogInInformation.Child_name, Date.SelectedDate);
                     Note.Text = existedReport.note;
                 }
             }
