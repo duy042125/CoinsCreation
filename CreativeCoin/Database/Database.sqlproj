@@ -88,6 +88,7 @@
     <Build Include="dbo\Store Procedure\SP_Report_RetrieveReportByKeys.sql" />
     <Build Include="dbo\Store Procedure\SP_Report_UpdateReport.sql" />
     <Build Include="dbo\Store Procedure\SP_Child_RetrieveChildStartDateByUsernameAndChildName.sql" />
+    <Build Include="dbo\Store Procedure\SP_Report_RetrieveFullReportInformationByKeys.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Location\CreativeCoinDatabase.publish.xml" />

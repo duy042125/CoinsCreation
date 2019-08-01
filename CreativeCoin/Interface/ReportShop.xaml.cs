@@ -112,7 +112,7 @@ namespace Interface
         private bool isExistedReport()
         {
             if (DBConnection.verirfiedReportByKeys(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.Behavior_name, Date.SelectedDate)) return true;
-            return false; ;
+            return false; 
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -142,13 +142,15 @@ namespace Interface
             List<Report> accountReport = DBConnection.retrieveReportListByUsernameAndChildName(LogInInformation.Username, LogInInformation.Child_name);
             List<int> valueList = new List<int>();
             List<string> labelList = new List<string>();
+            List<DateTime?> dateList = new List<DateTime?>();
             for (int i = 0; i < accountReport.Count; i++)
             {
                 valueList.Add(accountReport[i].coin_earned);
                 string week = DateTimeConverter.timeSpanToWeek(DBConnection.retrieveProgressWeek(LogInInformation.Username, LogInInformation.Child_name, accountReport[i].date));
                 labelList.Add("Week " + week);
+                dateList.Add(accountReport[i].date);
             }
-            ChartReport chartReport = new ChartReport(valueList, labelList);
+            ChartReport chartReport = new ChartReport(valueList, labelList, dateList);
             chartReport.Show();
             this.Close();
         }

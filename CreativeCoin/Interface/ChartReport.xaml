@@ -10,8 +10,46 @@
     <Grid Background="LightBlue">
         <Label Content="Progress Bar Chart" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0"/>
 
-        <local:BarChart x:Name="BarGraph" HorizontalAlignment="Left" VerticalAlignment="Top" Height="700" Width="950" Margin="0,170,0,0"/>
-        
+        <local:BarChart x:Name="BarGraph" 
+                        BarColor="LightCoral" 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top" 
+                        Height="700" Width="950" Margin="4,158,0,0"
+        />
 
+        <Button Content="See Report" TabIndex="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,150,0,0" FontSize="15" Height="40" Width="150" Click="Submit_Click" IsDefault="True"/>
+
+
+        <Label Content="Child's Information:" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="700,200,0,0" FontSize="20" FontWeight="Bold" Height="40" Width="200"/>
+        <Label Content="Child's Name：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,250,0,0" FontSize="18" Height="40" Width="130"/>
+        <Label x:Name="ChildName" Content="None" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="1150,250,0,0" FontSize="18" Height="40" Width="350"/>
+
+        <Label Content="Age：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,300,0,0" FontSize="18" Height="40" Width="130"/>
+        <Label x:Name="Age" Content="None" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="1150,300,0,0" FontSize="18" Height="40" Width="350"/>
+
+        <Label Content="Date：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,350,0,0" FontSize="18" Height="40" Width="130"/>
+        <Label x:Name="Date" Content="None" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="1150,350,0,0" FontSize="18" Height="40" Width="350"/>
+
+        <Label Content="Coin Earned：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,400,0,0" FontSize="18" Height="40" Width="130"/>
+        <Label x:Name="CoinEarned" Content="None" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="1150,400,0,0" FontSize="18" Height="40" Width="350"/>
+
+        <Label Content="Behavior Group:" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="700,450,0,0" FontSize="20" FontWeight="Bold" Height="40" Width="200"/>
+        <Label x:Name="BehaviorName" Content="None" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="1200,450,0,0" FontSize="20" Height="40" Width="350"/>
+
+        <Label Content="Behavior 1：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,500,0,0" FontSize="18" Height="40" Width="130"/>
+        <Label x:Name="Behavior1" Content="None" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="1150,500,0,0" FontSize="18" Height="40" Width="350"/>
+        
+        <Label Content="Behavior 2：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,550,0,0" FontSize="18" Height="40" Width="130"/>
+        <Label x:Name="Behavior2" Content="None" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="1150,550,0,0" FontSize="18" Height="40" Width="350"/>
+
+        <Label Content="Behavior 3：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,600,0,0" FontSize="18" Height="40" Width="130"/>
+        <Label x:Name="Behavior3" Content="None" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="1150,600,0,0" FontSize="18" Height="40" Width="350"/>
+
+        <Label Content="Behavior 4：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,650,0,0" FontSize="18" Height="40" Width="130"/>
+        <Label x:Name="Behavior4" Content="None" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="1150,650,0,0" FontSize="18" Height="40" Width="350"/>
+
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Width="500" Height="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="1030,700,0,0">
+            <TextBox x:Name="Note" FontSize="25" Width="500" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Top" Loaded="Information_Loaded" AcceptsReturn="True" TextWrapping="Wrap"/>
+        </ScrollViewer>
     </Grid>
 </Window>

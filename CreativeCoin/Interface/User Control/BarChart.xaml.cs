@@ -35,6 +35,7 @@ namespace Interface
             BarColorProperty = DependencyProperty.Register("BarColor", typeof(Brush), typeof(BarChart), new FrameworkPropertyMetadata(Brushes.Black, new PropertyChangedCallback(BarColorChange)));
             BarValueListProperty = DependencyProperty.Register("BarValueList", typeof(List<int>), typeof(BarChart), new FrameworkPropertyMetadata(null, new PropertyChangedCallback(BarValueListChange)));
             BarLabelListProperty = DependencyProperty.Register("BarLabelList", typeof(List<string>), typeof(BarChart), new FrameworkPropertyMetadata(null, new PropertyChangedCallback(BarLabelListChange)));
+            BarDateListProperty = DependencyProperty.Register("BarDateList", typeof(List<DateTime?>), typeof(BarChart), new FrameworkPropertyMetadata(null, new PropertyChangedCallback(BarDateListChange)));
         }
 
         #region Dependency Properties
@@ -52,6 +53,8 @@ namespace Interface
         public static readonly DependencyProperty BarValueListProperty;
 
         public static readonly DependencyProperty BarLabelListProperty;
+
+        public static readonly DependencyProperty BarDateListProperty;
 
         #endregion
 
@@ -97,6 +100,12 @@ namespace Interface
         {
             get { return (List<string>)GetValue(BarLabelListProperty); }
             set { SetValue(BarLabelListProperty, value); }
+        }
+
+        public List<DateTime?> BarDateList
+        {
+            get { return (List<DateTime?>)GetValue(BarDateListProperty); }
+            set { SetValue(BarDateListProperty, value); }
         }
 
         #endregion
@@ -178,6 +187,15 @@ namespace Interface
             }
         }
 
+        private static void BarDateListChange(DependencyObject obj, DependencyPropertyChangedEventArgs e)
+        {
+            BarChart barChart = obj as BarChart;
+            if (barChart != null)
+            {
+                barChart.BarDateList = barChart.BarDateList;
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -199,12 +217,34 @@ namespace Interface
                 bar.Ratio = (int)(Height / 7);
                 bar.LabelContent = BarLabelList[i];
                 bar.LabelColor = XAxisLabelColor;
-
+                bar.date = BarDateList[i];
                 BarStackPanel.Children.Insert(i, bar);
             }
         }
 
+        public static Bar barClicked;
+
+        public static void setUpBarClicked(Bar clickedBar)
+        {
+            barClicked = clickedBar;
+
+        }
+
         #endregion
 
+        private void Mouse_Click(object sender, MouseButtonEventArgs e)
+        {
+            
+            foreach (Bar bar in BarStackPanel.Children)
+            {
+                bar.IsClick = false;
+                bar.ColumnInside.Opacity = 1;
+                if (bar.date == barClicked.date)
+                {
+                    bar.IsClick = true;
+                    bar.ColumnInside.Opacity = 0.5;
+                }
+            }
+        }
     }
 }

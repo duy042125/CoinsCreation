@@ -25,6 +25,7 @@ namespace Interface
         public Bar()
         {
             InitializeComponent();
+            IsClick = false;
         }
 
         static Bar()
@@ -84,6 +85,10 @@ namespace Interface
             set { SetValue(LabelColorProperty, value); }
         }
 
+        public bool IsClick { get; set; }
+
+        public DateTime? date { get; set; }
+
         #endregion
 
         #region Events
@@ -93,15 +98,15 @@ namespace Interface
             Bar bar = obj as Bar;
             if (bar != null)
             {
+                bar.ColumnBorder.Stroke = bar.BarColor;
+                bar.ColumnBorder.Opacity = 0.5;
+                bar.ColumnInside.Fill = bar.BarColor;
+
                 /*
-                bar.Column.Fill = bar.BarColor;
-                bar.Column.Stroke = bar.BarColor;
-               */
-                
                 Brush newColor = (Brush)e.NewValue;
                 bar.Column.Fill = newColor;
                 bar.Column.Stroke = newColor;
-                
+                */
             }
         }
 
@@ -110,8 +115,11 @@ namespace Interface
             Bar bar = obj as Bar;
             if (bar != null)
             {
-                bar.Column.Height = bar.Ratio * bar.Value;
-                bar.Column.Width = bar.Ratio;
+                bar.ColumnBorder.Width = bar.Ratio;
+                bar.ColumnBorder.Height = bar.Ratio * bar.Value;
+
+                bar.ColumnInside.Width = bar.Ratio - 4;
+                bar.ColumnInside.Height = bar.Ratio * bar.Value - 4;
 
                 bar.Label.Width = bar.Ratio;
                 bar.Label.Height = bar.Ratio / 2;
@@ -137,6 +145,30 @@ namespace Interface
             }
         }
 
+            #region Mouse Events
+
+        private void Bar_Click(object sender, MouseButtonEventArgs e)
+        {
+            if (IsClick) IsClick = false;
+            else IsClick = true;
+            BarChart.setUpBarClicked(this);
+        }
+
+        private void Bar_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ColumnInside.Opacity = 0.5;
+        }
+
+        private void Bar_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (IsClick) ColumnInside.Opacity = 0.5;
+            else ColumnInside.Opacity = 1;
+        }
+
+            #endregion
+
         #endregion
+
+
     }
 }

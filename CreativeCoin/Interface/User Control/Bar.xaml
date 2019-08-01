@@ -7,7 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="575" d:DesignWidth="100">
     <Grid>
-        <Rectangle x:Name="Column" HorizontalAlignment="Center" Height="500" Width="100" Fill="LightSalmon" Stroke="LightCoral" VerticalAlignment="Bottom" Margin="0,0,0,75" />
-        <Label x:Name="Label" Content="Label" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="50" Width="100" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Rectangle x:Name="ColumnBorder" HorizontalAlignment="Center" Height="0" Width="100" Stroke="LightCoral" StrokeThickness="2" VerticalAlignment="Bottom" Margin="0,0,0,75" MouseLeftButtonDown="Bar_Click" Opacity="0.75"/>
+            <Rectangle x:Name="ColumnInside" HorizontalAlignment="Center" Height="0" Width="96" Fill="LightCoral" StrokeThickness="2" VerticalAlignment="Bottom" Margin="0,0,0,77" MouseLeftButtonDown="Bar_Click" MouseEnter="Bar_MouseEnter" MouseLeave="Bar_MouseLeave"/>
+        <Label x:Name="Label" Content="Label" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="50" Width="100" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MouseLeftButtonDown="Bar_Click"/>
     </Grid>
 </UserControl>

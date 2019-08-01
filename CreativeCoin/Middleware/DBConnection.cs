@@ -494,6 +494,22 @@ namespace Middleware
             }
         }
 
+        public static Report retrieveFullReportByKeys(string theParentUsername, string theChildName, string theBehaviorName, DateTime? theDate)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    var checkReport = connection.Query<Report>("dbo.SP_Report_RetrieveFullReportInformationByKeys @Parent_username, @Child_name, @Behavior_name, @date", new { Parent_username = theParentUsername, Child_name = theChildName, Behavior_name = theBehaviorName, date = theDate }).ToList();
+                    return checkReport[0];
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
         #endregion
     }
 }
