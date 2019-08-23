@@ -1,16 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Middleware;
 using Middleware.Database_Component;
 
@@ -24,6 +15,7 @@ namespace Interface
         public ReportShop()
         {
             InitializeComponent();
+            isSave = false;
         }
         
         private static int totalCoin, previousCoinInCart;
@@ -109,11 +101,17 @@ namespace Interface
             uncheckAll();
         }
 
+        #region Check
+
         private bool isExistedReport()
         {
-            if (DBConnection.verirfiedReportByKeys(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.Behavior_name, Date.SelectedDate)) return true;
+            if (DBConnection.verirfiedReportByKeys(LogInInformation.Username, LogInInformation.Child_name, Date.SelectedDate)) return true;
             return false; 
         }
+
+        private bool isSave;
+
+        #endregion
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
@@ -121,19 +119,23 @@ namespace Interface
             {
                 DBConnection.insertReport(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.Behavior_name, Date.SelectedDate, LogInInformation.coin_earned, Note.Text);
                 MessageBox.Show("The report is saved for this week.", "Saved Report", MessageBoxButton.OK, MessageBoxImage.Information);
+                Note.Text = "";
+                isSave = true;
             }
             else
             {
                 MessageBoxResult result = MessageBox.Show("There is a report on this date. Do you want to update your information?", "Update Information", MessageBoxButton.YesNo, MessageBoxImage.Information);
                 if (result == MessageBoxResult.Yes)
                 {
-                    DBConnection.updateReport(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.Behavior_name, Date.SelectedDate, LogInInformation.coin_earned, Note.Text);
+                    DBConnection.updateReportByKeys(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.Behavior_name, Date.SelectedDate, LogInInformation.coin_earned, Note.Text);
                 }
                 else if (result == MessageBoxResult.No)
                 {
                     Report existedReport = DBConnection.retrieveReportByKeys(LogInInformation.Username, LogInInformation.Child_name, Date.SelectedDate);
                     Note.Text = existedReport.note;
                 }
+                Note.Text = "";
+                isSave = true;
             }
         }
 
@@ -169,6 +171,8 @@ namespace Interface
             previousCoinInCart = coinInCart();
             uncheckAll();
             updateTotalCoin();
+            System.Media.SoundPlayer starSound = new System.Media.SoundPlayer(Interface.Properties.Resources.cashregg);
+            starSound.Play();
         } 
 
         private void Undo_Click(object sender, RoutedEventArgs e)
@@ -206,19 +210,36 @@ namespace Interface
             }
         }
 
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            if (isSave)
+            {
+                RewardApp rewardApp = new RewardApp();
+                rewardApp.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("You did not save the report yet. Do you want to go back ?", "Unsave Report", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if( result == MessageBoxResult.Yes)
+                {
+                    RewardApp rewardApp = new RewardApp();
+                    rewardApp.Show();
+                    this.Close();
+                }
+            }
+        }
+
         private void uncheckAll()
         {
             Reward51.IsChecked = false;
             Reward52.IsChecked = false;
             Reward53.IsChecked = false;
-
             Reward101.IsChecked = false;
             Reward102.IsChecked = false;
             Reward103.IsChecked = false;
-
             Reward151.IsChecked = false;
             Reward152.IsChecked = false;
-
             Reward20.IsChecked = false;
         }
     }

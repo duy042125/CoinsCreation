@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Middleware;
 
 namespace Interface
@@ -32,9 +20,18 @@ namespace Interface
             if (DBConnection.verifiedLogIn(Username.Text, hashedPassword))
             {
                 LogInInformation.Username = Username.Text;
-                FillOut fillOut = new FillOut();
-                fillOut.Show();
-                this.Close();
+                if (DBConnection.verifiedAccountType(Username.Text))
+                {
+                    Admin_MainMenu adminMainMenu = new Admin_MainMenu();
+                    adminMainMenu.Show();
+                    this.Close();
+                }
+                else
+                {
+                    FillOut fillOut = new FillOut();
+                    fillOut.Show();
+                    this.Close();
+                }
             }
             else
             {

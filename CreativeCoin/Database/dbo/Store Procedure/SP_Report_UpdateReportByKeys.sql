@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SP_Report_UpdateReport]
+﻿CREATE PROCEDURE [dbo].[SP_Report_UpdateReportByKeys]
 	@Parent_username VARCHAR(100),
 	@Child_name VARCHAR(100),
 	@Behavior_name VARCHAR(100),

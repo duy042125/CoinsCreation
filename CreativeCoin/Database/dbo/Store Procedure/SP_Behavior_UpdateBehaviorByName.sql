@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SP_Behavior_UpdateBehavior]
+﻿CREATE PROCEDURE [dbo].[SP_Behavior_UpdateBehaviorByName]
 	@Behavior_name VARCHAR(100),
 	@behavior1 VARCHAR(50),
 	@behavior2 VARCHAR(50),

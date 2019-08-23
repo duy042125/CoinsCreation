@@ -1,16 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Middleware.Database_Component;
 using Middleware;
 
@@ -143,7 +135,7 @@ namespace Interface
                 MessageBoxResult result = MessageBox.Show("Do you want to update your information?", "Update Information", MessageBoxButton.YesNo, MessageBoxImage.Information);
                 if (result == MessageBoxResult.Yes)
                 {
-                    DBConnection.updateChild(LogInInformation.Username, ChildName.Text, Birthdate.SelectedDate);
+                    DBConnection.updateChildByKeys(LogInInformation.Username, ChildName.Text, Birthdate.SelectedDate);
                 }
                 else if (result == MessageBoxResult.No) autoFillChild(ChildName.Text);
                 updateComboBox();
@@ -190,7 +182,7 @@ namespace Interface
                 MessageBoxResult result = MessageBox.Show("Do you want to update your information?", "Update Information", MessageBoxButton.YesNo, MessageBoxImage.Information);
                 if (result == MessageBoxResult.Yes)
                 {
-                    DBConnection.updateBehavior(BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
+                    DBConnection.updateBehaviorByName(BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
                 }
                 else if (result == MessageBoxResult.No) autoFillBehavior(BehaviorName.Text);
                 updateComboBox();

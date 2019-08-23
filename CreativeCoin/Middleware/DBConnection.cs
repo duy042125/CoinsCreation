@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
 using Dapper;
@@ -100,6 +98,27 @@ namespace Middleware
             }
         }
 
+        public static bool verifiedAccountType(string theUsername)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    var checkAccount = connection.Query<Account>("dbo.SP_Account_RetrieveAccountTypeByUsername @username", new { username = theUsername }).ToList();
+                    if (checkAccount.Count != 0)
+                    {
+                        if (checkAccount[0].type == 'A') return true;       // 'A' for Adminstrator 'N' for Normal Users
+                        return false;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
         public static bool verifiedUsedUsername(string theUsername)
         {
             try
@@ -165,6 +184,35 @@ namespace Middleware
             }
         }
 
+        public static List<Account> retrieveAllAccount()
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    return connection.Query<Account>("dbo.SP_Account_RetrieveAllAccount").ToList();
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public static void updateAccountByUsername(Account theAccount)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    connection.Execute("dbo.SP_Account_UpdateAccountByUsername @username, @full_name, @birthdate, @phone_number, @type", theAccount);
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
         #endregion
 
         #region Child Connections
@@ -232,13 +280,28 @@ namespace Middleware
             }
         }
 
-        public static void updateChild(string theUsername, string theChildName, DateTime? theBirthdate)
+        public static void updateChildByKeys(string theUsername, string theChildName, DateTime? theBirthdate)
         {
             try
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    connection.Execute("dbo.SP_Child_UpdateChild @Parent_username, @Child_name, @birthdate", new { Parent_username = theUsername, Child_name = theChildName, birthdate = theBirthdate });
+                    connection.Execute("dbo.SP_Child_UpdateChildByKeys @Parent_username, @Child_name, @birthdate", new { Parent_username = theUsername, Child_name = theChildName, birthdate = theBirthdate });
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public static void updateChildByKeys(Child theChild)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    connection.Execute("dbo.SP_Child_UpdateChildByKeys @Parent_username, @Child_name, @birthdate", theChild);
                 }
             }
             catch (Exception exc)
@@ -277,6 +340,21 @@ namespace Middleware
             }
         }
 
+        public static List<Child> retrieveAllChildren()
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    return connection.Query<Child>("dbo.SP_Child_RetrieveAllChildren").ToList();
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
         #endregion
 
         #region Behavior Connections
@@ -298,14 +376,14 @@ namespace Middleware
             }
         }
 
-        public static void updateBehavior(string theBehaviorName, string theBehavior1, string theBehavior2, string theBehavior3, string theBehavior4,
+        public static void updateBehaviorByName(string theBehaviorName, string theBehavior1, string theBehavior2, string theBehavior3, string theBehavior4,
             string theStar5_reward1, string theStar5_reward2, string theStar5_reward3, string theStar10_reward1, string theStar10_reward2, string theStar10_reward3, string theStar15_reward1, string theStar15_reward2, string theStar20_reward)
         {
             try
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    connection.Execute("dbo.SP_Behavior_UpdateBehavior  @Behavior_name, @behavior1, @behavior2, @behavior3, @behavior4, @star5_reward1, @star5_reward2, @star5_reward3, @star10_reward1, @star10_reward2, @star10_reward3, @star15_reward1, @star15_reward2, @star20_reward", new
+                    connection.Execute("dbo.SP_Behavior_UpdateBehaviorByKeys @Behavior_name, @behavior1, @behavior2, @behavior3, @behavior4, @star5_reward1, @star5_reward2, @star5_reward3, @star10_reward1, @star10_reward2, @star10_reward3, @star15_reward1, @star15_reward2, @star20_reward", new
                     {
                         Behavior_name = theBehaviorName,
                         behavior1 = theBehavior1,
@@ -331,6 +409,22 @@ namespace Middleware
             }
         }
 
+        public static void updateBehaviorByName(Behavior theBehavior)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    connection.Execute("dbo.SP_Behavior_UpdateBehaviorByKeys @Behavior_name, @behavior1, @behavior2, @behavior3, @behavior4, @star5_reward1, @star5_reward2, @star5_reward3, @star10_reward1, @star10_reward2, @star10_reward3, @star15_reward1, @star15_reward2, @star20_reward", theBehavior);
+                }
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+        }
+
         public static Behavior retrieveBehaviorByName(string theBehaviorName)
         {
             try
@@ -339,6 +433,21 @@ namespace Middleware
                 {
                     var behaviorList = connection.Query<Behavior>("dbo.SP_Behavior_RetrieveBehaviorByName @Behavior_name", new { Behavior_name = theBehaviorName }).ToList();
                     return behaviorList[0];
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public static List<Behavior> retrieveAllBehaviors()
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    return connection.Query<Behavior>("dbo.SP_Behavior_RetrieveAllBehaviors").ToList();
                 }
             }
             catch (Exception exc)
@@ -446,13 +555,13 @@ namespace Middleware
             }
         }
 
-        public static bool verirfiedReportByKeys(string theParentUsername, string theChildName, string theBehaviorName, DateTime? theDate)
+        public static bool verirfiedReportByKeys(string theParentUsername, string theChildName, DateTime? theDate)
         {
             try
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkReport = connection.Query<Report>("dbo.SP_Report_RetrieveReportByKeys @Parent_username, @Child_name, @Behavior_name, @date", new { Parent_username = theParentUsername, Child_name = theChildName, Behavior_name = theBehaviorName, date = theDate }).ToList();
+                    var checkReport = connection.Query<Report>("dbo.SP_Report_RetrieveReportByKeys @Parent_username, @Child_name, @Behavior_name, @date", new { Parent_username = theParentUsername, Child_name = theChildName, date = theDate }).ToList();
                     if (checkReport.Count != 0) return true;
                     return false;
                 }
@@ -463,13 +572,13 @@ namespace Middleware
             }
         }
 
-        public static void updateReport(string theParentUsername, string theChildName, string theBehaviorName, DateTime? theDate, int theCoinEarned, string theNote)
+        public static void updateReportByKeys(string theParentUsername, string theChildName, string theBehaviorName, DateTime? theDate, int theCoinEarned, string theNote)
         {
             try
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    connection.Execute("dbo.SP_Report_UpdateReport @Parent_username, @Child_name, @Behavior_name, @date, @coin_earned, @note", new { Parent_username = theParentUsername, Child_name = theChildName, Behavior_name = theBehaviorName, date = theDate, coin_earned = theCoinEarned, note = theNote });
+                    connection.Execute("dbo.SP_Report_UpdateReportByKeys @Parent_username, @Child_name, @Behavior_name, @date, @coin_earned, @note", new { Parent_username = theParentUsername, Child_name = theChildName, Behavior_name = theBehaviorName, date = theDate, coin_earned = theCoinEarned, note = theNote });
                 }
             }
             catch (Exception exc)
@@ -477,7 +586,38 @@ namespace Middleware
                 throw exc;
             }
         }
-        
+
+        public static void updateReportByKeys(Report theReport)
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    connection.Execute("dbo.SP_Report_UpdateReportByKeys @Parent_username, @Child_name, @Behavior_name, @date, @coin_earned, @note", theReport);
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public static List<Report> retrieveAllReports()
+        {
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
+                {
+                    var a = connection.Query<Report>("dbo.SP_Report_RetrieveAllReports").ToList();
+                    return a;
+                }
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
         public static TimeSpan? retrieveProgressWeek(string theParentUsername, string theChildName, DateTime? currentReportDate)
         {
             try

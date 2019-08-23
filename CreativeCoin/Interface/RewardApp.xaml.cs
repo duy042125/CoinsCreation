@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Middleware;
 using Middleware.Database_Component;
 
@@ -91,19 +80,19 @@ namespace Interface
                 BehaviorName2.Content = "None";
                 Behavior2.IsEnabled = false;
             }
-            else BehaviorName2.Content = behaviorLoader.behavior1;
+            else BehaviorName2.Content = behaviorLoader.behavior2;
             if (behaviorLoader.behavior3.Equals(""))
             {
                 BehaviorName3.Content = "None";
                 Behavior3.IsEnabled = false;
             }
-            else BehaviorName3.Content = behaviorLoader.behavior1;
+            else BehaviorName3.Content = behaviorLoader.behavior3;
             if (behaviorLoader.behavior4.Equals(""))
             {
                 BehaviorName4.Content = "None";
                 Behavior4.IsEnabled = false;
             }
-            else BehaviorName4.Content = behaviorLoader.behavior1;
+            else BehaviorName4.Content = behaviorLoader.behavior4;
             #endregion
 
             #region Child Loader
@@ -123,7 +112,6 @@ namespace Interface
                 LogInInformation.coin_earned = coinEarn;
                 coinEarn = 0;
                 CoinEarned.Content = coinEarn;
-                MessageBox.Show("Congratulation! You just put 5 coins in your bank.","Banked Coin",MessageBoxButton.OK, MessageBoxImage.Information);
             }
             System.Media.SoundPlayer starSound = new System.Media.SoundPlayer(Interface.Properties.Resources.cashregg);
             starSound.Play();

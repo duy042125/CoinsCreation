@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SP_Child_UpdateChild]
+﻿CREATE PROCEDURE [dbo].[SP_Child_UpdateChildByKeys]
 	@Parent_username VARCHAR(100),
 	@Child_name VARCHAR(100),
 	@birthdate DATE

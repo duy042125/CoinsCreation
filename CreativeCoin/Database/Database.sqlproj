@@ -78,17 +78,23 @@
     <Build Include="dbo\Tables\Assign.sql" />
     <Build Include="dbo\Store Procedure\SP_Behavior_Assign_RetrieveBehaviorListByUsername.sql" />
     <Build Include="dbo\Store Procedure\SP_Child_RetrieveChildListByUsername.sql" />
-    <Build Include="dbo\Store Procedure\SP_Behavior_UpdateBehavior.sql" />
+    <Build Include="dbo\Store Procedure\SP_Behavior_UpdateBehaviorByName.sql" />
     <Build Include="dbo\Store Procedure\SP_Behavior_RetrieveBehaviorByName.sql" />
     <Build Include="dbo\Store Procedure\SP_Child_RetrieveChildByName.sql" />
     <Build Include="dbo\Store Procedure\SP_Account_RetrieveAccountBySSN.sql" />
-    <Build Include="dbo\Store Procedure\SP_Child_UpdateChild.sql" />
+    <Build Include="dbo\Store Procedure\SP_Child_UpdateChildByKeys.sql" />
     <Build Include="dbo\Store Procedure\SP_Report_Insert.sql" />
     <Build Include="dbo\Store Procedure\SP_Report_RetrieveReportListByUsernameAndChildName.sql" />
     <Build Include="dbo\Store Procedure\SP_Report_RetrieveReportByKeys.sql" />
-    <Build Include="dbo\Store Procedure\SP_Report_UpdateReport.sql" />
+    <Build Include="dbo\Store Procedure\SP_Report_UpdateReportByKeys.sql" />
     <Build Include="dbo\Store Procedure\SP_Child_RetrieveChildStartDateByUsernameAndChildName.sql" />
     <Build Include="dbo\Store Procedure\SP_Report_RetrieveFullReportInformationByKeys.sql" />
+    <Build Include="dbo\Store Procedure\SP_Account_RetrieveAccountTypeByUsername.sql" />
+    <Build Include="dbo\Store Procedure\SP_Account_RetrieveAllAccount.sql" />
+    <Build Include="dbo\Store Procedure\SP_Child_RetrieveAllChildren.sql" />
+    <Build Include="dbo\Store Procedure\SP_Report_RetrieveAllReports.sql" />
+    <Build Include="dbo\Store Procedure\SP_Behavior_RetrieveAllBehaviors.sql" />
+    <Build Include="dbo\Store Procedure\SP_Account_UpdateAccountByUsername.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish Location\CreativeCoinDatabase.publish.xml" />

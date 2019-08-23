@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Middleware.Database_Component
 {
@@ -15,5 +10,6 @@ namespace Middleware.Database_Component
         public DateTime? birthdate { get; set; }
         public string phone_number { get; set; }
         public string SSN { get; set; }
+        public char type { get; set; }
     }
 }

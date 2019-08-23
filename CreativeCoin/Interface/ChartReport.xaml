@@ -17,7 +17,8 @@
                         Height="700" Width="950" Margin="4,158,0,0"
         />
 
-        <Button Content="See Report" TabIndex="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,150,0,0" FontSize="15" Height="40" Width="150" Click="Submit_Click" IsDefault="True"/>
+        <Button Content="See Report" TabIndex="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,150,0,0" FontSize="15" Height="40" Width="150" Click="SeeReport_Click" IsDefault="True"/>
+        <Button Content="Back" TabIndex="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="1150,150,0,0" FontSize="15" Height="40" Width="150" Click="Back_Click"/>
 
 
         <Label Content="Child's Information:" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="700,200,0,0" FontSize="20" FontWeight="Bold" Height="40" Width="200"/>
