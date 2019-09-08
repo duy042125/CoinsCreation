@@ -10,11 +10,15 @@ namespace Interface
     /// </summary>
     public partial class Admin_Behavior : Window
     {
+        private bool isSave;
+        private bool isEdit;
+
         public Admin_Behavior()
         {
             InitializeComponent();
+            isEdit = false;
             isSave = false;
-    }
+        }
 
         private void AccountTable_Loaded(object sender, RoutedEventArgs e)
         {
@@ -23,8 +27,16 @@ namespace Interface
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (BehaviorTable.IsReadOnly) BehaviorTable.IsReadOnly = false;
-            else BehaviorTable.IsReadOnly = true;
+            if (BehaviorTable.IsReadOnly)
+            {
+                BehaviorTable.IsReadOnly = false;
+                isEdit = true;
+            }
+            else
+            {
+                BehaviorTable.IsReadOnly = true;
+                isEdit = false;
+            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -32,9 +44,12 @@ namespace Interface
             try
             {
                 Behavior behavior = (Behavior)BehaviorTable.SelectedItem;
-                DBConnection.updateBehaviorByName(behavior);
-                MessageBox.Show("Data Saved", "Saved Data", MessageBoxButton.OK, MessageBoxImage.Information);
-                isSave = true;
+                if (behavior != null)
+                {
+                    DBConnection.updateBehaviorByName(behavior);
+                    MessageBox.Show("Data Saved", "Saved Data", MessageBoxButton.OK, MessageBoxImage.Information);
+                    isSave = true;
+                }
             }
             catch (Exception ex)
             {
@@ -42,15 +57,18 @@ namespace Interface
             }
         }
 
-        private bool isSave;
+       
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            if (!isSave)
+            if (isEdit)
             {
-                MessageBoxResult result = MessageBox.Show("Your data is unsave. Do you want to go back ?", "Unsaved Data", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                if (result == MessageBoxResult.Yes) BehaviorTable.IsReadOnly = true;
-                else return;
+                if (!isSave)
+                {
+                    MessageBoxResult result = MessageBox.Show("Your data is unsave. Do you want to go back ?", "Unsaved Data", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (result == MessageBoxResult.Yes) BehaviorTable.IsReadOnly = true;
+                    else return;
+                }
             }
             Admin_MainMenu adminMainMenu = new Admin_MainMenu();
             adminMainMenu.Show();

@@ -12,11 +12,13 @@ namespace Interface
     public partial class Admin_Children : Window
     {
         private bool isSave;
+        private bool isEdit;
 
         public Admin_Children()
         {
             InitializeComponent();
             isSave = false;
+            isEdit = false;
         }
 
         private void AccountTable_Loaded(object sender, RoutedEventArgs e)
@@ -27,8 +29,16 @@ namespace Interface
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (ChildrenTable.IsReadOnly) ChildrenTable.IsReadOnly = false;
-            else ChildrenTable.IsReadOnly = true;
+            if (ChildrenTable.IsReadOnly)
+            {
+                ChildrenTable.IsReadOnly = false;
+                isEdit = true;
+            }
+            else
+            {
+                ChildrenTable.IsReadOnly = true;
+                isEdit = false;
+            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -36,9 +46,12 @@ namespace Interface
             try
             {
                 Child child = (Child)ChildrenTable.SelectedItem;
-                DBConnection.updateChildByKeys(child);
-                MessageBox.Show("Data Saved", "Saved Data", MessageBoxButton.OK, MessageBoxImage.Information);
-                isSave = true;
+                if (child != null)
+                {
+                    DBConnection.updateChildByKeys(child);
+                    MessageBox.Show("Data Saved", "Saved Data", MessageBoxButton.OK, MessageBoxImage.Information);
+                    isSave = true;
+                }
             }
             catch (Exception ex)
             {
@@ -48,11 +61,14 @@ namespace Interface
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            if (!isSave)
+            if (isEdit)
             {
-                MessageBoxResult result = MessageBox.Show("Your data is unsave. Do you want to go back ?", "Unsaved Data", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                if (result == MessageBoxResult.Yes) ChildrenTable.IsReadOnly = true;
-                else return;
+                if (!isSave)
+                {
+                    MessageBoxResult result = MessageBox.Show("Your data is unsave. Do you want to go back ?", "Unsaved Data", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (result == MessageBoxResult.Yes) ChildrenTable.IsReadOnly = true;
+                    else return;
+                }
             }
             Admin_MainMenu adminMainMenu = new Admin_MainMenu();
             adminMainMenu.Show();
