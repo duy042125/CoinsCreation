@@ -561,7 +561,7 @@ namespace Middleware
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkReport = connection.Query<Report>("dbo.SP_Report_RetrieveReportByKeys @Parent_username, @Child_name, @Behavior_name, @date", new { Parent_username = theParentUsername, Child_name = theChildName, date = theDate }).ToList();
+                    var checkReport = connection.Query<Report>("dbo.SP_Report_RetrieveReportByKeys @Parent_username, @Child_name, @date", new { Parent_username = theParentUsername, Child_name = theChildName, date = theDate }).ToList();
                     if (checkReport.Count != 0) return true;
                     return false;
                 }

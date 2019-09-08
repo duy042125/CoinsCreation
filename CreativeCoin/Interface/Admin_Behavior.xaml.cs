@@ -13,7 +13,8 @@ namespace Interface
         public Admin_Behavior()
         {
             InitializeComponent();
-        }
+            isSave = false;
+    }
 
         private void AccountTable_Loaded(object sender, RoutedEventArgs e)
         {
@@ -33,6 +34,7 @@ namespace Interface
                 Behavior behavior = (Behavior)BehaviorTable.SelectedItem;
                 DBConnection.updateBehaviorByName(behavior);
                 MessageBox.Show("Data Saved", "Saved Data", MessageBoxButton.OK, MessageBoxImage.Information);
+                isSave = true;
             }
             catch (Exception ex)
             {
@@ -40,24 +42,19 @@ namespace Interface
             }
         }
 
+        private bool isSave;
+
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            if (BehaviorTable.IsReadOnly)
-            {
-                Admin_MainMenu adminMainMenu = new Admin_MainMenu();
-                adminMainMenu.Show();
-                this.Close();
-            }
-            else
+            if (!isSave)
             {
                 MessageBoxResult result = MessageBox.Show("Your data is unsave. Do you want to go back ?", "Unsaved Data", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                if (result == MessageBoxResult.Yes)
-                {
-                    BehaviorTable.IsReadOnly = true;
-                    Back_Click(sender, e);
-                }
+                if (result == MessageBoxResult.Yes) BehaviorTable.IsReadOnly = true;
                 else return;
             }
+            Admin_MainMenu adminMainMenu = new Admin_MainMenu();
+            adminMainMenu.Show();
+            this.Close();
         }
     }
 }

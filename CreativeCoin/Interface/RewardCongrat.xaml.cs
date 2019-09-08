@@ -50,13 +50,6 @@ namespace Interface
                     itemContent += (boughtItems[i] + Environment.NewLine);
                 }
             }
-
-            
-        }
-
-        private void StackPanel_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.Close();
         }
 
         private void Print_Click(object sender, RoutedEventArgs e)
@@ -155,6 +148,11 @@ namespace Interface
             certification.Selection.Find.Execute(ref findText, ref matchCase, ref matchWholeWord, ref matchWildCards, 
                 ref matchSoundsLike, ref matchAllWordForms, ref forward, ref wrap, ref format, ref replaceWithText, 
                 ref replace, ref matchKashida, ref matchDiacritics, ref matchAlefHamza, ref matchControl);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

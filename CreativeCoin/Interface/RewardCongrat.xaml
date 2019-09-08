@@ -9,7 +9,7 @@
         WindowStyle="None"
         Title="Congratulation" Height="900" Width="1600">
     <Grid>
-        <StackPanel Orientation="Vertical" PreviewMouseLeftButtonDown="StackPanel_PreviewMouseLeftButtonDown">
+        <StackPanel Orientation="Vertical">
             <Label Content="Congratulations!" FontSize="100" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <Image Source="BuyCoinLogo.png" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,25,0,0" Stretch="Fill" Height="350" Width="350"/>
             <StackPanel Margin="0,25,0,0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
@@ -19,9 +19,8 @@
                 <Label x:Name="CoinSpent" Content= "" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="Red"/>
                 <Label Content= "coins earned you:" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30"/>
             </StackPanel>
-
             <StackPanel x:Name="BoughtItemStackPanel"/>
-            <Label Content= "*Click Anywhere to close*" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="Coral"/>
+            <Button Content= "*Close*" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" Foreground="Coral" Background="White" Click="Button_Click"/>
         </StackPanel>
         <Button Content="Print" TabIndex="18" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,50,50,0" FontSize="15" Height="40" Width="150" Click="Print_Click"/>
     </Grid>

@@ -128,7 +128,11 @@ namespace Interface
                 LogInInformation.Clear();
             }
         }
-       
+
+        private void ChildName_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
+        }
     }
 }
 

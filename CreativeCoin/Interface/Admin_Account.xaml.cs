@@ -10,9 +10,12 @@ namespace Interface
     /// </summary>
     public partial class Admin_Account : Window
     {
+        private bool isSave;
+
         public Admin_Account()
         {
             InitializeComponent();
+            isSave = false;
         }
 
         private void AccountTable_Loaded(object sender, RoutedEventArgs e)
@@ -33,6 +36,7 @@ namespace Interface
                 Account account = (Account)AccountTable.SelectedItem;
                 DBConnection.updateAccountByUsername(account);
                 MessageBox.Show("Data Saved", "Saved Data", MessageBoxButton.OK, MessageBoxImage.Information);
+                isSave = true;
             }
             catch (Exception ex)
             {
@@ -42,22 +46,15 @@ namespace Interface
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            if(AccountTable.IsReadOnly)
-            {
-                Admin_MainMenu adminMainMenu = new Admin_MainMenu();
-                adminMainMenu.Show();
-                this.Close();
-            }
-            else
+            if(!isSave)
             {
                 MessageBoxResult result = MessageBox.Show("Your data is unsave. Do you want to go back ?", "Unsaved Data", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                if (result == MessageBoxResult.Yes)
-                {
-                    AccountTable.IsReadOnly = true;
-                    Back_Click(sender, e);
-                }
+                if (result == MessageBoxResult.Yes) AccountTable.IsReadOnly = true;
                 else return;
             }
+            Admin_MainMenu adminMainMenu = new Admin_MainMenu();
+            adminMainMenu.Show();
+            this.Close();
         }
     }
 }
