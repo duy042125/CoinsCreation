@@ -33,7 +33,7 @@ namespace Interface
             {
                 Account foundAccount = DBConnection.retrieveAccount(Username.Text);
                 Username.Text = foundAccount.username;
-                SSN.Text = foundAccount.SSN;
+                SSN.Text = foundAccount.AccountID;
                 ParentName.Text = foundAccount.full_name;
                 Birthdate.Text = foundAccount.birthdate == null ? "None" : DateTimeConverter.dateTimeToString(foundAccount.birthdate);
                 PhoneNumber.Text = foundAccount.phone_number == "" ? "None" : foundAccount.phone_number;

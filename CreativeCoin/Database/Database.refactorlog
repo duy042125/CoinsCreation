@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="f80ebfc0-cc8b-4483-8612-2c81ca9f4e21" ChangeDateTime="07/07/2019 00:22:38">
+    <Property Name="ElementName" Value="[dbo].[Account].[phoneNumber2]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Account]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="phoneNumber" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="098b6759-8523-4226-ae09-5b7a91700106" ChangeDateTime="07/07/2019 00:24:16">
+    <Property Name="ElementName" Value="[dbo].[Account].[phoneNumber]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Account]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="phone_number" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f3b88443-1603-4817-b18b-539f2588899e" ChangeDateTime="07/07/2019 00:47:15">
+    <Property Name="ElementName" Value="[dbo].[Account].[name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Account]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="full_name" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="36a08a47-6ae0-47a7-a4b9-9b642c61db0e" ChangeDateTime="08/01/2019 02:18:58">
+    <Property Name="ElementName" Value="[dbo].[SP_Child_RetireveChildStartDateByUsernameAndChildName]" />
+    <Property Name="ElementType" Value="SqlProcedure" />
+    <Property Name="ParentElementName" Value="[dbo]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[SP_Child_RetrieveChildStartDateByUsernameAndChildName]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6c24d652-f9c1-4061-83b1-3d4ec2bb7c81" ChangeDateTime="11/09/2019 22:21:36">
+    <Property Name="ElementName" Value="[dbo].[Account].[SSN]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Account]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AccountID" />
+  </Operation>
+</Operations>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29306.81
+VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{3197DCBA-D843-4F0F-8CBA-5A7E7AFD4A91}"
 EndProject
@@ -28,10 +28,12 @@ Global
 		{F005A934-3022-4FC0-A521-11DE483282EF}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{F005A934-3022-4FC0-A521-11DE483282EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F005A934-3022-4FC0-A521-11DE483282EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{617285F2-02A8-41B2-8CE7-26FCE7A103B8}.All|Any CPU.ActiveCfg = Release
-		{617285F2-02A8-41B2-8CE7-26FCE7A103B8}.Debug|Any CPU.ActiveCfg = Debug
-		{617285F2-02A8-41B2-8CE7-26FCE7A103B8}.Release|Any CPU.ActiveCfg = Release
-		{617285F2-02A8-41B2-8CE7-26FCE7A103B8}.Release|Any CPU.Build.0 = Release
+		{928BFE29-3600-4DDA-8AC0-C699644F0812}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{928BFE29-3600-4DDA-8AC0-C699644F0812}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{928BFE29-3600-4DDA-8AC0-C699644F0812}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{928BFE29-3600-4DDA-8AC0-C699644F0812}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{928BFE29-3600-4DDA-8AC0-C699644F0812}.Release|Any CPU.Build.0 = Release|Any CPU
+		{928BFE29-3600-4DDA-8AC0-C699644F0812}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

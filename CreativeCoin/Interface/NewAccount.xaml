@@ -15,8 +15,8 @@
         <Label Content="Parent's Name：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,150,0,0" FontSize="18" Height="40" Width="170"/>
         <TextBox x:Name="newParentName" TabIndex="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,150,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
 
-        <Label Content="SSN：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,200,0,0" FontSize="18" Height="40" Width="170"/>
-        <TextBox x:Name="SSN" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,200,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
+        <Label Content="Account ID：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,200,0,0" FontSize="18" Height="40" Width="170"/>
+        <TextBox x:Name="AccountID" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,200,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
         <Label Content="(*)" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="450,200,0,0" FontSize="18" Height="40" FontWeight="Bold" Foreground="Red"/>
 
         <Label Content="Username：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,250,0,0" FontSize="18" Height="40" Width="170"/>

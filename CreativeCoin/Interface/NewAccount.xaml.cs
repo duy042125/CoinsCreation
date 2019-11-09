@@ -37,7 +37,7 @@ namespace Interface
 
         private bool checkSSNFormat()
         {
-            string ssn = SSN.Text;
+            string ssn = AccountID.Text;
             if (ssn.Length == 10)
             {
                 for (int i = 0; i < ssn.Length; i++)
@@ -67,7 +67,7 @@ namespace Interface
 
         private bool checkUsedSSN()
         {
-            if (DBConnection.verifiedUsedSSN(SSN.Text))
+            if (DBConnection.verifiedUsedAccountID(AccountID.Text))
             {
                 WarningSSN.Content = "This SSN is taken.";
                 return false;
@@ -78,7 +78,7 @@ namespace Interface
 
         private bool checkRequiredFields()
         {
-            if (Username.Text.Equals("") || NewPassword.Password.Equals("") || ConfirmPassword.Password.Equals("") || SSN.Text.Equals("")) return false;
+            if (Username.Text.Equals("") || NewPassword.Password.Equals("") || ConfirmPassword.Password.Equals("") || AccountID.Text.Equals("")) return false;
             return true;
         }
 
@@ -102,7 +102,7 @@ namespace Interface
 
                 if (checkUsedUsername() && checkPassword() && checkUsedSSN())
                 {
-                    DBConnection.createAccount(Username.Text, Hashing.HashPassword(NewPassword.Password), newParentName.Text, Birthdate.SelectedDate, PhoneNumber.Text, SSN.Text);
+                    DBConnection.createAccount(Username.Text, Hashing.HashPassword(NewPassword.Password), newParentName.Text, Birthdate.SelectedDate, PhoneNumber.Text, AccountID.Text);
                     MessageBox.Show("You created a new account.", "Creation Confirm", MessageBoxButton.OK, MessageBoxImage.Information);
                     MainWindow backToLogin = new MainWindow();
                     backToLogin.Show();
