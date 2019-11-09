@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowState="Maximized"
         Title="Log In" Height="900" Width="1600">
-    <Grid Background="Tan">
+    <Grid Background="LightCoral">
         <Label Content="Creative Coin Application" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0"/>
         <Image Source="CCGLogo.png" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0" Stretch="Fill" Height="175" Width="400"/>
 
