@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.645
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interface", "Interface\Interface.csproj", "{3197DCBA-D843-4F0F-8CBA-5A7E7AFD4A91}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Middleware", "Middleware\Middleware.csproj", "{F005A934-3022-4FC0-A521-11DE483282EF}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{928BFE29-3600-4DDA-8AC0-C699644F0812}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CCG_App", "CCG_App\CCG_App.vdproj", "{F6D9F9A5-A9CF-472D-AD70-FC36A261EA0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,8 +29,6 @@ Global
 		{928BFE29-3600-4DDA-8AC0-C699644F0812}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{928BFE29-3600-4DDA-8AC0-C699644F0812}.Release|Any CPU.Build.0 = Release|Any CPU
 		{928BFE29-3600-4DDA-8AC0-C699644F0812}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{F6D9F9A5-A9CF-472D-AD70-FC36A261EA0A}.Debug|Any CPU.ActiveCfg = Debug
-		{F6D9F9A5-A9CF-472D-AD70-FC36A261EA0A}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

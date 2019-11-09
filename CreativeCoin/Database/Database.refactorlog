@@ -28,4 +28,11 @@
     <Property Name="ParentElementType" Value="SqlSchema" />
     <Property Name="NewName" Value="[SP_Child_RetrieveChildStartDateByUsernameAndChildName]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="6c24d652-f9c1-4061-83b1-3d4ec2bb7c81" ChangeDateTime="11/09/2019 22:21:36">
+    <Property Name="ElementName" Value="[dbo].[Account].[SSN]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Account]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AccountID" />
+  </Operation>
 </Operations>

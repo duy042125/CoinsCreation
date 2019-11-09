@@ -5,8 +5,8 @@
 	full_name VARCHAR(100),
 	birthdate DATE,
 	phone_number VARCHAR(15),
-	SSN CHAR(10) NOT NULL,
+	AccountID CHAR(10) NOT NULL,
 	[type] CHAR(1) NOT NULL DEFAULT 'N',
 	CONSTRAINT PK_Account PRIMARY KEY (username),
-	CONSTRAINT U_Account_SSN UNIQUE (SSN)
+	CONSTRAINT U_Account_SSN UNIQUE (AccountID)
 )

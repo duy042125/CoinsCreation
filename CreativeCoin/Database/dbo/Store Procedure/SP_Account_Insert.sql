@@ -4,9 +4,9 @@
 	@full_name VARCHAR(100),
 	@birthdate DATE,
 	@phone_number CHAR(10),
-	@SSN CHAR(10)
+	@AccountID CHAR(10)
 AS
 BEGIN
-	INSERT INTO Account(username, [password], full_name, birthdate, phone_number, SSN)
-	VALUES (@username, @password, @full_name, @birthdate, @phone_number, @SSN)
+	INSERT INTO Account(username, [password], full_name, birthdate, phone_number, AccountID)
+	VALUES (@username, @password, @full_name, @birthdate, @phone_number, @AccountID)
 END
