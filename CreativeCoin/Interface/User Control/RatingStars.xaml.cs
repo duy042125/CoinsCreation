@@ -31,7 +31,7 @@ namespace Interface
         {
             InitializeComponent();
             starNum = 0;
-            starSound = new System.Media.SoundPlayer(Interface.Properties.Resources.star);
+            starSound = new System.Media.SoundPlayer(Properties.Resources.star);
         }
 
         #region Mouse Enter Stars

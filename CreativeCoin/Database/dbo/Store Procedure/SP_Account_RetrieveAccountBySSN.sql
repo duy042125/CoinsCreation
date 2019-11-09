@@ -1,8 +1,0 @@
-﻿CREATE PROCEDURE [dbo].[SP_Account_RetrieveAccountBySSN]
-	@SSN CHAR(10)
-AS
-BEGIN
-	SELECT * 
-	FROM Account
-	WHERE SSN = @SSN
-END

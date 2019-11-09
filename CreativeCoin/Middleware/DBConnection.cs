@@ -15,10 +15,7 @@ namespace Middleware
 
         private static DBConnection currentConnection;
 
-        private DBConnection()
-        {
-            
-        }
+        private DBConnection() { }
 
         public static DBConnection openConnection()
         {
@@ -203,6 +200,8 @@ namespace Middleware
         {
             try
             {
+                if (theAccount.type == 'a') theAccount.type = 'A';
+                else if (theAccount.type == 'n') theAccount.type = 'N';
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
                     connection.Execute("dbo.SP_Account_UpdateAccountByUsername @username, @full_name, @birthdate, @phone_number, @type", theAccount);
