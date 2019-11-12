@@ -42,13 +42,13 @@ namespace Middleware
 
         #region Account Connections
 
-        public static void createAccount(string theUsername, string thePassword, string theName, DateTime? theBirthdate, string thePhoneNumber, string theAccountID)
+        public static void createAccount(string theUsername, string thePassword, string theName, DateTime? theBirthdate, string thePhoneNumber)
         {
             try
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    connection.Execute("dbo.SP_Account_Insert @username, @password, @full_name, @birthdate, @phone_number, @AccountID", new { username = theUsername, password = thePassword, full_name = theName, birthdate = theBirthdate, phone_number = thePhoneNumber, AccountID = theAccountID });
+                    connection.Execute("dbo.SP_Account_Insert @username, @password, @full_name, @birthdate, @phone_number", new { username = theUsername, password = thePassword, full_name = theName, birthdate = theBirthdate, phone_number = thePhoneNumber});
                 }
             }
             catch (Exception exc)
@@ -78,13 +78,13 @@ namespace Middleware
             }
         }
 
-        public static bool verifiedAccount(string theUsername, string theAccountID)
+        public static bool verifiedAccount(string theUsername, string thePhoneNumber)
         {
             try
             {
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
-                    var checkAccount = connection.Query<Account>("dbo.SP_Account_RetrieveAccountByUsernameOrAccountID @username, @AccountID", new { username = theUsername, AccountID = theAccountID }).ToList();
+                    var checkAccount = connection.Query<Account>("dbo.SP_Account_RetrieveAccountByUsernameOrPhone @username, @phone_number", new { username = theUsername, phone_number = thePhoneNumber }).ToList();
                     if (checkAccount.Count != 0) return true;
                     return false;
                 }
@@ -123,23 +123,6 @@ namespace Middleware
                 using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
                 {
                     var checkAccount = connection.Query<Account>("dbo.SP_Account_RetrieveAccountByUsername @username", new { username = theUsername }).ToList();
-                    if (checkAccount.Count != 0) return true;
-                    return false;
-                }
-            }
-            catch (Exception exc)
-            {
-                throw exc;
-            }
-        }
-
-        public static bool verifiedUsedAccountID(string theAccountID)
-        {
-            try
-            {
-                using (IDbConnection connection = new SqlConnection(getConnectionString("CreativeCoinConnection")))
-                {
-                    var checkAccount = connection.Query<Account>("dbo.SP_Account_RetrieveAccountByAccountID theAccountID", new { AccountID = theAccountID }).ToList();
                     if (checkAccount.Count != 0) return true;
                     return false;
                 }

@@ -35,50 +35,20 @@ namespace Interface
             }
         }
 
-        private bool checkSSNFormat()
-        {
-            string ssn = AccountID.Text;
-            if (ssn.Length == 10)
-            {
-                for (int i = 0; i < ssn.Length; i++)
-                {
-                    if (ssn[i] > 57 || ssn[i] < 48)
-                    {
-                        WarningSSN.Content = "SSN format is wrong.";
-                        return false;
-                    }
-                }
-                return true;
-            }
-            WarningSSN.Content = "SSN format is wrong.";
-            return false;
-        }
-
         private bool checkPassword()
         {
             if (ConfirmPassword.Password.Equals(NewPassword.Password))
             {
-                Match.Content = "Passwords match.";
+                MatchPassword.Content = "Passwords match.";
                 return true;
             }
-                Match.Content = "Passwords don't match.";
+                MatchPassword.Content = "Passwords don't match.";
                 return false;
-        }
-
-        private bool checkUsedSSN()
-        {
-            if (DBConnection.verifiedUsedAccountID(AccountID.Text))
-            {
-                WarningSSN.Content = "This SSN is taken.";
-                return false;
-            }
-            WarningSSN.Content = "This SSN is untaken.";
-            return true;
         }
 
         private bool checkRequiredFields()
         {
-            if (Username.Text.Equals("") || NewPassword.Password.Equals("") || ConfirmPassword.Password.Equals("") || AccountID.Text.Equals("")) return false;
+            if (Username.Text.Equals("") || NewPassword.Password.Equals("") || ConfirmPassword.Password.Equals("")) return false;
             return true;
         }
 
@@ -93,16 +63,12 @@ namespace Interface
                 MessageBox.Show("Fill up the required fields", "Required fields", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            if(!checkSSNFormat())
-            {
-                return;
-            }
             try
             {
 
-                if (checkUsedUsername() && checkPassword() && checkUsedSSN())
+                if (checkUsedUsername() && checkPassword())
                 {
-                    DBConnection.createAccount(Username.Text, Hashing.HashPassword(NewPassword.Password), newParentName.Text, Birthdate.SelectedDate, PhoneNumber.Text, AccountID.Text);
+                    DBConnection.createAccount(Username.Text, Hashing.HashPassword(NewPassword.Password), newParentName.Text, Birthdate.SelectedDate, PhoneNumber.Text);
                     MessageBox.Show("You created a new account.", "Creation Confirm", MessageBoxButton.OK, MessageBoxImage.Information);
                     MainWindow backToLogin = new MainWindow();
                     backToLogin.Show();
@@ -131,8 +97,6 @@ namespace Interface
         private void Check_Click(object sender, RoutedEventArgs e)
         {
             checkUsedUsername();
-            if (!checkSSNFormat()) return;
-            checkUsedSSN();
         }
 
         private void ConfirmPassword_Check(object sender, RoutedEventArgs e)

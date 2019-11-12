@@ -9,7 +9,6 @@ namespace Middleware.Database_Component
         public string full_name { get; set; }
         public DateTime? birthdate { get; set; }
         public string phone_number { get; set; }
-        public string AccountID { get; set; }
         public char type { get; set; }
     }
 }

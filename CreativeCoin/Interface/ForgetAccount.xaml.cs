@@ -29,11 +29,10 @@ namespace Interface
 
         private bool checkUsername()
         {
-            if (DBConnection.verifiedAccount(Username.Text, SSN.Text))
+            if (DBConnection.verifiedAccount(Username.Text, PhoneNumber.Text))
             {
                 Account foundAccount = DBConnection.retrieveAccount(Username.Text);
                 Username.Text = foundAccount.username;
-                SSN.Text = foundAccount.AccountID;
                 ParentName.Text = foundAccount.full_name;
                 Birthdate.Text = foundAccount.birthdate == null ? "None" : DateTimeConverter.dateTimeToString(foundAccount.birthdate);
                 PhoneNumber.Text = foundAccount.phone_number == "" ? "None" : foundAccount.phone_number;
@@ -44,7 +43,6 @@ namespace Interface
             else
             {
                 Username.Text = "";
-                SSN.Text = "";
                 ParentName.Text = "";
                 Birthdate.Text = "";
                 PhoneNumber.Text = "";
@@ -96,5 +94,10 @@ namespace Interface
         }
 
         #endregion
+
+        private void PhoneNumber_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
+        }
     }
 }

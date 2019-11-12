@@ -12,18 +12,15 @@
 
         <Label Content="Username：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,150,0,0" FontSize="18" Height="40" Width="170"/>
         <TextBox x:Name="Username" TabIndex="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,150,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
-
-        <Label Content="SSN ：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,200,0,0" FontSize="18" Height="40" Width="170"/>
-        <TextBox x:Name="SSN" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,200,0,0" FontSize="18" Height="40" Width="350"/>
         
-        <Label Content="Your Name：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,250,0,0" FontSize="18" Height="40" Width="170"/>
-        <TextBox x:Name="ParentName" TabIndex="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,250,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350" IsEnabled="False"/>
+        <Label Content="Your Name：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,300,0,0" FontSize="18" Height="40" Width="170"/>
+        <TextBox x:Name="ParentName" TabIndex="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,300,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350" IsEnabled="False"/>
 
-        <Label Content="Birthdate : " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,300,0,0" FontSize="18" Height="40" Width="170"/>
-        <TextBox x:Name="Birthdate" TabIndex="5" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,300,0,0" FontSize="18" Height="40" Width="350" IsEnabled="False"/>
+        <Label Content="Birthdate : " HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,350,0,0" FontSize="18" Height="40" Width="170"/>
+        <TextBox x:Name="Birthdate" TabIndex="5" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,350,0,0" FontSize="18" Height="40" Width="350" IsEnabled="False"/>
 
-        <Label Content="Phone Number：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,350,0,0" FontSize="18" Height="40" Width="170"/>
-        <TextBox x:Name="PhoneNumber" TabIndex="6" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,350,0,0" FontSize="18" Height="40" Width="350" IsEnabled="False"/>
+        <Label Content="Phone Number：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,200,0,0" FontSize="18" Height="40" Width="170"/>
+        <TextBox x:Name="PhoneNumber" TabIndex="6" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,200,0,0" FontSize="18" Height="40" Width="350" TextChanged="PhoneNumber_TextChanged"/>
 
         <Label Content="New Password：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,400,0,0" FontSize="18" Height="40" Width="170"/>
         <PasswordBox x:Name="NewPassword" TabIndex="7" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,400,0,0" PasswordChar="*" FontSize="18" Height="40" Width="350" IsEnabled="False"/>
@@ -33,8 +30,8 @@
 
         <Label x:Name="Match" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="800,450,0,0" FontSize="18" Height="40" Width="250" FontWeight="Bold" Foreground="Red"/>
         
-        <Button Content="Search" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="800,200,0,0" FontSize="15" Height="40" Width="150" Click="Search_Click"/>
-        <Label x:Name="Warning" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="800,250,0,0" FontSize="18" Height="40" Width="180" FontWeight="Bold" Foreground="Red"/>
+        <Button Content="Search" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="800,150,0,0" FontSize="15" Height="40" Width="150" Click="Search_Click"/>
+        <Label x:Name="Warning" Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="800,200,0,0" FontSize="18" Height="40" Width="180" FontWeight="Bold" Foreground="Red"/>
         
         <Button Content="Change Password" TabIndex="9" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-250,550,0,0" FontSize="15" Height="40" Width="150" Click="ChangePassword_Click" IsDefault="True"/>
         <Button Content="Back" TabIndex="10" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="200,550,0,0" FontSize="15" Height="40" Width="150" Click="Back_Click"/>
