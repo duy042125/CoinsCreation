@@ -28,16 +28,16 @@ namespace Interface
         private void Information_Loaded(object sender, RoutedEventArgs e)
         {
             #region Report Load
-            Child childLoader = DBConnection.retrieveChildByName(LogInInformation.Username, LogInInformation.Child_name);
+            Child childLoader = DBConnection.retrieveChildByKeys(LogInInformation.Username, LogInInformation.Child_name);
             ChildName.Text = childLoader.Child_name;
-            Age.Text = DateTimeConverter.timeSpanToAge(DateTime.Now - childLoader.birthdate);
+            Age.Text = DateTimeConverter.timeSpanToAge(DateTime.Now - DateTimeConverter.stringToDateTime(childLoader.birthdate));
             Date.Text = DateTime.Now.ToString("MM/dd/yyyy");
             TotalCoin.Content = childLoader.total_coin;
             totalCoin = childLoader.total_coin;
             #endregion
 
             #region Reward Load
-            Behavior behaviorLoader = DBConnection.retrieveBehaviorByName(LogInInformation.Behavior_name);
+            Behavior behaviorLoader = DBConnection.retrieveBehaviorByKeys(LogInInformation.Behavior_name);
             if (behaviorLoader.star5_reward1.Equals(""))
             {
                 Reward51.Content = "(5 Coins) " + "None";
@@ -105,8 +105,7 @@ namespace Interface
 
         private bool isExistedReport()
         {
-            if (DBConnection.verirfiedReportByKeys(LogInInformation.Username, LogInInformation.Child_name, Date.SelectedDate)) return true;
-            return false; 
+            return DBConnection.verirfiedReportByKeys(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.Behavior_name, Date.SelectedDate);
         }
 
         private bool isSave;
@@ -131,10 +130,9 @@ namespace Interface
                 }
                 else if (result == MessageBoxResult.No)
                 {
-                    Report existedReport = DBConnection.retrieveReportByKeys(LogInInformation.Username, LogInInformation.Child_name, Date.SelectedDate);
+                    Report existedReport = DBConnection.retrieveReportByKeys(LogInInformation.Username, LogInInformation.Child_name, LogInInformation.Behavior_name, Date.SelectedDate);
                     Note.Text = existedReport.note;
                 }
-                Note.Text = "";
                 isSave = true;
             }
         }
@@ -144,7 +142,8 @@ namespace Interface
             List<Report> accountReport = DBConnection.retrieveReportListByUsernameAndChildName(LogInInformation.Username, LogInInformation.Child_name);
             List<int> valueList = new List<int>();
             List<string> labelList = new List<string>();
-            List<DateTime?> dateList = new List<DateTime?>();
+            List<string> dateList = new List<string>();
+            
             for (int i = 0; i < accountReport.Count; i++)
             {
                 valueList.Add(accountReport[i].coin_earned);
@@ -159,20 +158,24 @@ namespace Interface
 
         private void Buy_Click(object sender, RoutedEventArgs e)
         {
-            DBConnection.useCoin(LogInInformation.Username, LogInInformation.Child_name, coinInCart());
             List<string> boughtItems = new List<string>();
             foreach(CheckBox checkBox in RewardStackPannel.Children)
             {
                 if ((bool)checkBox.IsChecked) boughtItems.Add((string)checkBox.Content);
             }
-            RewardCongrat congrat = new RewardCongrat(boughtItems, coinInCart());
-            congrat.Show();
-            totalCoin -= coinInCart();
-            previousCoinInCart = coinInCart();
-            uncheckAll();
-            updateTotalCoin();
-            System.Media.SoundPlayer starSound = new System.Media.SoundPlayer(Interface.Properties.Resources.cashregg);
-            starSound.Play();
+            if (totalCoin < coinInCart()) MessageBox.Show("Not enough coins !!!", "Not enough coin", MessageBoxButton.OK, MessageBoxImage.Warning);
+            else
+            {
+                DBConnection.useCoin(LogInInformation.Username, LogInInformation.Child_name, coinInCart());
+                totalCoin -= coinInCart();
+                previousCoinInCart = coinInCart();
+                uncheckAll();
+                updateTotalCoin();
+                System.Media.SoundPlayer starSound = new System.Media.SoundPlayer(Interface.Properties.Resources.cashregg);
+                starSound.Play();
+                RewardCongrat congrat = new RewardCongrat(boughtItems, coinInCart());
+                congrat.Show();
+            }
         } 
 
         private void Undo_Click(object sender, RoutedEventArgs e)

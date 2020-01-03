@@ -87,7 +87,7 @@ namespace Interface
 
         public bool IsClick { get; set; }
 
-        public DateTime? date { get; set; }
+        public string date { get; set; }
 
         #endregion
 

@@ -64,11 +64,10 @@ namespace Interface
                 return;
             }
             try
-            {
-
+            { 
                 if (checkUsedUsername() && checkPassword())
                 {
-                    DBConnection.createAccount(Username.Text, Hashing.HashPassword(NewPassword.Password), newParentName.Text, Birthdate.SelectedDate, PhoneNumber.Text);
+                    DBConnection.createAccount(Username.Text, Hashing.HashPassword(NewPassword.Password), newParentName.Text, Birthdate.SelectedDate, (PhoneNumber.Text == "") ? "None" : PhoneNumber.Text);
                     MessageBox.Show("You created a new account.", "Creation Confirm", MessageBoxButton.OK, MessageBoxImage.Information);
                     MainWindow backToLogin = new MainWindow();
                     backToLogin.Show();

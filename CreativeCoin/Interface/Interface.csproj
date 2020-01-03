@@ -91,19 +91,19 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin_Account.xaml.cs">
+    <Compile Include="Admin Page\Admin_Account.xaml.cs">
       <DependentUpon>Admin_Account.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Admin_Behavior.xaml.cs">
+    <Compile Include="Admin Page\Admin_Behavior.xaml.cs">
       <DependentUpon>Admin_Behavior.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Admin_Children.xaml.cs">
+    <Compile Include="Admin Page\Admin_Children.xaml.cs">
       <DependentUpon>Admin_Children.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Admin_MainMenu.xaml.cs">
+    <Compile Include="Admin Page\Admin_MainMenu.xaml.cs">
       <DependentUpon>Admin_MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Admin_Report.xaml.cs">
+    <Compile Include="Admin Page\Admin_Report.xaml.cs">
       <DependentUpon>Admin_Report.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -112,10 +112,8 @@
     <Compile Include="ChartReport.xaml.cs">
       <DependentUpon>ChartReport.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <Compile Include="Loading.xaml.cs">
+      <DependentUpon>Loading.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -144,27 +142,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="Admin_Account.xaml">
+    <Page Include="Admin Page\Admin_Account.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Admin_Behavior.xaml">
+    <Page Include="Admin Page\Admin_Behavior.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Admin_Children.xaml">
+    <Page Include="Admin Page\Admin_Children.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Admin_MainMenu.xaml">
+    <Page Include="Admin Page\Admin_MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Admin_Report.xaml">
+    <Page Include="Admin Page\Admin_Report.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ChartReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Loading.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -236,18 +238,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="Interface_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

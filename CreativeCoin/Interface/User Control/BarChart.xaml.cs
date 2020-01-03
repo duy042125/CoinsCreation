@@ -35,7 +35,7 @@ namespace Interface
             BarColorProperty = DependencyProperty.Register("BarColor", typeof(Brush), typeof(BarChart), new FrameworkPropertyMetadata(Brushes.Black, new PropertyChangedCallback(BarColorChange)));
             BarValueListProperty = DependencyProperty.Register("BarValueList", typeof(List<int>), typeof(BarChart), new FrameworkPropertyMetadata(null, new PropertyChangedCallback(BarValueListChange)));
             BarLabelListProperty = DependencyProperty.Register("BarLabelList", typeof(List<string>), typeof(BarChart), new FrameworkPropertyMetadata(null, new PropertyChangedCallback(BarLabelListChange)));
-            BarDateListProperty = DependencyProperty.Register("BarDateList", typeof(List<DateTime?>), typeof(BarChart), new FrameworkPropertyMetadata(null, new PropertyChangedCallback(BarDateListChange)));
+            BarDateListProperty = DependencyProperty.Register("BarDateList", typeof(List<string>), typeof(BarChart), new FrameworkPropertyMetadata(null, new PropertyChangedCallback(BarDateListChange)));
         }
 
         #region Dependency Properties
@@ -102,9 +102,9 @@ namespace Interface
             set { SetValue(BarLabelListProperty, value); }
         }
 
-        public List<DateTime?> BarDateList
+        public List<string> BarDateList
         {
-            get { return (List<DateTime?>)GetValue(BarDateListProperty); }
+            get { return (List<string>)GetValue(BarDateListProperty); }
             set { SetValue(BarDateListProperty, value); }
         }
 

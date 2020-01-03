@@ -11,7 +11,7 @@ namespace Interface
     /// </summary>
     public partial class ChartReport : Window
     {
-        public ChartReport(List<int> valueList, List<string> labelList, List<DateTime?> dateList)
+        public ChartReport(List<int> valueList, List<string> labelList, List<string> dateList)
         {
             InitializeComponent();
             BarGraph.BarValueList = valueList;
@@ -26,8 +26,8 @@ namespace Interface
             {
                 Report fullReport = DBConnection.retrieveFullReportByKeys(LogInInformation.Username, LogInInformation.Child_name, BarChart.barClicked.date);
                 ChildName.Content = fullReport.Child_name;
-                Age.Content = DateTimeConverter.timeSpanToAge(DateTime.Now - fullReport.birthdate);
-                Date.Content = DateTimeConverter.dateTimeToString(BarChart.barClicked.date);
+                Age.Content = DateTimeConverter.timeSpanToAge(DateTime.Now - DateTimeConverter.stringToDateTime(fullReport.birthdate));
+                Date.Content = BarChart.barClicked.date;
                 CoinEarned.Content = fullReport.coin_earned;
 
                 BehaviorName.Content = fullReport.Behavior_name;

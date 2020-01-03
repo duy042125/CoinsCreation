@@ -66,7 +66,7 @@ namespace Interface
         private void Information_Loaded(object sender, RoutedEventArgs e)
         {
             #region Behavior Loader
-            Behavior behaviorLoader = DBConnection.retrieveBehaviorByName(LogInInformation.Behavior_name);
+            Behavior behaviorLoader = DBConnection.retrieveBehaviorByKeys(LogInInformation.Behavior_name);
 
             // this could be fix 4 behaviors
             if (behaviorLoader.behavior1.Equals(""))
@@ -96,9 +96,9 @@ namespace Interface
             #endregion
 
             #region Child Loader
-            Child childLoader = DBConnection.retrieveChildByName(LogInInformation.Username, LogInInformation.Child_name);
+            Child childLoader = DBConnection.retrieveChildByKeys(LogInInformation.Username, LogInInformation.Child_name);
             ChildName.Text = childLoader.Child_name;
-            Age.Text = DateTimeConverter.timeSpanToAge(DateTime.Now - childLoader.birthdate);
+            Age.Text = DateTimeConverter.timeSpanToAge(DateTime.Now - DateTimeConverter.stringToDateTime(childLoader.birthdate));
             Date.Text = DateTime.Now.ToString("MM/dd/yyyy");
             CoinEarned.Content = coinEarn;
             #endregion
@@ -115,6 +115,7 @@ namespace Interface
             }
             System.Media.SoundPlayer starSound = new System.Media.SoundPlayer(Interface.Properties.Resources.cashregg);
             starSound.Play();
+            SV4.LineRight();
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
@@ -127,11 +128,6 @@ namespace Interface
                 this.Close();
                 LogInInformation.Clear();
             }
-        }
-
-        private void ChildName_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
-        {
-
         }
     }
 }

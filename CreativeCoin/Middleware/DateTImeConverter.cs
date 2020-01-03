@@ -4,7 +4,7 @@ namespace Middleware
 {
     public class DateTimeConverter
     {
-        public static DateTime? toDateTime(string stringDate)
+        public static DateTime? stringToDateTime(string stringDate)
         {
             if (stringDate.Equals("")) return null;
             try

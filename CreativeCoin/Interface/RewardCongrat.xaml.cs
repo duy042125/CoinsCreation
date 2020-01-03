@@ -58,9 +58,8 @@ namespace Interface
             {
                 if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"CertificationTemplate.Docx"))
                 {
-
+                    // Add loadaing screen here
                     #region Template
-
                     Word.Document certificationTemplate = null;
                     Word.Application wordAppTemplate = new Word.Application();
                     wordAppTemplate.ShowAnimation = false;
@@ -112,9 +111,13 @@ namespace Interface
                     FindAndReplace(wordApp, "<BoughtItemHere>", itemContent);
                     certification.Save();
                     certification.Close();
+                    wordApp.Quit();
 
                     MessageBox.Show("Successfully print out the certification");
-                    wordApp.Quit();
+                }
+                else
+                {
+                    MessageBox.Show("No Template Found");
                 }
             }
             catch (Exception exc)

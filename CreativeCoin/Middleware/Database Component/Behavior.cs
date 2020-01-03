@@ -1,8 +1,9 @@
 ﻿namespace Middleware.Database_Component
 {
     public class Behavior
-    {
-        public string name { get; set; }
+    { 
+        public string Parent_username { get; set; }
+        public string Behavior_name { get; set; }
         public string behavior1 { get; set; }
         public string behavior2 { get; set; }
         public string behavior3 { get; set; }

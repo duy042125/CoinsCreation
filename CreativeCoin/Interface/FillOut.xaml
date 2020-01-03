@@ -13,49 +13,49 @@
         <Label Content="Child's Information :" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-890,120,0,0" FontSize="20" FontWeight="Bold" Height="40" Width="300"/>
         
         <Label Content="Child's Name：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-1000,170,0,0" FontSize="18" Height="40" Width="170"/>
-        <ComboBox x:Name="ChildName" TabIndex="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,170,0,0" Text="" FontSize="18" Height="40" Width="350" IsEditable="True" SelectionChanged="ChildName_SelectionChanged"/>
+        <ComboBox x:Name="ChildName" TabIndex="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,170,0,0" Text="" FontSize="18" Height="40" Width="350" IsEditable="True" SelectionChanged="ChildName_SelectionChanged" TextInput="isModified"/>
         <Label Content="(*)" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-100,170,0,0" FontSize="18" Height="40" FontWeight="Bold" Foreground="Red"/>
 
         <Label Content="Birthdate：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-1000,220,0,0" FontSize="18" Height="40" Width="170"/>
-        <DatePicker x:Name="Birthdate" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,220,0,0" Text="" FontSize="18" Height="40" Width="350"/>
+        <DatePicker x:Name="Birthdate" TabIndex="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-500,220,0,0" Text="" FontSize="18" Height="40" Width="350" TextInput="isModified"/>
         <Label Content="(*)" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-100,220,0,0" FontSize="18" Height="40" FontWeight="Bold" Foreground="Red"/>
 
-        <Label Content="Choose 4 behaviar to work on :" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-890,270,0,0" FontSize="20" FontWeight="Bold" Height="40" Width="300"/>
+        <Label Content="Choose 4 behaviors to work on :" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-890,270,0,0" FontSize="20" FontWeight="Bold" Height="40" Width="300"/>
         <ComboBox x:Name="BehaviorName" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-310,270,0,0" FontSize="18" Height="40" Width="250" Text="Behavior Goup Name" MouseDoubleClick="Behavior_Text_FillOutClear" IsEditable="true" SelectionChanged="BehaviorName_SelectionChanged"/>
         <Label Content="(*)" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-10,270,0,0" FontSize="18" Height="40" FontWeight="Bold" Foreground="Red"/>
 
 
-        <TextBox x:Name="Behavior1" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-810,320,0,0" FontSize="18" Height="40" Width="350"/>
-        <TextBox x:Name="Behavior2" TabIndex="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-810,370,0,0" FontSize="18" Height="40" Width="350"/>
-        <TextBox x:Name="Behavior3" TabIndex="5" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-810,420,0,0" FontSize="18" Height="40" Width="350"/>
-        <TextBox x:Name="Behavior4" TabIndex="6" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-810,470,0,0" FontSize="18" Height="40" Width="350"/>
+        <TextBox x:Name="Behavior1" TabIndex="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-810,320,0,0" FontSize="18" Height="40" Width="350" TextChanged="isModified"/>
+        <TextBox x:Name="Behavior2" TabIndex="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-810,370,0,0" FontSize="18" Height="40" Width="350" TextChanged="isModified"/>
+        <TextBox x:Name="Behavior3" TabIndex="5" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-810,420,0,0" FontSize="18" Height="40" Width="350" TextChanged="isModified"/>
+        <TextBox x:Name="Behavior4" TabIndex="6" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-810,470,0,0" FontSize="18" Height="40" Width="350" TextChanged="isModified"/>
 
         <Label Content="Choose Reward :" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="400,120,0,0" FontSize="20" FontWeight="Bold" Height="40" Width="300"/>
 
         <Button Content="Tip" TabIndex="7" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="700,120,0,0" FontSize="15" Height="40" Width="200" Click="Tip_Click"/>
         
         <Label Content="5 Coins：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="200,170,0,0" FontSize="18" Height="40" Width="100"/>
-        <TextBox x:Name="Coin51" TabIndex="8" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,170,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
-        <TextBox x:Name="Coin52" TabIndex="9" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,220,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
-        <TextBox x:Name="Coin53" TabIndex="10" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,270,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
+        <TextBox x:Name="Coin51" TabIndex="8" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,170,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350" TextChanged="isModified"/>
+        <TextBox x:Name="Coin52" TabIndex="9" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,220,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350" TextChanged="isModified"/>
+        <TextBox x:Name="Coin53" TabIndex="10" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,270,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350" TextChanged="isModified"/>
 
         <Label Content="10 Coins：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="200,320,0,0" FontSize="18" Height="40" Width="100"/>
-        <TextBox x:Name="Coin101" TabIndex="11" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,320,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
-        <TextBox x:Name="Coin102" TabIndex="12" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,370,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
-        <TextBox x:Name="Coin103" TabIndex="13" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,420,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
+        <TextBox x:Name="Coin101" TabIndex="11" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,320,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350" TextChanged="isModified"/>
+        <TextBox x:Name="Coin102" TabIndex="12" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,370,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350" TextChanged="isModified"/>
+        <TextBox x:Name="Coin103" TabIndex="13" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,420,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350" TextChanged="isModified"/>
 
         <Label Content="15 Coins：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="200,470,0,0" FontSize="18" Height="40" Width="100"/>
-        <TextBox x:Name="Coin151" TabIndex="14" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,470,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
-        <TextBox x:Name="Coin152" TabIndex="15" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,520,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
+        <TextBox x:Name="Coin151" TabIndex="14" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,470,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350" TextChanged="isModified"/>
+        <TextBox x:Name="Coin152" TabIndex="15" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,520,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350" TextChanged="isModified"/>
 
         <Label Content="20 Coins：" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="200,570,0,0" FontSize="18" Height="40" Width="100"/>
-        <TextBox x:Name="Coin20" TabIndex="16" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,570,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350"/>
+        <TextBox x:Name="Coin20" TabIndex="16" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,570,0,0" TextWrapping="Wrap" Text="" FontSize="18" Height="40" Width="350" TextChanged="isModified"/>
 
         <Label Content="(*) Required fields" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-1000,535,0,0" FontSize="18" Height="40" FontWeight="Bold" Foreground="Red"/>
 
         <Button Content="Clear" TabIndex="17" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-900,600,0,0" FontSize="15" Height="40" Width="150" Click="Clear_Click"/>
         <Button Content="Submit" TabIndex="18" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-450,600,0,0" FontSize="15" Height="40" Width="150" Click="Submit_Click" IsDefault="True"/>
-        
-        <Button Content="Log Out" TabIndex="19" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0" FontSize="15" Height="40" Width="150" Background="White" Click="LogOut_Click"/>
+
+        <Button Content="Log Out" TabIndex="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,50,100" FontSize="15" Height="40" Width="150" Background="White" Click="LogOut_Click"/>
     </Grid>
 </Window>

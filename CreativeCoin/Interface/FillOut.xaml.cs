@@ -86,7 +86,7 @@ namespace Interface
             List<Behavior> behaviorList = DBConnection.retrieveBehaviorListByUsername(LogInInformation.Username);
             foreach (Behavior behavior in behaviorList)
             {
-                if (!BehaviorName.Items.Contains(behavior.name)) BehaviorName.Items.Add(behavior.name);
+                if (!BehaviorName.Items.Contains(behavior.Behavior_name)) BehaviorName.Items.Add(behavior.Behavior_name);
             }
             #endregion
         }
@@ -121,8 +121,8 @@ namespace Interface
         {
             if(isChildExist())
             {
-                Child currentChild = DBConnection.retrieveChildByName(LogInInformation.Username, ChildName.Text);
-                if (currentChild.Child_name == ChildName.Text && currentChild.birthdate == Birthdate.SelectedDate) return true;
+                Child currentChild = DBConnection.retrieveChildByKeys(LogInInformation.Username, ChildName.Text);
+                if (currentChild.Child_name == ChildName.Text && currentChild.birthdate == DateTimeConverter.dateTimeToString(Birthdate.SelectedDate)) return true;
                 return false;
             }
             return false;
@@ -155,8 +155,8 @@ namespace Interface
         {
             if (isChildExist())
             {
-                Behavior currentBehavior = DBConnection.retrieveBehaviorByName(BehaviorName.Text);
-                if (currentBehavior.name == BehaviorName.Text &&
+                Behavior currentBehavior = DBConnection.retrieveBehaviorByKeys(BehaviorName.Text);
+                if (currentBehavior.Behavior_name == BehaviorName.Text &&
                     currentBehavior.behavior1 == Behavior1.Text &&
                     currentBehavior.behavior2 == Behavior2.Text &&
                     currentBehavior.behavior3 == Behavior3.Text &&
@@ -182,7 +182,7 @@ namespace Interface
                 MessageBoxResult result = MessageBox.Show("Do you want to update your information?", "Update Information", MessageBoxButton.YesNo, MessageBoxImage.Information);
                 if (result == MessageBoxResult.Yes)
                 {
-                    DBConnection.updateBehaviorByName(BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
+                    DBConnection.updateBehaviorByKeys(BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
                 }
                 else if (result == MessageBoxResult.No) autoFillBehavior(BehaviorName.Text);
                 updateComboBox();
@@ -207,8 +207,8 @@ namespace Interface
         {
             if (DBConnection.verifiedBehaviorName(theBehaviorName))
             {
-                Behavior currentBehavior = DBConnection.retrieveBehaviorByName(theBehaviorName);
-                BehaviorName.Text = currentBehavior.name;
+                Behavior currentBehavior = DBConnection.retrieveBehaviorByKeys(theBehaviorName);
+                BehaviorName.Text = currentBehavior.Behavior_name;
                 Behavior1.Text = currentBehavior.behavior1;
                 Behavior2.Text = currentBehavior.behavior2;
                 Behavior3.Text = currentBehavior.behavior3;
@@ -231,9 +231,9 @@ namespace Interface
         {
             if(DBConnection.verifiedChildName(LogInInformation.Username, theChildName))
             {
-                Child currentChild = DBConnection.retrieveChildByName(LogInInformation.Username, theChildName);
+                Child currentChild = DBConnection.retrieveChildByKeys(LogInInformation.Username, theChildName);
                 ChildName.Text = currentChild.Child_name;
-                Birthdate.Text = DateTimeConverter.dateTimeToString(currentChild.birthdate);
+                Birthdate.Text = currentChild.birthdate;
                 return;
             }
             isCheck = false;
@@ -328,6 +328,16 @@ namespace Interface
         {
             BehaviorName.Text = (string)BehaviorName.SelectedItem;
             autoFillBehavior(BehaviorName.Text);
+        }
+
+        private void isModified(object sender, TextChangedEventArgs e)
+        {
+            isCheck = false;
+        }
+
+        private void isModified(object sender, TextCompositionEventArgs e)
+        {
+            isCheck = false;
         }
     }
 }

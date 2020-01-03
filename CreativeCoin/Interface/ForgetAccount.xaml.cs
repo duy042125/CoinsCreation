@@ -34,7 +34,7 @@ namespace Interface
                 Account foundAccount = DBConnection.retrieveAccount(Username.Text);
                 Username.Text = foundAccount.username;
                 ParentName.Text = foundAccount.full_name;
-                Birthdate.Text = foundAccount.birthdate == null ? "None" : DateTimeConverter.dateTimeToString(foundAccount.birthdate);
+                Birthdate.Text = foundAccount.birthdate == null ? "None" : foundAccount.birthdate;
                 PhoneNumber.Text = foundAccount.phone_number == "" ? "None" : foundAccount.phone_number;
                 NewPassword.IsEnabled = true;
                 ConfirmPassword.IsEnabled = true;
