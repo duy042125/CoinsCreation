@@ -140,18 +140,19 @@ namespace Interface
         private void Chart_Click(object sender, RoutedEventArgs e)
         {
             List<Report> accountReport = DBConnection.retrieveReportListByUsernameAndChildName(LogInInformation.Username, LogInInformation.Child_name);
-            List<int> valueList = new List<int>();
-            List<string> labelList = new List<string>();
-            List<string> dateList = new List<string>();
+            List<BarValue> valueList = new List<BarValue>();
             
             for (int i = 0; i < accountReport.Count; i++)
             {
-                valueList.Add(accountReport[i].coin_earned);
+                
+                int coinValue = accountReport[i].coin_earned;
                 string week = DateTimeConverter.timeSpanToWeek(DBConnection.retrieveProgressWeek(LogInInformation.Username, LogInInformation.Child_name, accountReport[i].date));
-                labelList.Add("Week " + week);
-                dateList.Add(accountReport[i].date);
+                string label = "Week " + week;
+                string date = accountReport[i].date;
+                BarValue newColumn = new BarValue(label, date, coinValue);
+                valueList.Add(newColumn);
             }
-            ChartReport chartReport = new ChartReport(valueList, labelList, dateList);
+            ChartReport chartReport = new ChartReport(valueList);
             chartReport.Show();
             this.Close();
         }

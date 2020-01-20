@@ -112,6 +112,7 @@
     <Compile Include="ChartReport.xaml.cs">
       <DependentUpon>ChartReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User Control\BarValue.cs" />
     <Compile Include="Loading.xaml.cs">
       <DependentUpon>Loading.xaml</DependentUpon>
     </Compile>

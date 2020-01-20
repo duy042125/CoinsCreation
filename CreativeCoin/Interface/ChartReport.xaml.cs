@@ -11,12 +11,10 @@ namespace Interface
     /// </summary>
     public partial class ChartReport : Window
     {
-        public ChartReport(List<int> valueList, List<string> labelList, List<string> dateList)
+        public ChartReport(List<BarValue> valueList)
         {
             InitializeComponent();
             BarGraph.BarValueList = valueList;
-            BarGraph.BarLabelList = labelList;
-            BarGraph.BarDateList = dateList;
             Information_Loaded();
         }
 

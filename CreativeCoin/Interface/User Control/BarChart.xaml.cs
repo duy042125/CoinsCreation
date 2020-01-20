@@ -33,9 +33,7 @@ namespace Interface
             YAxisValueColorProperty = DependencyProperty.Register("YAxisValueColor", typeof(Brush), typeof(BarChart), new FrameworkPropertyMetadata(Brushes.Black, new PropertyChangedCallback(YAxisValueColorChange)));
             XAxisLabelColorProperty = DependencyProperty.Register("XAxisLabelColor", typeof(Brush), typeof(BarChart), new FrameworkPropertyMetadata(Brushes.Black, new PropertyChangedCallback(XAxisLabelColorChange)));
             BarColorProperty = DependencyProperty.Register("BarColor", typeof(Brush), typeof(BarChart), new FrameworkPropertyMetadata(Brushes.Black, new PropertyChangedCallback(BarColorChange)));
-            BarValueListProperty = DependencyProperty.Register("BarValueList", typeof(List<int>), typeof(BarChart), new FrameworkPropertyMetadata(null, new PropertyChangedCallback(BarValueListChange)));
-            BarLabelListProperty = DependencyProperty.Register("BarLabelList", typeof(List<string>), typeof(BarChart), new FrameworkPropertyMetadata(null, new PropertyChangedCallback(BarLabelListChange)));
-            BarDateListProperty = DependencyProperty.Register("BarDateList", typeof(List<string>), typeof(BarChart), new FrameworkPropertyMetadata(null, new PropertyChangedCallback(BarDateListChange)));
+            BarValueListProperty = DependencyProperty.Register("BarValueList", typeof(List<BarValue>), typeof(BarChart), new FrameworkPropertyMetadata(null, new PropertyChangedCallback(BarValueListChange)));
         }
 
         #region Dependency Properties
@@ -51,10 +49,6 @@ namespace Interface
         public static readonly DependencyProperty BarColorProperty;
 
         public static readonly DependencyProperty BarValueListProperty;
-
-        public static readonly DependencyProperty BarLabelListProperty;
-
-        public static readonly DependencyProperty BarDateListProperty;
 
         #endregion
 
@@ -90,22 +84,10 @@ namespace Interface
             set { SetValue(BarColorProperty, value); }
         }
         
-        public List<int> BarValueList
+        public List<BarValue> BarValueList
         {
-            get { return (List<int>)GetValue(BarValueListProperty); }
+            get { return (List<BarValue>)GetValue(BarValueListProperty); }
             set { SetValue(BarValueListProperty, value); }
-        }
-
-        public List<string> BarLabelList
-        {
-            get { return (List<string>)GetValue(BarLabelListProperty); }
-            set { SetValue(BarLabelListProperty, value); }
-        }
-
-        public List<string> BarDateList
-        {
-            get { return (List<string>)GetValue(BarDateListProperty); }
-            set { SetValue(BarDateListProperty, value); }
         }
 
         #endregion
@@ -178,24 +160,6 @@ namespace Interface
             }
         }
 
-        private static void BarLabelListChange(DependencyObject obj, DependencyPropertyChangedEventArgs e)
-        {
-            BarChart barChart = obj as BarChart;
-            if (barChart != null)
-            {
-                barChart.BarLabelList = barChart.BarLabelList;
-            }
-        }
-
-        private static void BarDateListChange(DependencyObject obj, DependencyPropertyChangedEventArgs e)
-        {
-            BarChart barChart = obj as BarChart;
-            if (barChart != null)
-            {
-                barChart.BarDateList = barChart.BarDateList;
-            }
-        }
-
         #endregion
 
         #region Methods
@@ -213,11 +177,11 @@ namespace Interface
             {
                 Bar bar = new Bar();
                 bar.BarColor = BarColor;
-                bar.Value = BarValueList[i];
+                bar.Value = BarValueList[i].CoinValue;
                 bar.Ratio = (int)(Height / 7);
-                bar.LabelContent = BarLabelList[i];
+                bar.LabelContent = BarValueList[i].Label;
                 bar.LabelColor = XAxisLabelColor;
-                bar.date = BarDateList[i];
+                bar.date = BarValueList[i].Date;
                 BarStackPanel.Children.Insert(i, bar);
             }
         }
