@@ -263,12 +263,13 @@ namespace Interface
 
             if (isFillOut())
             {
+                isCheck = true;
+
                 if (!isChildExist() && !isBehaviorExist())
                 {
                     DBConnection.insertChild(LogInInformation.Username, ChildName.Text, Birthdate.SelectedDate);
                     DBConnection.insertBehavior(LogInInformation.Username, BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
                     MessageBox.Show("You just create new information for your Child and new Behavior Group.", "New Child and Behavior Group.", MessageBoxButton.OK, MessageBoxImage.Information);
-                    isCheck = true;
                     updateComboBox();
                     return;
                 }
@@ -276,19 +277,16 @@ namespace Interface
                 {
                     DBConnection.insertChild(LogInInformation.Username, ChildName.Text, Birthdate.SelectedDate);
                     updateExistBehavior();
-                    isCheck = true;
                     return;
                 }
                 else if (isChildExist() && !isBehaviorExist())
                 {
                     DBConnection.insertBehavior(LogInInformation.Username, BehaviorName.Text, Behavior1.Text, Behavior2.Text, Behavior3.Text, Behavior4.Text, Coin51.Text, Coin52.Text, Coin53.Text, Coin101.Text, Coin102.Text, Coin103.Text, Coin151.Text, Coin152.Text, Coin20.Text);
                     updateExistChild();
-                    isCheck = true;
                     return;
                 }
                 else if (isChildExist() && isBehaviorExist())
                 {
-                    isCheck = true;
                     if (isChildTheSame() && isBehaviorTheSame())
                     {
                         Submit_Click(sender, e);

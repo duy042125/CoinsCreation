@@ -115,7 +115,7 @@ namespace Interface
             }
             System.Media.SoundPlayer starSound = new System.Media.SoundPlayer(Interface.Properties.Resources.cashregg);
             starSound.Play();
-            SV4.LineRight();
+            //SV4.LineRight();
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)

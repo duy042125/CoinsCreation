@@ -10,35 +10,34 @@
     <Grid Background="SlateBlue">
         <Label Content="Creative Coins Reward" FontSize="50" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
 
-        <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="-750,100,0,0" Height="500" Width="700" Background="RoyalBlue">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-750,100,0,0" Height="600" Width="700" Background="RoyalBlue">
             <Label Content="Behavior Rating" FontSize="50" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
-
-            <StackPanel Height="265" Width="380" Margin="-280,90,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
-                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="0,5,0,0" >
-                    <Label x:Name="BehaviorName1" FontSize="40" HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Loaded="Information_Loaded"/>
-                </ScrollViewer>
-                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="0,5,0,0">
-                    <Label x:Name="BehaviorName2" FontSize="40" HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Loaded="Information_Loaded"/>
-                </ScrollViewer>
-                <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="0,5,0,0" CanContentScroll="True">
-                    <Label x:Name="BehaviorName3" FontSize="40" HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Loaded="Information_Loaded"/>
-                </ScrollViewer>
-                <ScrollViewer x:Name="SV4" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled" Margin="0,5,0,0">
-                    <Label x:Name="BehaviorName4" FontSize="40" HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Loaded="Information_Loaded"/>
-                </ScrollViewer>
-
-            </StackPanel>
             
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" CanContentScroll="True" HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="365" Margin="25,100,0,0" >
+                <Label x:Name="BehaviorName1" FontSize="40" HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Loaded="Information_Loaded"/>
+            </ScrollViewer>
             <local:RatingStars x:Name="Behavior1" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="400,100,0,0"/>
-            <local:RatingStars x:Name="Behavior2" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="400,170,0,0"/>
-            <local:RatingStars x:Name="Behavior3" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="400,240,0,0" />
-            <local:RatingStars x:Name="Behavior4" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="400,310,0,0"/>
 
-            <Button Content="Progress" FontSize="30" HorizontalAlignment="Center" Width="150" Height="55" VerticalAlignment="Top" Margin="-300,400,0,0" Background="LightBlue" Click="Progress_Click"/>
-            <TextBox x:Name="Progress" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Width="275" Height="55" VerticalAlignment="Top" Margin="300,400,0,0" Background="LightBlue" IsEnabled="False"/>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" CanContentScroll="True" HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="365" Margin="25,195,0,0" >
+                <Label x:Name="BehaviorName2" FontSize="40" HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Loaded="Information_Loaded"/>
+            </ScrollViewer>
+            <local:RatingStars x:Name="Behavior2" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="400,195,0,0"/>
+
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" CanContentScroll="True" HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="365" Margin="25,290,0,0" >
+                <Label x:Name="BehaviorName3" FontSize="40" HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Loaded="Information_Loaded"/>
+            </ScrollViewer>
+            <local:RatingStars x:Name="Behavior3" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="400,290,0,0" />
+
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" CanContentScroll="True" HorizontalAlignment="Left" VerticalAlignment="Top" Height="90" Width="365" Margin="25,385,0,0" >
+                <Label x:Name="BehaviorName4" FontSize="40" HorizontalAlignment="Left" Height="65" VerticalAlignment="Top" Loaded="Information_Loaded"/>
+            </ScrollViewer>
+            <local:RatingStars x:Name="Behavior4" HorizontalAlignment="Center" Height="55" VerticalAlignment="Top" Width="275" Margin="400,385,0,0"/>
+
+            <Button Content="Progress" FontSize="30" HorizontalAlignment="Center" Width="150" Height="55" VerticalAlignment="Top" Margin="-300,500,0,0" Background="LightBlue" Click="Progress_Click"/>
+            <TextBox x:Name="Progress" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Width="275" Height="55" VerticalAlignment="Top" Margin="300,500,0,0" Background="LightBlue" IsEnabled="False"/>
         </Grid>
 
-        <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="750,100,0,0" Height="500" Width="700" Background="RoyalBlue">
+        <Grid HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="750,100,0,0" Height="600" Width="700" Background="RoyalBlue">
             <Label Content="Child's Information" FontSize="50" FontWeight="Bold" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"/>
 
             <Label Content="Name:" FontSize="40" Width="150" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-400,100,0,0"/>
@@ -60,8 +59,8 @@
             </Button>
         </Grid>
 
-        <Button Content="Edit Child's Info" FontSize="30" HorizontalAlignment="Center" Width="250" Height="55" VerticalAlignment="Top" Margin="-400,620,0,0" Background="LightBlue" Click="Edit_Info_Click"/>
-        <Button Content="Shop" FontSize="30" HorizontalAlignment="Center" Width="250" Height="55" VerticalAlignment="Top" Margin="400,620,0,0" Background="LightBlue" Click="Report_Shop_Click"/>
-        <Button Content="Log Out" TabIndex="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,50,100" FontSize="15" Height="40" Width="150" Background="White" Click="LogOut_Click"/>
+        <Button Content="Edit Child's Info" FontSize="30" HorizontalAlignment="Center" Width="250" Height="55" VerticalAlignment="Top" Margin="-400,750,0,0" Background="LightBlue" Click="Edit_Info_Click"/>
+        <Button Content="Shop" FontSize="30" HorizontalAlignment="Center" Width="250" Height="55" VerticalAlignment="Top" Margin="400,750,0,0" Background="LightBlue" Click="Report_Shop_Click"/>
+        <Button Content="Log Out" TabIndex="19" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,50,50" FontSize="15" Height="40" Width="150" Background="White" Click="LogOut_Click"/>
     </Grid>
 </Window>
