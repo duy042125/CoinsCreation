@@ -697,10 +697,5 @@ namespace Middleware
         }
 
         #endregion
-
-        public static void TestConflict()
-        {
-            return;
-        }
     }
 }
