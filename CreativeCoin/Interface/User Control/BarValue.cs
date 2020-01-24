@@ -10,9 +10,9 @@ namespace Interface
     {
         public BarValue(string label, string date, int coinValue)
         {
-            label = Label;
-            date = Date;
-            coinValue = CoinValue;
+            Label = label;
+            Date = date;
+            CoinValue = coinValue;
         }
         public string Label { set; get; }
         public string Date { set; get; }

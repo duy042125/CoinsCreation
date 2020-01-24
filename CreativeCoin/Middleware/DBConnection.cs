@@ -656,6 +656,8 @@ namespace Middleware
                     DateTime? startDate = DateTimeConverter.stringToDateTime(retreiveChild[0].start_date);
                     DateTime? currentDate = DateTimeConverter.stringToDateTime(currentReportDate);
                     TimeSpan? progressWeek = (currentDate - startDate);
+
+                    //TimeSpan progressWeek = currentDate.Subtract(startDate).Duration();
                     return progressWeek;
                 }
             }
